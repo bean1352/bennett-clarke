@@ -100,7 +100,7 @@ export function MainNav() {
                                                     Get to know the passionate individuals driving innovation and excellence
                                                 </p>
                                             </div>
-                                            <Link href="/team/leadership" className="group block space-y-1 rounded-md p-3 hover:bg-blue-50">
+                                            <Link href="/team" className="group block space-y-1 rounded-md p-3 hover:bg-blue-50">
                                                 <div className="font-medium text-blue-600">Leadership</div>
                                                 <div className="text-sm text-muted-foreground">Meet our executive team</div>
                                             </Link>

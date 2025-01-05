@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Linkedin as LinkedIn, Mail, Phone, Users } from "lucide-react";
+import Image from 'next/image';
 
 export default function Team() {
   return (
@@ -41,13 +42,9 @@ export default function Team() {
             <Card>
               <CardHeader>
                 <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-4">
-                  <img
-                    src="/team/sarah-johnson.jpg"
-                    alt="Sarah Johnson"
-                    className="w-full h-full object-cover"
-                  />
+                    <Image src='/alex-bruhns.jpg' alt='Alex Bruhns' className="w-full h-full object-cover" width={128} height={128}/>
                 </div>
-                <CardTitle className="text-center">Sarah Johnson</CardTitle>
+                <CardTitle className="text-center">Alex Bruhns</CardTitle>
                 <p className="text-center text-blue-600 font-medium">
                   CEO & Founder
                 </p>
@@ -71,13 +68,9 @@ export default function Team() {
             <Card>
               <CardHeader>
                 <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-4">
-                  <img
-                    src="/team/michael-chen.jpg"
-                    alt="Michael Chen"
-                    className="w-full h-full object-cover"
-                  />
+                    <Image src='/jarrod-bruhns.jpg' alt='Jarrod Bruhns' className="w-full h-full object-cover" width={128} height={128}/>
                 </div>
-                <CardTitle className="text-center">Michael Chen</CardTitle>
+                <CardTitle className="text-center">Jarrod Bruhns</CardTitle>
                 <p className="text-center text-blue-600 font-medium">
                   Senior Recruiter
                 </p>
@@ -101,13 +94,9 @@ export default function Team() {
             <Card>
               <CardHeader>
                 <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-4">
-                  <img
-                    src="/team/emma-taylor.jpg"
-                    alt="Emma Taylor"
-                    className="w-full h-full object-cover"
-                  />
+                    <Image src='/jenna-sykes.jpg' alt='Jenna Sykes' className="w-full h-full object-cover" width={128} height={128}/>
                 </div>
-                <CardTitle className="text-center">Emma Taylor</CardTitle>
+                <CardTitle className="text-center">Jenna Sykes</CardTitle>
                 <p className="text-center text-blue-600 font-medium">
                   HR Specialist
                 </p>
