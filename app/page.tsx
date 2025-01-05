@@ -1,40 +1,111 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { BadgeCheck, Briefcase, Users, Trophy, ArrowRight } from "lucide-react";
+import { BadgeCheck, Briefcase, Users, Trophy, ArrowRight, Calculator, LineChart, Code2, Building2 } from "lucide-react";
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <div>
       {/* Hero Section */}
-      <section className="relative bg-blue-600 text-white py-24">
+      <section className="relative bg-secondary text-primary py-24">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl">
+          <div className="flex justify-center items-center max-w-3xl md:justify-start md:items-start md:text-start flex-col text-center">
             <h1 className="text-5xl font-bold mb-6">Find Your Next Star Employee</h1>
             <p className="text-xl mb-8">We connect top talent with leading companies. Our expertise in recruitment helps businesses grow with the right people.</p>
             <div className="space-x-4">
-              <Button size="lg" variant="secondary">Hire Talent</Button>
-              <Button size="lg" variant="outline" className="hover:text-white border-white text-blue-600">Find Jobs</Button>
+              <Button size="lg">Hire Talent</Button>
+              <Button size="lg">Find Jobs</Button>
             </div>
           </div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <p className="text-4xl font-bold text-blue-600">500+</p>
-              <p className="text-gray-600 mt-2">Successful Placements</p>
+              <p className="text-4xl font-bold text-primary">500+</p>
+              <p className="text-muted-foreground mt-2">Successful Placements</p>
             </div>
             <div className="text-center">
-              <p className="text-4xl font-bold text-blue-600">200+</p>
-              <p className="text-gray-600 mt-2">Partner Companies</p>
+              <p className="text-4xl font-bold text-primary">200+</p>
+              <p className="text-muted-foreground mt-2">Partner Companies</p>
             </div>
             <div className="text-center">
-              <p className="text-4xl font-bold text-blue-600">98%</p>
-              <p className="text-gray-600 mt-2">Client Satisfaction</p>
+              <p className="text-4xl font-bold text-primary">98%</p>
+              <p className="text-muted-foreground mt-2">Client Satisfaction</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sectors Section */}
+      <section className="py-24 bg-secondary">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-4">Sectors We Serve</h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            Specialized recruitment expertise across key industries, delivering talented professionals to leading organizations.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <Card className="group hover:shadow-lg transition-all duration-300 border-none">
+              <CardHeader className="text-center pb-4">
+                <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
+                  <Calculator className="h-8 w-8 text-primary" />
+                </div>
+                <CardTitle className="text-xl">Actuarial</CardTitle>
+              </CardHeader>
+              <CardContent className="text-center text-muted-foreground">
+                <p className="mb-4">Expert placement of actuarial professionals across insurance and consulting firms.</p>
+                <div className="flex items-center justify-center gap-2 text-primary text-sm font-medium">
+                  Learn More <ArrowRight className="h-4 w-4" />
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="group hover:shadow-lg transition-all duration-300 border-none">
+              <CardHeader className="text-center pb-4">
+                <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
+                  <LineChart className="h-8 w-8 text-primary" />
+                </div>
+                <CardTitle className="text-xl">Finance and Risk</CardTitle>
+              </CardHeader>
+              <CardContent className="text-center text-muted-foreground">
+                <p className="mb-4">Connecting financial experts with opportunities in risk management and analysis.</p>
+                <div className="flex items-center justify-center gap-2 text-primary text-sm font-medium">
+                  Learn More <ArrowRight className="h-4 w-4" />
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="group hover:shadow-lg transition-all duration-300 border-none">
+              <CardHeader className="text-center pb-4">
+                <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
+                  <Code2 className="h-8 w-8 text-primary" />
+                </div>
+                <CardTitle className="text-xl">Software Engineering and IT</CardTitle>
+              </CardHeader>
+              <CardContent className="text-center text-muted-foreground">
+                <p className="mb-4">Placing top tech talent in innovative software and IT positions.</p>
+                <div className="flex items-center justify-center gap-2 text-primary text-sm font-medium">
+                  Learn More <ArrowRight className="h-4 w-4" />
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="group hover:shadow-lg transition-all duration-300 border-none">
+              <CardHeader className="text-center pb-4">
+                <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
+                  <Building2 className="h-8 w-8 text-primary" />
+                </div>
+                <CardTitle className="text-xl">Banking</CardTitle>
+              </CardHeader>
+              <CardContent className="text-center text-muted-foreground">
+                <p className="mb-4">Supporting financial institutions with expert banking professionals.</p>
+                <div className="flex items-center justify-center gap-2 text-primary text-sm font-medium">
+                  Learn More <ArrowRight className="h-4 w-4" />
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -46,7 +117,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <Card>
               <CardHeader>
-                <Briefcase className="h-8 w-8 text-blue-600 mb-2" />
+                <Briefcase className="h-8 w-8 text-primary mb-2" />
                 <CardTitle>Executive Search</CardTitle>
                 <CardDescription>Find top-tier leadership talent for your organization</CardDescription>
               </CardHeader>
@@ -66,7 +137,7 @@ export default function Home() {
 
             <Card>
               <CardHeader>
-                <Users className="h-8 w-8 text-blue-600 mb-2" />
+                <Users className="h-8 w-8 text-primary mb-2" />
                 <CardTitle>Professional Staffing</CardTitle>
                 <CardDescription>Build your team with qualified professionals</CardDescription>
               </CardHeader>
@@ -86,7 +157,7 @@ export default function Home() {
 
             <Card>
               <CardHeader>
-                <Trophy className="h-8 w-8 text-blue-600 mb-2" />
+                <Trophy className="h-8 w-8 text-primary mb-2" />
                 <CardTitle>Specialized Solutions</CardTitle>
                 <CardDescription>Custom recruitment strategies for unique needs</CardDescription>
               </CardHeader>
@@ -108,7 +179,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-blue-600 text-white py-16">
+      <section className="bg-secondary text-primary py-12">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">Ready to Find Your Perfect Match?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">Whether you&apos;re looking to hire top talent or find your dream job, we&apos;re here to help.</p>
@@ -118,6 +189,6 @@ export default function Home() {
           </Button>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
