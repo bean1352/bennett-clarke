@@ -55,10 +55,7 @@ export default function Home() {
                 <CardTitle className="text-xl">Actuarial</CardTitle>
               </CardHeader>
               <CardContent className="text-center text-muted-foreground">
-                <p className="mb-4">Expert placement of actuarial professionals across insurance and consulting firms.</p>
-                <div className="flex items-center justify-center gap-2 text-primary text-sm font-medium">
-                  Learn More <ArrowRight className="h-4 w-4" />
-                </div>
+                <p>Expert placement of actuarial professionals across insurance and consulting firms.</p>
               </CardContent>
             </Card>
 
@@ -70,10 +67,7 @@ export default function Home() {
                 <CardTitle className="text-xl">Finance and Risk</CardTitle>
               </CardHeader>
               <CardContent className="text-center text-muted-foreground">
-                <p className="mb-4">Connecting financial experts with opportunities in risk management and analysis.</p>
-                <div className="flex items-center justify-center gap-2 text-primary text-sm font-medium">
-                  Learn More <ArrowRight className="h-4 w-4" />
-                </div>
+                <p>Connecting financial experts with opportunities in risk management and analysis.</p>
               </CardContent>
             </Card>
 
@@ -85,10 +79,7 @@ export default function Home() {
                 <CardTitle className="text-xl">Software Engineering and IT</CardTitle>
               </CardHeader>
               <CardContent className="text-center text-muted-foreground">
-                <p className="mb-4">Placing top tech talent in innovative software and IT positions.</p>
-                <div className="flex items-center justify-center gap-2 text-primary text-sm font-medium">
-                  Learn More <ArrowRight className="h-4 w-4" />
-                </div>
+                <p>Placing top tech talent in innovative software and IT positions.</p>
               </CardContent>
             </Card>
 
@@ -100,10 +91,7 @@ export default function Home() {
                 <CardTitle className="text-xl">Banking</CardTitle>
               </CardHeader>
               <CardContent className="text-center text-muted-foreground">
-                <p className="mb-4">Supporting financial institutions with expert banking professionals.</p>
-                <div className="flex items-center justify-center gap-2 text-primary text-sm font-medium">
-                  Learn More <ArrowRight className="h-4 w-4" />
-                </div>
+                <p>Supporting financial institutions with expert banking professionals.</p>
               </CardContent>
             </Card>
           </div>
@@ -190,5 +178,6 @@ export default function Home() {
         </div>
       </section>
     </div>
+    
   );
 }

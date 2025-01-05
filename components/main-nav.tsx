@@ -2,22 +2,22 @@
 
 import {
     NavigationMenu,
-    NavigationMenuContent,
+    //NavigationMenuContent,
     NavigationMenuItem,
     NavigationMenuLink,
     NavigationMenuList,
-    NavigationMenuTrigger,
+    //NavigationMenuTrigger,
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import {
     Menu,
     Home,
-    Users,
+    //Users,
     //Briefcase,
     GraduationCap,
     Contact,
-    UserCog,
-    Code,
+    //UserCog,
+    //Code,
     // FolderKanban,
     // BookOpen,
     Building2,
@@ -105,14 +105,14 @@ export function MainNav() {
                                 <nav className="flex flex-col gap-2 mt-8">
                                     <MobileLink href="/" icon={Home}>Home</MobileLink>
 
-                                    <div className="space-y-3">
+                                    {/* <div className="space-y-3">
                                         <h4 className="px-4 font-medium text-primary flex items-center gap-2">
                                             <Users className="h-4 w-4" />
                                             Our Team
                                         </h4>
                                         <MobileLink href="/team" className="pl-8" icon={UserCog}>Meet Our team</MobileLink>
                                         <MobileLink href="/team/developers" className="pl-8" icon={Code}>Developers</MobileLink>
-                                    </div>
+                                    </div> */}
 
                                     {/* <div className="space-y-3">
                                         <h4 className="px-4 font-medium text-primary flex items-center gap-2">
@@ -151,7 +151,7 @@ export function MainNav() {
                             </NavigationMenuItem>
 
                             {/* Our Team */}
-                            <NavigationMenuItem>
+                            {/* <NavigationMenuItem>
                                 <NavigationMenuTrigger className="text-primary hover:bg-secondary">Our Team</NavigationMenuTrigger>
                                 <NavigationMenuContent>
                                     <div className="w-[400px] p-4 md:w-[500px] lg:w-[600px]">
@@ -173,7 +173,7 @@ export function MainNav() {
                                         </div>
                                     </div>
                                 </NavigationMenuContent>
-                            </NavigationMenuItem>
+                            </NavigationMenuItem> */}
 
                             {/* Our Work */}
                             {/* <NavigationMenuItem>
@@ -201,7 +201,7 @@ export function MainNav() {
                             </NavigationMenuItem> */}
 
                             {/* Careers */}
-                            <NavigationMenuItem>
+                            {/* <NavigationMenuItem>
                                 <NavigationMenuTrigger className="text-primary hover:bg-secondary">Careers</NavigationMenuTrigger>
                                 <NavigationMenuContent>
                                     <div className="w-[400px] p-4 md:w-[500px] lg:w-[600px]">
@@ -223,6 +223,15 @@ export function MainNav() {
                                         </div>
                                     </div>
                                 </NavigationMenuContent>
+                            </NavigationMenuItem> */}
+
+                            {/* Careers */}
+                            <NavigationMenuItem>
+                                <Link href="/careers" legacyBehavior passHref>
+                                    <NavigationMenuLink className={`${navigationMenuTriggerStyle()} text-primary hover:text-primary hover:bg-secondary`}>
+                                        Careers
+                                    </NavigationMenuLink>
+                                </Link>
                             </NavigationMenuItem>
 
                             {/* Contact */}
