@@ -383,22 +383,6 @@ export default function Contact() {
           </div>
         </div>
       </section>
-
-      <Separator className="my-12 opacity-50" />
-
-      {/* CTA Section */}
-      <section className="pb-16">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-8">Ready to Get Started?</h2>
-          <p className="text-2xl mb-12 max-w-3xl mx-auto">
-            Whether you&apos;re looking to hire or seeking new opportunities, we&apos;re here
-            to help you succeed.
-          </p>
-          <Button size="lg" variant="secondary" className="text-lg h-16 px-12">
-            Schedule a Consultation
-          </Button>
-        </div>
-      </section>
     </div>
   );
 }
