@@ -7,6 +7,7 @@ import {
   Building2,
 } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "About Us | Your Recruitment Site",
@@ -137,12 +138,9 @@ const AboutPage = () => {
             Join thousands of companies who trust us with their recruitment needs.
           </p>
           <div className="flex justify-center gap-4">
-            <a href="/contact" className="inline-flex items-center justify-center rounded-md px-8 py-3 text-sm font-medium shadow transition-colors">
+            <Link href="/contact" className="inline-flex items-center justify-center rounded-md px-8 py-3 text-sm font-medium shadow transition-colors">
               Contact Us
-            </a>
-            <a href="/employers" className="inline-flex items-center justify-center rounded-md border px-8 py-3 text-sm font-medium shadow transition-colors">
-              Learn More
-            </a>
+            </Link>
           </div>
         </div>
       </section>

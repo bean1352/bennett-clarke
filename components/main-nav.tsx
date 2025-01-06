@@ -63,7 +63,7 @@ export function MainNav() {
   )
 
   return (
-    <div className="shadow-sm relative z-50">
+    <div className="shadow-sm relative z-50 bg-background">
       <div className="container mx-auto">
         <div className="grid md:grid-cols-3 grid-cols-1 justify-between items-center px-4 py-4">
           {/* Logo */}

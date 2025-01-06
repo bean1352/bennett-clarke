@@ -29,7 +29,7 @@ const geistMono = Geist_Mono({
 const domain = process.env.NEXT_PUBLIC_DOMAIN;
 
 export const metadata: Metadata = {
-  title: "Arthur Edwards",
+  title: "Arthur Edwards Recruitment",
   description: "Arthur Edwards specialises in high-skill recruitment, connecting top talent with leading organisations worldwide.",
   keywords: [
     "Arthur Edwards",

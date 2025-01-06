@@ -16,7 +16,7 @@ const routes = {
     title: "For Job Seekers",
     icon: Users,
     links: [
-      { href: "/jobs/search", label: "Search Jobs", icon: Search },
+      { href: "/jobs/find-jobs", label: "Search Jobs", icon: Search },
       { href: "/profile", label: "Create Profile", icon: UserCircle },
       { href: "/resources", label: "Career Resources", icon: BookOpen },
       { href: "/salary", label: "Salary Guide", icon: DollarSign },
@@ -26,7 +26,7 @@ const routes = {
     title: "For Employers",
     icon: Building2,
     links: [
-      { href: "/employer/post-job", label: "Post a Job", icon: Briefcase },
+      { href: "/employer/find-talent", label: "Post a Job", icon: Briefcase },
       { href: "/employer/talent-search", label: "Browse Talent", icon: Users },
       { href: "/employer/pricing", label: "Pricing Plans", icon: DollarSign },
       { href: "/employer/resources", label: "Employer Resources", icon: BookMarked },

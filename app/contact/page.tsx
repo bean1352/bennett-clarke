@@ -169,12 +169,9 @@ export default function Contact() {
       {/* Hero Section */}
       <section className="relative py-16">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl">
-            <h1 className="text-6xl font-bold mb-8">Get in Touch</h1>
-            <p className="text-2xl mb-8">
-              We&apos;re here to help with your recruitment needs. Reach out to our team
-              and let&apos;s start a conversation about your future.
-            </p>
+          <div className="flex justify-center items-center max-w-3xl md:justify-start md:items-start md:text-start flex-col text-center">
+            <h1 className="text-5xl font-bold mb-6">Get in Touch</h1>
+            <p className="text-xl mb-8">We&apos;re here to help with your recruitment needs. Reach out to our team and let&apos;s start a conversation about your future.</p>
           </div>
         </div>
       </section>
@@ -368,6 +365,7 @@ export default function Contact() {
                   ref={recaptchaRef}
                   onChange={handleChange}
                   onExpired={handleExpired}
+                  className=""
                 />
 
                 <Button

@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { BadgeCheck, Briefcase, Users, Trophy, ArrowRight, Calculator, LineChart, Code2, Building2 } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -13,8 +14,12 @@ export default function Home() {
             <h1 className="text-5xl font-bold mb-6">Find Your Next Star Employee</h1>
             <p className="text-xl mb-8">We connect top talent with leading companies. Our expertise in recruitment helps businesses grow with the right people.</p>
             <div className="space-x-4">
-              <Button size="lg" className="!bg-primary !text-primary-foreground hover:!bg-primary/70">Hire Talent</Button>
-              <Button size="lg" className="!bg-primary !text-primary-foreground hover:!bg-primary/70">Find Jobs</Button>
+              <Link href={'/contact'}>
+                <Button size="lg" className="!bg-primary !text-primary-foreground hover:!bg-primary/70">Find Talent</Button>
+              </Link>
+              <Link href={'/jobs/find-jobs'}>
+                <Button size="lg" className="!bg-primary !text-primary-foreground hover:!bg-primary/70">Find Jobs</Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -40,7 +45,7 @@ export default function Home() {
         </div>
       </section>
 
-      <Separator className="my-12 opacity-50"/>
+      <Separator className="my-12 opacity-50" />
 
       {/* Sectors Section */}
       <section>
@@ -101,7 +106,7 @@ export default function Home() {
         </div>
       </section>
 
-      <Separator className="my-12 opacity-50"/>
+      <Separator className="my-12 opacity-50" />
 
       {/* Services Section */}
       <section>
@@ -171,20 +176,22 @@ export default function Home() {
         </div>
       </section>
 
-      <Separator className="my-12 opacity-50"/>
+      <Separator className="my-12 opacity-50" />
 
       {/* CTA Section */}
       <section className="pb-12">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">Ready to Find Your Perfect Match?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">Whether you&apos;re looking to hire top talent or find your dream job, we&apos;re here to help.</p>
-          <Button size="lg" variant="secondary" className="gap-2">
-            Get Started Today
-            <ArrowRight className="h-5 w-5" />
-          </Button>
+          <Link href={'/contact'}>
+            <Button size="lg" variant="secondary" className="gap-2">
+              Contact Us
+              <ArrowRight className="h-5 w-5" />
+            </Button>
+          </Link>
         </div>
       </section>
     </div>
-    
+
   );
 }
