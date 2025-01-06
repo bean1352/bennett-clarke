@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import { BadgeCheck, Briefcase, Users, Trophy, ArrowRight, Calculator, LineChart, Code2, Building2 } from "lucide-react";
 
 export default function Home() {
@@ -12,15 +13,15 @@ export default function Home() {
             <h1 className="text-5xl font-bold mb-6">Find Your Next Star Employee</h1>
             <p className="text-xl mb-8">We connect top talent with leading companies. Our expertise in recruitment helps businesses grow with the right people.</p>
             <div className="space-x-4">
-              <Button size="lg">Hire Talent</Button>
-              <Button size="lg">Find Jobs</Button>
+              <Button size="lg" className="!bg-primary !text-primary-foreground hover:!bg-primary/70">Hire Talent</Button>
+              <Button size="lg" className="!bg-primary !text-primary-foreground hover:!bg-primary/70">Find Jobs</Button>
             </div>
           </div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="py-16">
+      <section className="py-10">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
@@ -39,8 +40,10 @@ export default function Home() {
         </div>
       </section>
 
+      <Separator className="my-12 opacity-50"/>
+
       {/* Sectors Section */}
-      <section className="py-16">
+      <section>
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-4">Sectors We Serve</h2>
           <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
@@ -98,8 +101,10 @@ export default function Home() {
         </div>
       </section>
 
+      <Separator className="my-12 opacity-50"/>
+
       {/* Services Section */}
-      <section className="py-16">
+      <section>
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">Our Services</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -166,8 +171,10 @@ export default function Home() {
         </div>
       </section>
 
+      <Separator className="my-12 opacity-50"/>
+
       {/* CTA Section */}
-      <section className="text-primary py-12">
+      <section className="pb-12">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">Ready to Find Your Perfect Match?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">Whether you&apos;re looking to hire top talent or find your dream job, we&apos;re here to help.</p>

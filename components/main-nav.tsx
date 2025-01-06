@@ -41,7 +41,7 @@ const Logo = () => (
   <div className="flex items-center align-middle gap-4">
     <Suspense fallback={<LogoSkeleton />}>
       <LogoImage />
-      <Link href="/" className="text-2xl font-light text-primary">
+      <Link href="/" className="text-2xl font-light">
         Arthur Edwards
       </Link>
     </Suspense>
@@ -86,7 +86,7 @@ export function MainNav() {
 
                   {Object.entries(routes).map(([key, section]) => (
                     <div key={key} className="space-y-3">
-                      <div className="flex items-center gap-2 px-2 font-medium text-primary">
+                      <div className="flex items-center gap-2 px-2 font-medium">
                         {section.icon && <section.icon className="h-4 w-4" />}
                         <span>{section.title}</span>
                       </div>
@@ -131,7 +131,7 @@ export function MainNav() {
                     <div className="w-[400px] p-4 md:w-[500px] lg:w-[600px]">
                       <div className="grid gap-3 md:grid-cols-2">
                         <div className="row-span-3">
-                          <h4 className="text-sm font-medium leading-none mb-2 text-primary">
+                          <h4 className="text-sm font-medium leading-none mb-2">
                             {section.title}
                           </h4>
                           <p className="text-sm leading-snug text-muted-foreground">
@@ -144,7 +144,7 @@ export function MainNav() {
                             href={link.href}
                             className="group block space-y-1 rounded-md p-3 hover:bg-secondary"
                           >
-                            <div className="font-medium text-primary flex items-center gap-2">
+                            <div className="font-medium flex items-center gap-2">
                               {link.icon && <link.icon className="h-4 w-4" />}
                               {link.label}
                             </div>
