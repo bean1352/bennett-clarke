@@ -52,7 +52,7 @@ export default function FindJobs() {
             const date = new Date(dateStr);
             return new Intl.DateTimeFormat('en-US', { dateStyle: 'medium' }).format(date);
         } catch {
-            return dateStr; // Fallback to the original string if parsing fails
+            return dateStr;
         }
     };
 
