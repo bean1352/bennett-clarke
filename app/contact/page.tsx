@@ -368,7 +368,6 @@ export default function Contact() {
                   ref={recaptchaRef}
                   onChange={handleChange}
                   onExpired={handleExpired}
-                  className="w-full"
                 />
 
                 <Button
