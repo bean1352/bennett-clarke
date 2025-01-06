@@ -1,11 +1,11 @@
 import { Metadata } from "next";
 import AboutPage from "./page";
 
-
 export const metadata: Metadata = {
-    title: "Privacy Policy | Arthur Edwards",
-    description: "Privacy policy and data handling practices for Arthur Edwards",
+    title: "About Us | Arthur Edwards",
+    description: "Arthur Edwards is a recruitment company specializing in connecting highly skilled talent in actuarial, banking, and engineering industries.",
 };
+
 
 export default function Layout() {
 

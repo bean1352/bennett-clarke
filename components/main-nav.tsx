@@ -4,59 +4,14 @@ import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuL
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { 
   Menu, 
-  Home,
-  Search,
-  UserCircle,
-  BookOpen,
-  DollarSign,
-  Briefcase,
-  Users,
-  Building2,
-  BookMarked,
-  Building,
-  Contact,
-  NewspaperIcon,
-  Shield,
+  Home
 } from "lucide-react"
 import Link from "next/link"
 import { Suspense, useState } from "react"
 import { ModeToggle } from "./mode-toggle"
 import Image from 'next/image'
 import { Skeleton } from "./ui/skeleton"
-
-// Navigation routes configuration
-const routes = {
-  jobSeekers: {
-    title: "For Job Seekers",
-    icon: Users,
-    links: [
-      { href: "/jobs/search", label: "Search Jobs", icon: Search },
-      { href: "/profile", label: "Create Profile", icon: UserCircle },
-      { href: "/resources", label: "Career Resources", icon: BookOpen },
-      { href: "/salary", label: "Salary Guide", icon: DollarSign },
-    ]
-  },
-  employers: {
-    title: "For Employers",
-    icon: Building2,
-    links: [
-      { href: "/employer/post-job", label: "Post a Job", icon: Briefcase },
-      { href: "/employer/talent-search", label: "Browse Talent", icon: Users },
-      { href: "/employer/pricing", label: "Pricing Plans", icon: DollarSign },
-      { href: "/employer/resources", label: "Employer Resources", icon: BookMarked },
-    ]
-  },
-  company: {
-    title: "Company",
-    icon: Building,
-    links: [
-      { href: "/about", label: "About Us", icon: Building },
-      { href: "/contact", label: "Contact", icon: Contact },
-      { href: "/blog", label: "Blog", icon: NewspaperIcon },
-      { href: "/privacy", label: "Privacy Policy", icon: Shield },
-    ]
-  }
-}
+import routes from "@/lib/routes"
 
 interface MobileLinkProps {
   href: string;
@@ -110,7 +65,7 @@ export function MainNav() {
   return (
     <div className="shadow-sm relative z-50">
       <div className="container mx-auto">
-        <div className="grid grid-cols-3 xs:grid-cols-2 justify-between items-center px-4 py-4">
+        <div className="grid md:grid-cols-3 grid-cols-1 justify-between items-center px-4 py-4">
           {/* Logo */}
           <div className="flex items-center align-middle gap-2">
             <Logo />
@@ -122,9 +77,9 @@ export function MainNav() {
               <SheetTrigger className="p-2">
                 <Menu className="h-6 w-6" />
               </SheetTrigger>
-              <SheetContent>
-                <SheetTitle>Menu</SheetTitle>
-                <nav className="flex flex-col gap-6 mt-8">
+              <SheetContent side="right" className="w-[300px] overflow-y-auto">
+                <SheetTitle className="mb-8">Menu</SheetTitle>
+                <nav className="flex flex-col gap-6 pb-8">
                   <MobileLink href="/" icon={Home} className="bg-secondary/50">
                     Home
                   </MobileLink>

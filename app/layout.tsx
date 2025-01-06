@@ -6,6 +6,14 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Footer from "@/components/footer";
 import CookieConsent from "@/components/cookie-consent";
 import { Analytics } from "@vercel/analytics/react"
+import type { Viewport } from 'next'
+import { SpeedInsights } from '@vercel/speed-insights/next';
+
+export const viewport: Viewport = {
+  themeColor: 'black',
+  initialScale: 1,
+  width: 'device-width'
+}
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,7 +25,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const domain = process.env.DOMAIN || "arthuredwards.com";
+const domain = process.env.NEXT_PUBLIC_DOMAIN;
 
 export const metadata: Metadata = {
   title: "Arthur Edwards",
@@ -98,6 +106,7 @@ export default function RootLayout({
           <Footer />
         </ThemeProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
