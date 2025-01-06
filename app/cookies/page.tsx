@@ -7,8 +7,8 @@ export const metadata: Metadata = {
 };
 
 const CookiesPage = () => {
-    const email = process.env.COMPANY_EMAIL;
-    const phone = process.env.COMPANY_PHONE;
+    const email = process.env.NEXT_PUBLIC_COMPANY_EMAIL;
+    const phone = process.env.NEXT_PUBLIC_COMPANY_PHONE;
 
     return (
         <div className="min-h-screen flex justify-center">

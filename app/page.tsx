@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative bg-secondary text-primary py-24">
+      <section className="relative py-16">
         <div className="container mx-auto px-4">
           <div className="flex justify-center items-center max-w-3xl md:justify-start md:items-start md:text-start flex-col text-center">
             <h1 className="text-5xl font-bold mb-6">Find Your Next Star Employee</h1>
@@ -24,15 +24,15 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <p className="text-4xl font-bold text-primary">500+</p>
+              <p className="text-4xl font-bold">500+</p>
               <p className="text-muted-foreground mt-2">Successful Placements</p>
             </div>
             <div className="text-center">
-              <p className="text-4xl font-bold text-primary">200+</p>
+              <p className="text-4xl font-bold">200+</p>
               <p className="text-muted-foreground mt-2">Partner Companies</p>
             </div>
             <div className="text-center">
-              <p className="text-4xl font-bold text-primary">98%</p>
+              <p className="text-4xl font-bold">98%</p>
               <p className="text-muted-foreground mt-2">Client Satisfaction</p>
             </div>
           </div>
@@ -40,7 +40,7 @@ export default function Home() {
       </section>
 
       {/* Sectors Section */}
-      <section className="py-24 bg-secondary">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-4">Sectors We Serve</h2>
           <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
@@ -167,7 +167,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-secondary text-primary py-12">
+      <section className="text-primary py-12">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">Ready to Find Your Perfect Match?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">Whether you&apos;re looking to hire top talent or find your dream job, we&apos;re here to help.</p>

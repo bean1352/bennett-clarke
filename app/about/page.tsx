@@ -52,21 +52,19 @@ const values = [
 
 const AboutPage = () => {
   return (
-    <div className="min-h-screen">
+    <div>
       {/* Hero Section */}
-      <section className="relative h-[400px] flex items-center justify-center">
-        <div className="relative z-20 text-center space-y-4 p-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-white">
-            Connecting Talent with Opportunity
-          </h1>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto">
-            We are on a mission to revolutionize the recruitment industry through innovation and human-centered solutions.
-          </p>
+      <section className="relative py-16">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-center items-center max-w-3xl md:justify-start md:items-start md:text-start flex-col text-center">
+            <h1 className="text-5xl font-bold mb-6">Connecting Talent with Opportunity</h1>
+            <p className="text-xl mb-8">We are on a mission to revolutionize the recruitment industry through innovation and human-centered solutions.</p>
+          </div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 px-4 md:px-6 bg-background">
+      <section className="py-12 px-4 md:px-6 bg-background">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {stats.map((stat, index) => (
@@ -102,7 +100,7 @@ const AboutPage = () => {
       <Separator />
 
       {/* Values Section */}
-      <section className="py-16 px-4 md:px-6 bg-secondary">
+      <section className="py-16 px-4 md:px-6">
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <Badge variant="secondary" className="text-lg px-4 py-1">
@@ -124,19 +122,19 @@ const AboutPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 px-4 md:px-6 text-primary">
+      <section className="py-16 px-4 md:px-6">
         <div className="container mx-auto max-w-4xl text-center space-y-6">
           <h2 className="text-3xl md:text-4xl font-bold">
             Ready to Transform Your Hiring Process?
           </h2>
-          <p className="text-lg text-primary">
+          <p className="text-lg">
             Join thousands of companies who trust us with their recruitment needs.
           </p>
           <div className="flex justify-center gap-4">
-            <a href="/contact" className="inline-flex items-center justify-center rounded-md bg-background text-primary px-8 py-3 text-sm font-medium shadow transition-colors hover:bg-secondary">
+            <a href="/contact" className="inline-flex items-center justify-center rounded-md px-8 py-3 text-sm font-medium shadow transition-colors">
               Contact Us
             </a>
-            <a href="/employers" className="inline-flex items-center justify-center rounded-md border border-primary-foreground px-8 py-3 text-sm font-medium shadow transition-colors hover:bg-primary-foreground hover:text-primary">
+            <a href="/employers" className="inline-flex items-center justify-center rounded-md border px-8 py-3 text-sm font-medium shadow transition-colors">
               Learn More
             </a>
           </div>

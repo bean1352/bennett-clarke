@@ -33,6 +33,9 @@ const contactFormSchema = z.object({
 type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 export default function Contact() {
+  const email = process.env.NEXT_PUBLIC_COMPANY_EMAIL;
+  const phone = process.env.NEXT_PUBLIC_COMPANY_PHONE;
+
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
@@ -52,7 +55,7 @@ export default function Contact() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative bg-secondary text-primary py-32">
+      <section className="relative py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl">
             <h1 className="text-6xl font-bold mb-8">Get in Touch</h1>
@@ -65,18 +68,18 @@ export default function Contact() {
       </section>
 
       {/* Contact Information */}
-      <section className="py-24">
+      <section className="py-4">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-24">
             <div className="text-center p-8 bg-secondary rounded-lg">
               <Mail className="h-16 w-16 text-primary mx-auto mb-6" />
               <h3 className="text-2xl font-semibold mb-4">Email Us</h3>
-              <p className="text-lg text-muted-foreground">info@company.com</p>
+              <p className="text-lg text-muted-foreground">{email}</p>
             </div>
             <div className="text-center p-8 bg-secondary rounded-lg">
               <Phone className="h-16 w-16 text-primary mx-auto mb-6" />
               <h3 className="text-2xl font-semibold mb-4">Call Us</h3>
-              <p className="text-lg text-muted-foreground">+1 (555) 123-4567</p>
+              <p className="text-lg text-muted-foreground">{phone}</p>
             </div>
             <div className="text-center p-8 bg-secondary rounded-lg">
               <MapPin className="h-16 w-16 text-primary mx-auto mb-6" />
@@ -92,7 +95,7 @@ export default function Contact() {
       </section>
 
       {/* Contact Form */}
-      <section className="pb-24">
+      <section className="pb-16 pt-0">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
@@ -106,7 +109,7 @@ export default function Contact() {
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-8 bg-secondary p-12 rounded-xl"
+                className="space-y-8 p-12 rounded-xl"
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <FormField
@@ -210,7 +213,7 @@ export default function Contact() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-secondary text-primary py-24">
+      <section className="pb-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-8">Ready to Get Started?</h2>
           <p className="text-2xl mb-12 max-w-3xl mx-auto">
