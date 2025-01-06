@@ -5,6 +5,7 @@ import { MainNav } from "@/components/main-nav";
 import { ThemeProvider } from "@/components/theme-provider";
 import Footer from "@/components/footer";
 import CookieConsent from "@/components/cookie-consent";
+import { Toaster } from "@/components/ui/toaster"
 import { Analytics } from "@vercel/analytics/react"
 import type { Viewport } from 'next'
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -105,6 +106,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </ThemeProvider>
+        <Toaster />
         <Analytics />
         <SpeedInsights />
       </body>

@@ -63,8 +63,10 @@ const AboutPage = () => {
         </div>
       </section>
 
+      <Separator className="my-12 opacity-50"/>
+
       {/* Stats Section */}
-      <section className="py-12 px-4 md:px-6 bg-background">
+      <section className="px-4 md:px-6 bg-background">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {stats.map((stat, index) => (
@@ -80,8 +82,10 @@ const AboutPage = () => {
         </div>
       </section>
 
+      <Separator className="my-12 opacity-50"/>
+
       {/* Mission Section */}
-      <section className="py-16 px-4 md:px-6">
+      <section className="px-4 md:px-6">
         <div className="container mx-auto max-w-4xl text-center space-y-6">
           <div className="inline-block">
             <Badge variant="secondary" className="text-lg px-4 py-1">
@@ -97,10 +101,10 @@ const AboutPage = () => {
         </div>
       </section>
 
-      <Separator />
+      <Separator className="my-12 opacity-50"/>
 
       {/* Values Section */}
-      <section className="py-16 px-4 md:px-6">
+      <section className="px-4 md:px-6">
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <Badge variant="secondary" className="text-lg px-4 py-1">
@@ -121,8 +125,10 @@ const AboutPage = () => {
         </div>
       </section>
 
+      <Separator className="my-12 opacity-50"/>
+
       {/* CTA Section */}
-      <section className="py-16 px-4 md:px-6">
+      <section className="px-4 pb-12 md:px-6">
         <div className="container mx-auto max-w-4xl text-center space-y-6">
           <h2 className="text-3xl md:text-4xl font-bold">
             Ready to Transform Your Hiring Process?

@@ -9,6 +9,14 @@ import {
 import { Separator } from "@/components/ui/separator";
 
 const Footer = () => {
+
+  const {
+    NEXT_PUBLIC_SOCIAL_LINKEDIN,
+    NEXT_PUBLIC_SOCIAL_TWITTER,
+    NEXT_PUBLIC_SOCIAL_FACEBOOK,
+    NEXT_PUBLIC_SOCIAL_INSTAGRAM
+  } = process.env;
+
   return (
     <footer className="border-t bg-background">
       <div className="container px-4 py-6 md:py-8 mx-auto">
@@ -18,32 +26,32 @@ const Footer = () => {
             <h3 className="text-base font-semibold tracking-tight">For Job Seekers</h3>
             <ul className="space-y-2">
               <li>
-                <Link 
-                  href="/jobs/search" 
+                <Link
+                  href="/jobs/search"
                   className="text-muted-foreground hover:text-primary transition-colors text-xs md:text-sm"
                 >
                   Search Jobs
                 </Link>
               </li>
               <li>
-                <Link 
-                  href="/profile" 
+                <Link
+                  href="/profile"
                   className="text-muted-foreground hover:text-primary transition-colors text-xs md:text-sm"
                 >
                   Create Profile
                 </Link>
               </li>
               <li>
-                <Link 
-                  href="/resources" 
+                <Link
+                  href="/resources"
                   className="text-muted-foreground hover:text-primary transition-colors text-xs md:text-sm"
                 >
                   Career Resources
                 </Link>
               </li>
               <li>
-                <Link 
-                  href="/salary" 
+                <Link
+                  href="/salary"
                   className="text-muted-foreground hover:text-primary transition-colors text-xs md:text-sm"
                 >
                   Salary Guide
@@ -57,32 +65,32 @@ const Footer = () => {
             <h3 className="text-base font-semibold tracking-tight">For Employers</h3>
             <ul className="space-y-2">
               <li>
-                <Link 
-                  href="/employer/post-job" 
+                <Link
+                  href="/employer/post-job"
                   className="text-muted-foreground hover:text-primary transition-colors text-xs md:text-sm"
                 >
                   Post a Job
                 </Link>
               </li>
               <li>
-                <Link 
-                  href="/employer/talent-search" 
+                <Link
+                  href="/employer/talent-search"
                   className="text-muted-foreground hover:text-primary transition-colors text-xs md:text-sm"
                 >
                   Browse Talent
                 </Link>
               </li>
               <li>
-                <Link 
-                  href="/employer/pricing" 
+                <Link
+                  href="/employer/pricing"
                   className="text-muted-foreground hover:text-primary transition-colors text-xs md:text-sm"
                 >
                   Pricing Plans
                 </Link>
               </li>
               <li>
-                <Link 
-                  href="/employer/resources" 
+                <Link
+                  href="/employer/resources"
                   className="text-muted-foreground hover:text-primary transition-colors text-xs md:text-sm"
                 >
                   Employer Resources
@@ -96,32 +104,32 @@ const Footer = () => {
             <h3 className="text-base font-semibold tracking-tight">Company</h3>
             <ul className="space-y-2">
               <li>
-                <Link 
-                  href="/about" 
+                <Link
+                  href="/about"
                   className="text-muted-foreground hover:text-primary transition-colors text-xs md:text-sm"
                 >
                   About Us
                 </Link>
               </li>
               <li>
-                <Link 
-                  href="/contact" 
+                <Link
+                  href="/contact"
                   className="text-muted-foreground hover:text-primary transition-colors text-xs md:text-sm"
                 >
                   Contact
                 </Link>
               </li>
               <li>
-                <Link 
-                  href="/blog" 
+                <Link
+                  href="/blog"
                   className="text-muted-foreground hover:text-primary transition-colors text-xs md:text-sm"
                 >
                   Blog
                 </Link>
               </li>
               <li>
-                <Link 
-                  href="/privacy" 
+                <Link
+                  href="/privacy"
                   className="text-muted-foreground hover:text-primary transition-colors text-xs md:text-sm"
                 >
                   Privacy Policy
@@ -133,20 +141,29 @@ const Footer = () => {
           {/* Connect */}
           <div className="space-y-2.5 text-center sm:text-left">
             <h3 className="text-base font-semibold tracking-tight">Connect With Us</h3>
-            <div className="flex justify-center sm:justify-start space-x-3">
-              <Button variant="ghost" size="icon" className="h-10 w-10">
-                <LinkedinIcon className="h-6 w-6" />
-              </Button>
-              <Button variant="ghost" size="icon" className="h-10 w-10">
-                <TwitterIcon className="h-6 w-6" />
-              </Button>
-              <Button variant="ghost" size="icon" className="h-10 w-10">
-                <FacebookIcon className="h-6 w-6" />
-              </Button>
-              <Button variant="ghost" size="icon" className="h-10 w-10">
-                <InstagramIcon className="h-6 w-6" />
-              </Button>
+            <div className="flex justify-center sm:justify-start space-x-3 text-primary">
+              <a href={NEXT_PUBLIC_SOCIAL_LINKEDIN} target="_blank" rel="noopener noreferrer">
+                <Button variant="ghost" size="icon" className="h-10 w-10">
+                  <LinkedinIcon className="h-6 w-6" />
+                </Button>
+              </a>
+              <a href={NEXT_PUBLIC_SOCIAL_TWITTER} target="_blank" rel="noopener noreferrer">
+                <Button variant="ghost" size="icon" className="h-10 w-10">
+                  <TwitterIcon className="h-6 w-6" />
+                </Button>
+              </a>
+              <a href={NEXT_PUBLIC_SOCIAL_FACEBOOK} target="_blank" rel="noopener noreferrer">
+                <Button variant="ghost" size="icon" className="h-10 w-10">
+                  <FacebookIcon className="h-6 w-6" />
+                </Button>
+              </a>
+              <a href={NEXT_PUBLIC_SOCIAL_INSTAGRAM} target="_blank" rel="noopener noreferrer">
+                <Button variant="ghost" size="icon" className="h-10 w-10">
+                  <InstagramIcon className="h-6 w-6" />
+                </Button>
+              </a>
             </div>
+
             <div className="pt-1">
               <Button variant="outline" className="w-full text-xs md:text-sm">
                 Subscribe to Newsletter

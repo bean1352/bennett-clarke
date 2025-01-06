@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Upload } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -15,26 +15,76 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Separator } from "@/components/ui/separator";
+import { useRef, useState } from "react";
+import { useToast } from "@/hooks/use-toast";
+import ReCAPTCHA from "react-google-recaptcha";
+
+const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+const ACCEPTED_FILE_TYPES = [
+  "application/pdf", // PDF
+  "application/msword", // DOC
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document", // DOCX
+  "image/png", // PNG
+  "image/jpeg", // JPG, JPEG
+  "application/vnd.ms-excel", // XLS
+  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", // XLSX
+];
 
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Please enter a valid email address"),
   phone: z
     .string()
-    .min(10, "Phone number must be at least 10 digits")
     .optional(),
   subject: z.string().min(5, "Subject must be at least 5 characters"),
   message: z
     .string()
-    .min(20, "Message must be at least 20 characters")
+    .min(20, "Message must be at least 10 characters")
     .max(1000, "Message must not exceed 1000 characters"),
+  files: z
+    .array(z.any())
+    .max(3, "Maximum 3 files allowed")
+    .optional(),
 });
 
 type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 export default function Contact() {
+  const [files, setFiles] = useState<File[]>([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [isVerified, setIsVerified] = useState(false);
+  const { toast } = useToast()
+
   const email = process.env.NEXT_PUBLIC_COMPANY_EMAIL;
   const phone = process.env.NEXT_PUBLIC_COMPANY_PHONE;
+
+  async function handleCaptchaSubmission(token: string | null) {
+    try {
+      if (token) {
+        await fetch("/api", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ token }),
+        });
+        setIsVerified(true);
+      }
+    } catch {
+      setIsVerified(false);
+    }
+  }
+
+  const handleChange = (token: string | null) => {
+    handleCaptchaSubmission(token);
+  };
+
+  function handleExpired() {
+    setIsVerified(false);
+  }
 
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
@@ -44,12 +94,74 @@ export default function Contact() {
       phone: "",
       subject: "",
       message: "",
+      files: [],
     },
   });
 
-  function onSubmit(data: ContactFormValues) {
-    console.log(data);
-    // Handle form submission
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFiles = Array.from(e.target.files || []);
+
+    if (files.length + selectedFiles.length > 3) {
+      form.setError("files", { message: "Maximum 3 files allowed" });
+      return;
+    }
+
+    const validFiles = selectedFiles.filter(file => {
+      if (file.size > MAX_FILE_SIZE) {
+        form.setError("files", { message: "File size must be less than 5MB" });
+        return false;
+      }
+      if (!ACCEPTED_FILE_TYPES.includes(file.type)) {
+        form.setError("files", { message: "Only PDF and Word documents allowed" });
+        return false;
+      }
+      return true;
+    });
+
+    setFiles([...files, ...validFiles]);
+  };
+
+  const removeFile = (index: number) => {
+    setFiles(files.filter((_, i) => i !== index));
+  };
+
+  async function onSubmit(data: ContactFormValues) {
+    setIsSubmitting(true);
+
+    const formData = new FormData();
+    Object.entries(data).forEach(([key, value]) => {
+      if (key !== "files" && value) {
+        formData.append(key, value.toString());
+      }
+    });
+
+    files.forEach((file) => {
+      formData.append("files", file);
+    });
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) throw new Error("Failed to send message");
+
+      form.reset();
+      setFiles([]);
+
+      toast({
+        description: "Message sent successfully!",
+      })
+    } catch (error) {
+      console.error(error);
+
+      toast({
+        description: "Failed to send the message. Please try again.",
+      })
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -67,8 +179,10 @@ export default function Contact() {
         </div>
       </section>
 
+      <Separator className="my-12 opacity-50" />
+
       {/* Contact Information */}
-      <section className="py-4">
+      <section>
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-24">
             <div className="text-center p-8 bg-secondary rounded-lg">
@@ -94,11 +208,13 @@ export default function Contact() {
         </div>
       </section>
 
+      <Separator className="my-12 opacity-50" />
+
       {/* Contact Form */}
-      <section className="pb-16 pt-0">
+      <section>
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center">
               <h2 className="text-4xl font-bold mb-6">Send Us a Message</h2>
               <p className="text-xl text-muted-foreground">
                 Fill out the form below and we&apos;ll get back to you as soon as
@@ -203,14 +319,72 @@ export default function Contact() {
                   )}
                 />
 
-                <Button type="submit" size="lg" className="w-full text-lg h-16">
-                  Send Message
+                <div className="space-y-4">
+                  <FormLabel className="text-lg">Attachments (Optional)</FormLabel>
+                  <div className="flex items-center gap-4">
+                    <Button
+                      type="button"
+                      variant="secondary"
+                      onClick={() => document.getElementById("file-upload")?.click()}
+                      className="h-12"
+                    >
+                      <Upload className="mr-2 h-4 w-4" />
+                      Upload Files
+                    </Button>
+                    <Input
+                      id="file-upload"
+                      type="file"
+                      className="hidden"
+                      accept={ACCEPTED_FILE_TYPES.join(",")}
+                      multiple
+                      onChange={handleFileChange}
+                    />
+                  </div>
+                  {files.length > 0 && (
+                    <div className="space-y-2">
+                      {files.map((file, index) => (
+                        <div
+                          key={index}
+                          className="flex items-center justify-between bg-secondary p-2 rounded"
+                        >
+                          <span className="truncate">{file.name}</span>
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => removeFile(index)}
+                          >
+                            Remove
+                          </Button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  <FormMessage />
+                </div>
+
+                <ReCAPTCHA
+                  sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+                  ref={recaptchaRef}
+                  onChange={handleChange}
+                  onExpired={handleExpired}
+                />
+
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="w-full text-lg h-16"
+                  disabled={isSubmitting || !isVerified}
+                >
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>
               </form>
             </Form>
           </div>
         </div>
       </section>
+
+      <Separator className="my-12 opacity-50" />
 
       {/* CTA Section */}
       <section className="pb-16">
