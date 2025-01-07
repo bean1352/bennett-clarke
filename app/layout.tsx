@@ -40,6 +40,7 @@ export const metadata: Metadata = {
     "job placement",
     "career opportunities",
   ],
+  abstract: "Arthur Edwards Recruitment: Your trusted partner for high-skill recruitment. Connecting top talent with leading organisations worldwide.",
   openGraph: {
     title: "Arthur Edwards | High-Skill Recruitment",
     description: "Arthur Edwards connects top-tier talent with global organisations, providing expert recruitment services tailored to your needs.",

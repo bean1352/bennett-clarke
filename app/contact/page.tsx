@@ -19,6 +19,7 @@ import { Separator } from "@/components/ui/separator";
 import { useRef, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import ReCAPTCHA from "react-google-recaptcha";
+import HeroSection from "@/components/hero-section";
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const ACCEPTED_FILE_TYPES = [
@@ -63,7 +64,7 @@ export default function Contact() {
   async function handleCaptchaSubmission(token: string | null) {
     try {
       if (token) {
-        await fetch("/api", {
+        await fetch("/api/recaptcha", {
           method: "POST",
           headers: {
             Accept: "application/json",
@@ -140,7 +141,7 @@ export default function Contact() {
     });
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("/api/contact/send-contact-email", {
         method: "POST",
         body: formData,
       });
@@ -165,16 +166,11 @@ export default function Contact() {
   }
 
   return (
-    <div>
-      {/* Hero Section */}
-      <section className="relative py-16">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-center items-center max-w-3xl md:justify-start md:items-start md:text-start flex-col text-center">
-            <h1 className="text-5xl font-bold mb-6">Get in Touch</h1>
-            <p className="text-xl mb-8">We&apos;re here to help with your recruitment needs. Reach out to our team and let&apos;s start a conversation about your future.</p>
-          </div>
-        </div>
-      </section>
+    <>
+      <HeroSection
+        title="Get in Touch"
+        description="We&apos;re here to help with your recruitment needs. Reach out to our team and let&apos;s start a conversation about your future."
+      />
 
       <Separator className="my-12 opacity-50" />
 
@@ -381,6 +377,6 @@ export default function Contact() {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 }

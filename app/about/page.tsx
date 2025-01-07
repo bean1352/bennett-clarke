@@ -7,7 +7,8 @@ import {
   Building2,
 } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
-import Link from "next/link";
+import CTASection from "@/components/cta-section";
+import HeroSection from "@/components/hero-section";
 
 export const metadata: Metadata = {
   title: "About Us | Your Recruitment Site",
@@ -53,18 +54,13 @@ const values = [
 
 const AboutPage = () => {
   return (
-    <div>
-      {/* Hero Section */}
-      <section className="relative py-16">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-center items-center max-w-3xl md:justify-start md:items-start md:text-start flex-col text-center">
-            <h1 className="text-5xl font-bold mb-6">Connecting Talent with Opportunity</h1>
-            <p className="text-xl mb-8">We are on a mission to revolutionize the recruitment industry through innovation and human-centered solutions.</p>
-          </div>
-        </div>
-      </section>
+    <>
+      <HeroSection
+        title="Connecting Talent with Opportunity"
+        description="We are on a mission to revolutionize the recruitment industry through innovation and human-centered solutions."
+      />
 
-      <Separator className="my-12 opacity-50"/>
+      <Separator className="my-12 opacity-50" />
 
       {/* Stats Section */}
       <section className="px-4 md:px-6 bg-background">
@@ -83,7 +79,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-      <Separator className="my-12 opacity-50"/>
+      <Separator className="my-12 opacity-50" />
 
       {/* Mission Section */}
       <section className="px-4 md:px-6">
@@ -102,7 +98,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-      <Separator className="my-12 opacity-50"/>
+      <Separator className="my-12 opacity-50" />
 
       {/* Values Section */}
       <section className="px-4 md:px-6">
@@ -126,25 +122,15 @@ const AboutPage = () => {
         </div>
       </section>
 
-      <Separator className="my-12 opacity-50"/>
+      <Separator className="my-12 opacity-50" />
 
-      {/* CTA Section */}
-      <section className="px-4 pb-12 md:px-6">
-        <div className="container mx-auto max-w-4xl text-center space-y-6">
-          <h2 className="text-3xl md:text-4xl font-bold">
-            Ready to Transform Your Hiring Process?
-          </h2>
-          <p className="text-lg">
-            Join thousands of companies who trust us with their recruitment needs.
-          </p>
-          <div className="flex justify-center gap-4">
-            <Link href="/contact" className="inline-flex items-center justify-center rounded-md px-8 py-3 text-sm font-medium shadow transition-colors">
-              Contact Us
-            </Link>
-          </div>
-        </div>
-      </section>
-    </div>
+      <CTASection
+        title="Ready to Transform Your Hiring Process?"
+        description="Join thousands of companies who trust us with their recruitment needs."
+        linkText="Contact Us"
+        linkHref="/contact"
+      />
+    </>
   );
 };
 

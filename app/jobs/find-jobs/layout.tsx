@@ -9,6 +9,8 @@ export const metadata = {
       title: "Find Jobs | Arthur Edwards",
       description: "Browse our job catalog and find your next opportunity. Arthur Edwards connects top talent with leading organizations.",
       url: `https://${domain}/jobs/find-jobs`,
+      icons: [`https://${domain}/logo.png`],
+      locale: "en_US",
       type: "website",
       images: [
         {

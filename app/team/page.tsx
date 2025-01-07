@@ -1,10 +1,11 @@
+import CTASection from "@/components/cta-section";
+import HeroSection from "@/components/hero-section";
 import { TeamMemberCard } from "@/components/team-member-card";
-import { Button } from "@/components/ui/button";
 import { Users } from "lucide-react";
 
 export default function Team() {
     return (
-        <div>
+        <>
             {/* Hero Section */}
             <section className="relative bg-secondary text-primary py-24">
                 <div className="container mx-auto px-4">
@@ -17,6 +18,11 @@ export default function Team() {
                     </div>
                 </div>
             </section>
+
+            <HeroSection
+                title="Meet Our Team"
+                description="Our experienced recruitment professionals are dedicated to connecting great talent with amazing opportunities."
+            />
 
             {/* Team Introduction */}
             <section className="py-16">
@@ -77,19 +83,12 @@ export default function Team() {
                 </div>
             </section>
 
-            {/* CTA Section */}
-            <section className="bg-secondary text-primary py-16">
-                <div className="container mx-auto px-4 text-center">
-                    <h2 className="text-3xl font-bold mb-6">Work With Our Team</h2>
-                    <p className="text-xl mb-8 max-w-2xl mx-auto">
-                        Let our experienced recruiters help you find the perfect candidate or
-                        your next career opportunity.
-                    </p>
-                    <Button size="lg" variant="secondary">
-                        Contact Us Today
-                    </Button>
-                </div>
-            </section>
-        </div>
+            <CTASection
+                title="Ready to Transform Your Hiring Process?"
+                description="Join thousands of companies who trust us with their recruitment needs."
+                linkText="Contact Us"
+                linkHref="/contact"
+            />
+        </>
     );
 }

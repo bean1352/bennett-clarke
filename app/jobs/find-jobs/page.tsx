@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
+import { Loader2 } from 'lucide-react';
+import HeroSection from '@/components/hero-section';
 
 interface JobPost {
     job_id: string;
@@ -18,8 +20,19 @@ interface JobsData {
     posts: JobPost[];
 }
 
+// Loading spinner component
+const LoadingSpinner = () => {
+    return (
+        <div className="flex flex-col items-center justify-center min-h-[400px] w-full">
+            <Loader2 className="h-12 w-12 animate-spin text-blue-500" />
+            <p className="text-gray-500 mt-4">Loading job listings...</p>
+        </div>
+    );
+};
+
 export default function FindJobs() {
     const [jobsData, setJobsData] = useState<JobsData | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         // Load the widget script
@@ -30,13 +43,18 @@ export default function FindJobs() {
 
         // Fetch the jobs data
         const fetchJobs = async () => {
+            setIsLoading(true);
             try {
-                const response = await fetch(`${process.env.NEXT_PUBLIC_JOBS_FEED_URL}?nocache=${Date.now()}`);
+                const response = await fetch(`${process.env.NEXT_PUBLIC_JOBS_FEED_URL}?nocache=${Date.now()}`, {
+                    mode: 'no-cors'
+                });
                 const data = await response.json();
                 setJobsData(data);
                 console.log('Jobs data:', data);
             } catch (error) {
                 console.error('Error fetching jobs:', error);
+            } finally {
+                setIsLoading(false);
             }
         };
 
@@ -58,36 +76,34 @@ export default function FindJobs() {
 
     return (
         <div className="container mx-auto py-4">
-            {/* Hero Section */}
-            <section className="relative py-16">
-                <div className="container mx-auto px-4">
-                    <div className="flex justify-center items-center max-w-3xl md:justify-start md:items-start md:text-start flex-col text-center">
-                        <h1 className="text-5xl font-bold mb-6">Find Your Dream Role</h1>
-                    </div>
-                </div>
-            </section>
+            <HeroSection
+                title="Find Your Dream Role"
+                description="Explore exciting career opportunities with Arthur Edwards. Discover the perfect job for you with our expert recruitment services."
+            />
 
-            {jobsData?.posts && (
+            {isLoading ? (
+                <LoadingSpinner />
+            ) : jobsData?.posts ? (
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 my-6">
                     {jobsData.posts.map((post) => (
-                        // <Link key={post.job_id} href={`/jobs/${post.job_id}`} passHref>
-                            <Card key={post.job_id} className="h-full flex flex-col shadow-md hover:shadow-lg transition-shadow">
-                                <CardHeader>
-                                    <CardTitle className="text-xl font-semibold">{post.job_title || 'Untitled Job'}</CardTitle>
-                                    <CardDescription className="text-sm text-gray-500">
-                                        • {post.location || 'Location Unknown'} {post.employment_type || ''}
-                                    </CardDescription>
-                                </CardHeader>
-                                <CardContent className="flex-grow">
-                                    <p className="text-xs text-gray-400">
-                                        Posted: {formatDate(post.date)}
-                                    </p>
-                                    {post.notice && <p className="text-xs text-red-500 mt-1">{post.notice}</p>}
-                                </CardContent>
-                            </Card>
-                        // </Link>
+                        <Card key={post.job_id} className="h-full flex flex-col shadow-md hover:shadow-lg transition-shadow">
+                            <CardHeader>
+                                <CardTitle className="text-xl font-semibold">{post.job_title || 'Untitled Job'}</CardTitle>
+                                <CardDescription className="text-sm text-gray-500">
+                                    • {post.location || 'Location Unknown'} {post.employment_type || ''}
+                                </CardDescription>
+                            </CardHeader>
+                            <CardContent className="flex-grow">
+                                <p className="text-xs text-gray-400">
+                                    Posted: {formatDate(post.date)}
+                                </p>
+                                {post.notice && <p className="text-xs text-red-500 mt-1">{post.notice}</p>}
+                            </CardContent>
+                        </Card>
                     ))}
                 </div>
+            ) : (
+                <p className="text-center text-muted-foreground">No jobs found.</p>
             )}
         </div>
     );

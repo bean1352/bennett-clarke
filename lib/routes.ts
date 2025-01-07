@@ -1,4 +1,4 @@
-import { BookMarked, BookOpen, Briefcase, Building, Building2, Contact, DollarSign, NewspaperIcon, Search, Shield, UserCircle, Users } from "lucide-react";
+import { BookMarked, BookOpen, Briefcase, Building, Building2, Contact, DollarSign, Star, Search, Shield, UserCircle, Users } from "lucide-react";
 
 // Navigation routes configuration
 const routes = {
@@ -8,7 +8,7 @@ const routes = {
     links: [
       { href: "/about", label: "About Us", icon: Building },
       { href: "/contact", label: "Contact", icon: Contact },
-      { href: "/blog", label: "Blog", icon: NewspaperIcon },
+      { href: "/testimonials", label: "Testimonials", icon: Star },
       { href: "/privacy", label: "Privacy Policy", icon: Shield },
     ]
   },
@@ -17,7 +17,7 @@ const routes = {
     icon: Users,
     links: [
       { href: "/jobs/find-jobs", label: "Search Jobs", icon: Search },
-      { href: "/profile", label: "Create Profile", icon: UserCircle },
+      { href: "/job-salaries", label: "Job Salaries", icon: UserCircle },
       { href: "/resources", label: "Career Resources", icon: BookOpen },
       { href: "/salary", label: "Salary Guide", icon: DollarSign },
     ]
