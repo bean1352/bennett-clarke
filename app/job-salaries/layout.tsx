@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import CareerGuide from "./page";
+import AverageJobSalaries from "./page";
 
 export const metadata: Metadata = {
     title: "Job Salaries | Arthur Edwards",
@@ -8,6 +8,6 @@ export const metadata: Metadata = {
 
 export default function Layout() {
     return (
-        <CareerGuide />
+        <AverageJobSalaries />
     )
 }

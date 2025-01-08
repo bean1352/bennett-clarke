@@ -17,7 +17,7 @@ interface Category {
     tag: string;
 }
 
-const CareerGuidePage = () => {
+export default function AverageJobSalaries() {
     const [categories, setCategories] = useState<Category[]>([]);
     const [selectedCategory, setSelectedCategory] = useState('');
     const [selectedCategoryLabel, setSelectedCategoryLabel] = useState('');
@@ -102,15 +102,15 @@ const CareerGuidePage = () => {
             {loadingCategories ? (
                 <Spinner />
             ) : (
-                <section className="px-4 pb-12 md:px-6">
-                    <div className="container mx-auto max-w-4xl text-center space-y-6">
+                <section className="pb-12">
+                    <div className="container mx-auto max-w-4xl space-y-6">
                         <div className="flex flex-col md:flex-row justify-center items-center gap-4">
                             <Select value={selectedCategory} onValueChange={(value) => {
                                 setSelectedCategory(value);
                                 const category = categories.find(category => category.tag === value);
                                 setSelectedCategoryLabel(category ? category.label : '');
                             }}>
-                                <SelectTrigger className="border rounded-md px-4 py-2">
+                                <SelectTrigger className="border rounded-md px-4 py-2 w-full md:w-auto">
                                     {selectedCategory ? selectedCategoryLabel : 'Select Category'}
                                 </SelectTrigger>
                                 <SelectContent>
@@ -122,7 +122,7 @@ const CareerGuidePage = () => {
                                 </SelectContent>
                             </Select>
                             <Select value={months.toString()} onValueChange={(value) => setMonths(Number(value))}>
-                                <SelectTrigger className="border rounded-md px-4 py-2">
+                                <SelectTrigger className="border rounded-md px-4 py-2 w-full md:w-auto">
                                     {months ? `${months} ${months === 1 ? 'month' : 'months'}` : 'Select Months'}
                                 </SelectTrigger>
                                 <SelectContent>
@@ -133,6 +133,8 @@ const CareerGuidePage = () => {
                                     ))}
                                 </SelectContent>
                             </Select>
+                        </div>
+                        <div className="flex justify-center mt-4">
                             <Button onClick={handleSearch} className="rounded-md px-4 py-2">
                                 Search
                             </Button>
@@ -144,11 +146,12 @@ const CareerGuidePage = () => {
             {loadingResults && <Spinner />}
 
             {!loadingResults && Object.keys(results).length > 0 && (
-                <section className="px-4 pb-12 md:px-6">
-                    <div className="container mx-auto max-w-4xl">
+                <section className="pb-12">
+                    <div className="container mx-auto max-w-full md:max-w-4xl">
                         <h2 className="text-2xl font-bold mb-4">Average Industry Salary in the last {months} months</h2>
-                        <Line data={chartData} options={{
+                        <Line data={chartData} height={60} width={'100%'} options={{
                             ...chartOptions,
+                            //maintainAspectRatio: false,
                             scales: {
                                 x: {
                                     title: {
@@ -163,12 +166,11 @@ const CareerGuidePage = () => {
                                     }
                                 }
                             }
-                        }} />
+                        }}
+                        />
                     </div>
                 </section>
             )}
         </>
     );
 };
-
-export default CareerGuidePage;
