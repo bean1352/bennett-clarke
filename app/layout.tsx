@@ -131,7 +131,7 @@ export default function RootLayout({
           <Footer />
         </ThemeProvider>
         <Toaster />
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_MEASUREMENT_ID || ''} />
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_MEASUREMENT_ID || 'G-8678B4LPXP'} />
         <Analytics />
         <SpeedInsights />
       </body>
