@@ -10,6 +10,7 @@ import { Analytics } from "@vercel/analytics/react"
 import type { Viewport } from 'next'
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { GoogleAnalytics } from '@next/third-parties/google'
+import { GoogleTagManager } from '@next/third-parties/google'
 
 export const viewport: Viewport = {
   themeColor: 'black',
@@ -112,6 +113,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_MEASUREMENT_ID || 'G-8678B4LPXP'} />
+      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_ID || 'GTM-M448TSN9'} />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -131,7 +134,6 @@ export default function RootLayout({
           <Footer />
         </ThemeProvider>
         <Toaster />
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_MEASUREMENT_ID || 'G-8678B4LPXP'} />
         <Analytics />
         <SpeedInsights />
       </body>

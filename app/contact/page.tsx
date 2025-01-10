@@ -20,6 +20,7 @@ import { useRef, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import ReCAPTCHA from "react-google-recaptcha";
 import HeroSection from "@/components/hero-section";
+import { sendGTMEvent } from '@next/third-parties/google';
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const ACCEPTED_FILE_TYPES = [
@@ -128,6 +129,8 @@ export default function Contact() {
 
   async function onSubmit(data: ContactFormValues) {
     setIsSubmitting(true);
+
+    sendGTMEvent({ event: 'contactButtonClicked', value: data });
 
     const formData = new FormData();
     Object.entries(data).forEach(([key, value]) => {
