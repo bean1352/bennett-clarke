@@ -165,7 +165,7 @@ const Footer = () => {
             </div>
 
             <div className="pt-1">
-              <Button variant="outline" className="w-full text-xs md:text-sm">
+              <Button className="w-full text-xs md:text-sm">
                 Subscribe to Newsletter
               </Button>
             </div>

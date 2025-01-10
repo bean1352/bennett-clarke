@@ -9,6 +9,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { Analytics } from "@vercel/analytics/react"
 import type { Viewport } from 'next'
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 export const viewport: Viewport = {
   themeColor: 'black',
@@ -66,6 +67,14 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    }
   },
   themeColor: "#ffffff",
   alternates: {
@@ -75,10 +84,24 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    icon: [
+      { url: '/icon.png' },
+      new URL('/icon.png', `https://${domain}`),
+      { url: '/icon.png', media: '(prefers-color-scheme: dark)' },
+    ],
+    shortcut: ['/shortcut-icon.png'],
+    apple: [
+      { url: '/apple-icon.png' },
+      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    other: [
+      {
+        rel: 'apple-touch-icon-precomposed',
+        url: '/apple-touch-icon-precomposed.png',
+      },
+    ],
   },
-  manifest: "/site.webmanifest", // Update with your manifest file path if used
+  manifest: `${domain}/site.webmanifest`, // Update with your manifest file path if used
 };
 
 
@@ -108,6 +131,7 @@ export default function RootLayout({
           <Footer />
         </ThemeProvider>
         <Toaster />
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_MEASUREMENT_ID || ''} />
         <Analytics />
         <SpeedInsights />
       </body>
