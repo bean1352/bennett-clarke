@@ -33,7 +33,7 @@ const companyName = process.env.NEXT_PUBLIC_COMPANY_NAME;
 
 export const metadata: Metadata = {
   title: `${companyName}`,
-  description: `${companyName} Recruitment specialises in high-skill recruitment, connecting top talent with leading organisations worldwide.`,
+  description: `${companyName} specialises in high-skill recruitment, connecting top talent with leading organisations worldwide.`,
   applicationName: companyName,
   keywords: [
     `${companyName}`,
@@ -60,10 +60,10 @@ export const metadata: Metadata = {
         url: `https://${domain}/logo.png`,
         width: 1200,
         height: 630,
-        alt: `${companyName} Recruitment`,
+        alt: `${companyName}`,
       },
     ],
-    siteName: `${companyName} Recruitment`,
+    siteName: `${companyName}`,
   },
   twitter: {
     card: "summary_large_image",

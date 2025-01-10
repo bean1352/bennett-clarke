@@ -5,7 +5,7 @@ const companyName = process.env.NEXT_PUBLIC_COMPANY_NAME;
 const domain = process.env.NEXT_PUBLIC_DOMAIN;
 
 export const metadata: Metadata = {
-    title: `Find Jobs | ${companyName} Recruitment`,
+    title: `Find Jobs | ${companyName}`,
     description: `Explore exciting career opportunities with ${companyName}. Discover the perfect job for you with our expert recruitment services.`,
     openGraph: {
         title: `Find Jobs | ${companyName}`,

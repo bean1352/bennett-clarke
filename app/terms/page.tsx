@@ -17,10 +17,10 @@ export const metadata: Metadata = {
                 url: `https://${domain}/logo.png`,
                 width: 1200,
                 height: 630,
-                alt: `${companyName} Recruitment`,
+                alt: `${companyName}`,
             },
         ],
-        siteName: `${companyName} Recruitment`,
+        siteName: `${companyName}`,
     },
 };
 
