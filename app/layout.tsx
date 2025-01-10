@@ -9,8 +9,8 @@ import { Toaster } from "@/components/ui/toaster"
 import { Analytics } from "@vercel/analytics/react"
 import type { Viewport } from 'next'
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { GoogleTagManager } from '@next/third-parties/google'
 import Script from "next/script";
+// import { GoogleTagManager } from '@next/third-parties/google'
 
 export const viewport: Viewport = {
   themeColor: 'black',
@@ -121,24 +121,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Script src={`
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.js':new Date()});
-      var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
-      j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','${process.env.NEXT_PUBLIC_GOOGLE_TAG_ID}');
-    `} />
-      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_ID || 'GTM-M448TSN9'} />
+      {/* <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_ID || 'GTM-M448TSN9'} /> */}
+      <Script
+        id="gtm-script"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-M448TSN9');`}}
+      />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <noscript>
-          <iframe
-            src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GOOGLE_TAG_ID}`}
-            height="0"
-            width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
-          />
-        </noscript>
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M448TSN9"
+          height="0" width="0" className="hidden; visibility:hidden"></iframe></noscript>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
