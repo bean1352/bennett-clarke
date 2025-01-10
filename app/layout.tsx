@@ -34,6 +34,7 @@ const companyName = process.env.NEXT_PUBLIC_COMPANY_NAME;
 export const metadata: Metadata = {
   title: `${companyName}`,
   description: `${companyName} Recruitment specialises in high-skill recruitment, connecting top talent with leading organisations worldwide.`,
+  applicationName: companyName,
   keywords: [
     `${companyName}`,
     "high-skill recruitment",
@@ -43,6 +44,11 @@ export const metadata: Metadata = {
     "job placement",
     "career opportunities",
   ],
+  appleWebApp: {
+    title: companyName,
+    statusBarStyle: "default",
+    capable: true
+  },
   abstract: `${companyName}: Your trusted partner for high-skill recruitment. Connecting top talent with leading organisations worldwide.`,
   openGraph: {
     title: `${companyName} | High-Skill Recruitment`,
@@ -91,7 +97,7 @@ export const metadata: Metadata = {
       new URL('/icon.png', `https://${domain}`),
       { url: '/icon.png', media: '(prefers-color-scheme: dark)' },
     ],
-    shortcut: ['/shortcut-icon.png'],
+    shortcut: ['/icon.png'],
     apple: [
       { url: '/apple-icon.png' },
       { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
