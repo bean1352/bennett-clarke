@@ -181,10 +181,10 @@ const Footer = () => {
             <Link href="/terms" className="hover:text-primary transition-colors">
               Terms
             </Link>
-            <Link href="/privacy" className="hover:text-primary transition-colors">
+            <Link href="/privacy-policy" className="hover:text-primary transition-colors">
               Privacy
             </Link>
-            <Link href="/cookies" className="hover:text-primary transition-colors">
+            <Link href="/cookie-policy" className="hover:text-primary transition-colors">
               Cookies
             </Link>
           </div>

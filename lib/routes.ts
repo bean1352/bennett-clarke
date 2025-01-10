@@ -6,7 +6,7 @@ const routes = {
     title: "Company",
     icon: Building,
     links: [
-      { href: "/about", label: "About Us", icon: Building },
+      { href: "/about-us", label: "About Us", icon: Building },
       { href: "/contact", label: "Contact", icon: Contact },
       { href: "/testimonials", label: "Testimonials", icon: Star },
       { href: "/privacy", label: "Privacy Policy", icon: Shield },

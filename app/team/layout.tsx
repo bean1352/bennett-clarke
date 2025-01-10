@@ -1,9 +1,10 @@
+import { Metadata } from "next";
 import Team from "./page";
 
 const domain = process.env.DOMAIN;
 
-export const metadata = {
-  title: 'Meet our Team | Arthur Edwards',
+export const metadata: Metadata = {
+  title: 'Meet our Team | Arthur Edwards Recruitment',
   description: 'Discover the talented professionals at Arthur Edwards. Learn more about our team and how we work together to deliver exceptional results.',
   openGraph: {
     title: 'Meet our Team | Arthur Edwards',
@@ -20,6 +21,7 @@ export const metadata = {
     ],
   },
 };
+
 export default function Layout(){
     return (
       <Team />

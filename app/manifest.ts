@@ -14,6 +14,9 @@ export default function manifest(): MetadataRoute.Manifest {
     display: 'standalone',
     background_color: '#fff',
     theme_color: '#fff',
+    orientation: 'portrait',
+    lang: 'en-US',
+    categories: ['business', 'recruitment', 'hr'],
     icons: [
       {
         src: '/favicon.ico',

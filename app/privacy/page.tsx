@@ -1,10 +1,29 @@
 import { Metadata } from "next";
 import { Separator } from "@/components/ui/separator";
 
+const companyName = process.env.NEXT_PUBLIC_COMPANY_NAME;
+const domain = process.env.NEXT_PUBLIC_DOMAIN;
+
 export const metadata: Metadata = {
-    title: "Privacy Policy | Arthur Edwards",
-    description: "Privacy policy and data handling practices for Arthur Edwards",
+    title: `Privacy Policy | ${companyName}`,
+    description: `Privacy policy and data handling practices for ${companyName}`,
+    openGraph: {
+        title: `Privacy Policy | ${companyName}`,
+        description: `Privacy policy and data handling practices for ${companyName}`,
+        url: `https://${domain}/privacy`,
+        type: "website",
+        images: [
+            {
+                url: `https://${domain}/logo.png`,
+                width: 1200,
+                height: 630,
+                alt: `${companyName} Privacy Policy`,
+            },
+        ],
+        siteName: `${companyName} Privacy Policy`,
+    },
 };
+
 
 const PrivacyPage = () => {
     const email = process.env.NEXT_PUBLIC_COMPANY_EMAIL;

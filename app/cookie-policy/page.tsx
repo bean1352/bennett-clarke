@@ -1,10 +1,44 @@
 import { Metadata } from "next";
 import { Separator } from "@/components/ui/separator";
 
+const companyName = process.env.NEXT_PUBLIC_COMPANY_NAME;
+const domain = process.env.NEXT_PUBLIC_DOMAIN;
+
 export const metadata: Metadata = {
-    title: "Cookie Policy | Arthur Edwards",
-    description: "Learn about how we use cookies and similar technologies on Arthur Edwards",
+    title: `Cookie Policy | ${companyName}`,
+    description: `Learn about how we use cookies and similar technologies on ${companyName}`,
+    openGraph: {
+        title: `Cookie Policy | ${companyName}`,
+        description: `Discover how ${companyName} uses cookies and other technologies to enhance your experience on our website.`,
+        url: `https://${domain}/cookie-policy`,
+        locale: "en_US",
+        type: "website",
+        images: [
+            {
+                url: `https://${domain}/cookie-policy`, 
+                width: 1200,
+                height: 630,
+                alt: `${companyName} Cookie Policy`,
+            },
+        ],
+        siteName: `${companyName}`,
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: `Cookie Policy | ${companyName}`,
+        description: `Learn how ${companyName} uses cookies and technologies to improve your website experience.`,
+        images: [`https://${domain}/logo.png`], 
+    },
+    viewport: "width=device-width, initial-scale=1",
+    robots: {
+        index: true,
+        follow: true,
+    },
+    alternates: {
+        canonical: `https://${domain}/cookie-policy`
+    },
 };
+
 
 const CookiesPage = () => {
     const email = process.env.NEXT_PUBLIC_COMPANY_EMAIL;

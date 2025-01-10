@@ -1,10 +1,29 @@
 import { Metadata } from "next";
 import { Separator } from "@/components/ui/separator";
 
+const companyName = process.env.NEXT_PUBLIC_COMPANY_NAME;
+const domain = process.env.NEXT_PUBLIC_DOMAIN;
+
 export const metadata: Metadata = {
-    title: "Terms of Service | Arthur Edwards",
-    description: "Terms of service and conditions for using Arthur Edwards",
+    title: `Terms of Service | ${companyName}`,
+    description: `Terms of service and conditions for using ${companyName}`,
+    openGraph: {
+        title: `Terms of Service | ${companyName}`,
+        description: `Terms of service and conditions for using ${companyName}`,
+        url: `https://${domain}/terms`,
+        type: "website",
+        images: [
+            {
+                url: `https://${domain}/logo.png`,
+                width: 1200,
+                height: 630,
+                alt: `${companyName} Recruitment`,
+            },
+        ],
+        siteName: `${companyName} Recruitment`,
+    },
 };
+
 
 const TermsPage = () => {
     const email = process.env.NEXT_PUBLIC_COMPANY_EMAIL;
