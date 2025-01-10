@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
-import { Loader2 } from 'lucide-react';
 import HeroSection from '@/components/hero-section';
+import Spinner from '@/components/spinner';
 
 interface JobPost {
     job_id: string;
@@ -20,15 +20,6 @@ interface JobsData {
     posts: JobPost[];
 }
 
-// Loading spinner component
-const LoadingSpinner = () => {
-    return (
-        <div className="flex flex-col items-center justify-center min-h-[400px] w-full">
-            <Loader2 className="h-12 w-12 animate-spin text-blue-500" />
-            <p className="text-gray-500 mt-4">Loading job listings...</p>
-        </div>
-    );
-};
 
 export default function FindJobs() {
     const [jobsData, setJobsData] = useState<JobsData | null>(null);
@@ -82,7 +73,7 @@ export default function FindJobs() {
             />
 
             {isLoading ? (
-                <LoadingSpinner />
+                <Spinner />
             ) : jobsData?.posts ? (
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 my-6">
                     {jobsData.posts.map((post) => (

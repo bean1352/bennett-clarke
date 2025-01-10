@@ -9,6 +9,7 @@ import Spinner from '@/components/spinner';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import { useToast } from "@/hooks/use-toast";
+import LoadingSpinner from '@/components/spinner';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -94,13 +95,13 @@ export default function AverageJobSalaries() {
     };
 
     return (
-        <>
+        <div className='container mx-auto py-4'>
             <HeroSection
                 title="Connecting Talent with Opportunity"
                 description="Job Salaries in South Africa."
             />
             {loadingCategories ? (
-                <Spinner />
+                <LoadingSpinner />
             ) : (
                 <section className="pb-12">
                     <div className="container mx-auto max-w-4xl space-y-6">
@@ -146,12 +147,11 @@ export default function AverageJobSalaries() {
             {loadingResults && <Spinner />}
 
             {!loadingResults && Object.keys(results).length > 0 && (
-                <section className="pb-12">
+                <div className="my-6">
                     <div className="container mx-auto max-w-full md:max-w-4xl">
                         <h2 className="text-2xl font-bold mb-4">Average Industry Salary in the last {months} months</h2>
                         <Line data={chartData} height={60} width={'100%'} options={{
                             ...chartOptions,
-                            //maintainAspectRatio: false,
                             scales: {
                                 x: {
                                     title: {
@@ -169,8 +169,8 @@ export default function AverageJobSalaries() {
                         }}
                         />
                     </div>
-                </section>
+                </div>
             )}
-        </>
+        </div>
     );
 };

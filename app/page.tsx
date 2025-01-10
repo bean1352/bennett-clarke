@@ -200,7 +200,7 @@ export default function Home() {
               <CardContent className="text-center">
                 <Link
                   href="/job-salaries"
-                  className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
+                  className="inline-flex items-center justify-center rounded-md px-8 py-3 text-sm font-medium shadow transition-colors"
                 >
                   View Salary Data
                 </Link>
