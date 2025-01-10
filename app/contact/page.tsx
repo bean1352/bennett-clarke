@@ -99,6 +99,7 @@ export default function Contact() {
       files: [],
     },
   });
+  
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = Array.from(e.target.files || []);
@@ -130,7 +131,11 @@ export default function Contact() {
   async function onSubmit(data: ContactFormValues) {
     setIsSubmitting(true);
 
-    sendGTMEvent({ event: 'contactButtonClicked', value: data });
+    sendGTMEvent({ 
+      event: 'contact_form_submit',
+      form_type: 'contact',
+      has_attachments: files.length > 0
+    });
 
     const formData = new FormData();
     Object.entries(data).forEach(([key, value]) => {
@@ -151,6 +156,11 @@ export default function Contact() {
 
       if (!response.ok) throw new Error("Failed to send message");
 
+      sendGTMEvent({ 
+        event: 'contact_form_success',
+        form_type: 'contact'
+      });
+
       form.reset();
       setFiles([]);
 
@@ -160,6 +170,11 @@ export default function Contact() {
     } catch (error) {
       console.error(error);
 
+      sendGTMEvent({ 
+        event: 'contact_form_error',
+        error_type: 'submission_failed'
+      });
+
       toast({
         description: "Failed to send the message. Please try again.",
       })
@@ -167,6 +182,13 @@ export default function Contact() {
       setIsSubmitting(false);
     }
   }
+
+  const onFormFieldFocus = () => {
+    sendGTMEvent({ 
+      event: 'contact_form_start',
+      form_type: 'contact'
+    });
+  };
 
   return (
     <>
@@ -234,6 +256,7 @@ export default function Contact() {
                           <Input
                             placeholder="Your full name"
                             className="h-12 text-lg"
+                            onFocus={onFormFieldFocus}
                             {...field}
                           />
                         </FormControl>
@@ -252,6 +275,7 @@ export default function Contact() {
                           <Input
                             placeholder="your@email.com"
                             className="h-12 text-lg"
+                            onFocus={onFormFieldFocus}
                             {...field}
                           />
                         </FormControl>
@@ -271,6 +295,7 @@ export default function Contact() {
                         <Input
                           placeholder="Your phone number"
                           className="h-12 text-lg"
+                          onFocus={onFormFieldFocus}
                           {...field}
                         />
                       </FormControl>
@@ -289,6 +314,7 @@ export default function Contact() {
                         <Input
                           placeholder="What is this regarding?"
                           className="h-12 text-lg"
+                          onFocus={onFormFieldFocus}
                           {...field}
                         />
                       </FormControl>
@@ -307,6 +333,7 @@ export default function Contact() {
                         <Textarea
                           placeholder="Tell us more about your needs..."
                           className="min-h-[200px] text-lg resize-none"
+                          onFocus={onFormFieldFocus}
                           {...field}
                         />
                       </FormControl>
@@ -330,6 +357,7 @@ export default function Contact() {
                     <Input
                       id="file-upload"
                       type="file"
+                      onFocus={onFormFieldFocus}
                       className="hidden"
                       accept={ACCEPTED_FILE_TYPES.join(",")}
                       multiple
