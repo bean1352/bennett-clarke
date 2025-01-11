@@ -7,22 +7,9 @@ export default function Team() {
     return (
         <>
             {/* Hero Section */}
-            <section className="relative bg-secondary text-primary py-24">
-                <div className="container mx-auto px-4">
-                    <div className="max-w-3xl">
-                        <h1 className="text-5xl font-bold mb-6">Meet Our Team</h1>
-                        <p className="text-xl mb-8">
-                            Our experienced recruitment professionals are dedicated to connecting
-                            great talent with amazing opportunities.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
             <HeroSection
                 title="Meet Our Team"
-                description="Our experienced recruitment professionals are dedicated to connecting great talent with amazing opportunities."
-            />
+                description="Our experienced recruitment professionals are dedicated to connectinggreat talent with amazing opportunities." />
 
             {/* Team Introduction */}
             <section className="py-16">
