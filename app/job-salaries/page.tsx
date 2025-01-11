@@ -95,82 +95,120 @@ export default function AverageJobSalaries() {
     };
 
     return (
-        <div className='container mx-auto py-4'>
+        <>
             <HeroSection
                 title="Connecting Talent with Opportunity"
-                description="Job Salaries in South Africa."
+                description="Job Salaries in South Africa"
             />
-            {loadingCategories ? (
-                <LoadingSpinner />
-            ) : (
-                <section className="pb-12">
-                    <div className="container mx-auto max-w-4xl space-y-6">
-                        <div className="flex flex-col md:flex-row justify-center items-center gap-4">
-                            <Select value={selectedCategory} onValueChange={(value) => {
-                                setSelectedCategory(value);
-                                const category = categories.find(category => category.tag === value);
-                                setSelectedCategoryLabel(category ? category.label : '');
-                            }}>
-                                <SelectTrigger className="border rounded-md px-4 py-2 w-full md:w-auto">
-                                    {selectedCategory ? selectedCategoryLabel : 'Select Category'}
-                                </SelectTrigger>
-                                <SelectContent>
-                                    {categories.map((category) => (
-                                        <SelectItem key={category.tag} value={category.tag}>
-                                            {category.label}
-                                        </SelectItem>
-                                    ))}
-                                </SelectContent>
-                            </Select>
-                            <Select value={months.toString()} onValueChange={(value) => setMonths(Number(value))}>
-                                <SelectTrigger className="border rounded-md px-4 py-2 w-full md:w-auto">
-                                    {months ? `${months} ${months === 1 ? 'month' : 'months'}` : 'Select Months'}
-                                </SelectTrigger>
-                                <SelectContent>
-                                    {Array.from({ length: 24 }, (_, i) => i + 1).map((month) => (
-                                        <SelectItem key={month} value={month.toString()}>
-                                            {month} {month === 1 ? 'month' : 'months'}
-                                        </SelectItem>
-                                    ))}
-                                </SelectContent>
-                            </Select>
-                        </div>
-                        <div className="flex justify-center mt-4">
-                            <Button onClick={handleSearch} className="rounded-md px-4 py-2">
-                                Search
-                            </Button>
-                        </div>
-                    </div>
-                </section>
-            )}
 
-            {loadingResults && <Spinner />}
-
-            {!loadingResults && Object.keys(results).length > 0 && (
-                <div className="my-6">
-                    <div className="container mx-auto max-w-full md:max-w-4xl">
-                        <h2 className="text-2xl font-bold mb-4">Average Industry Salary in the last {months} months</h2>
-                        <Line data={chartData} height={60} width={'100%'} options={{
-                            ...chartOptions,
-                            scales: {
-                                x: {
-                                    title: {
-                                        display: true,
-                                        text: 'Month'
-                                    }
-                                },
-                                y: {
-                                    title: {
-                                        display: true,
-                                        text: 'Average Salary (ZAR)'
-                                    }
-                                }
-                            }
-                        }}
-                        />
+            {/* Main Content */}
+            <div className="container mx-auto px-4 py-8">
+                {loadingCategories ? (
+                    <div className="flex justify-center items-center min-h-[200px]">
+                        <LoadingSpinner />
                     </div>
-                </div>
-            )}
-        </div>
+                ) : (
+                    <div className="max-w-4xl mx-auto space-y-8">
+                        {/* Search Controls */}
+                        <div className="rounded-lg shadow-md p-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div className="space-y-2">
+                                    <label className="text-sm font-medium text-muted-foreground">Category</label>
+                                    <Select
+                                        value={selectedCategory}
+                                        onValueChange={(value) => {
+                                            setSelectedCategory(value);
+                                            const category = categories.find(category => category.tag === value);
+                                            setSelectedCategoryLabel(category ? category.label : '');
+                                        }}
+                                    >
+                                        <SelectTrigger className="w-full">
+                                            {selectedCategory ? selectedCategoryLabel : 'Select Category'}
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            {categories.map((category) => (
+                                                <SelectItem key={category.tag} value={category.tag}>
+                                                    {category.label}
+                                                </SelectItem>
+                                            ))}
+                                        </SelectContent>
+                                    </Select>
+                                </div>
+
+                                <div className="space-y-2">
+                                    <label className="text-sm font-medium text-muted-foreground">Time Period</label>
+                                    <Select
+                                        value={months.toString()}
+                                        onValueChange={(value) => setMonths(Number(value))}
+                                    >
+                                        <SelectTrigger className="w-full">
+                                            {months ? `${months} ${months === 1 ? 'month' : 'months'}` : 'Select Months'}
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            {Array.from({ length: 24 }, (_, i) => i + 1).map((month) => (
+                                                <SelectItem key={month} value={month.toString()}>
+                                                    {month} {month === 1 ? 'month' : 'months'}
+                                                </SelectItem>
+                                            ))}
+                                        </SelectContent>
+                                    </Select>
+                                </div>
+                            </div>
+
+                            <div className="mt-6 flex justify-center">
+                                <Button
+                                    onClick={handleSearch}
+                                    className="w-full md:w-auto px-8 py-2"
+                                >
+                                    Search
+                                </Button>
+                            </div>
+                        </div>
+
+                        {/* Results Section */}
+                        {loadingResults ? (
+                            <div className="flex justify-center items-center min-h-[300px]">
+                                <Spinner />
+                            </div>
+                        ) : Object.keys(results).length > 0 ? (
+                            <div className="rounded-lg shadow-md p-6">
+                                <h2 className="text-2xl font-bold text-muted-foreground mb-6">
+                                    Average Industry Salary in the last {months} months
+                                </h2>
+                                <div className="w-full h-[400px]">
+                                    <Line
+                                        data={chartData}
+                                        options={{
+                                            ...chartOptions,
+                                            maintainAspectRatio: false,
+                                            scales: {
+                                                x: {
+                                                    title: {
+                                                        display: true,
+                                                        text: 'Month',
+                                                        font: {
+                                                            weight: 'bold'
+                                                        }
+                                                    }
+                                                },
+                                                y: {
+                                                    title: {
+                                                        display: true,
+                                                        text: 'Average Salary (ZAR)',
+                                                        font: {
+                                                            weight: 'bold'
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }}
+                                    />
+                                </div>
+                            </div>
+                        ) : null}
+                    </div>
+                )}
+            </div>
+        </>
     );
 };
