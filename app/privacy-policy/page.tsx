@@ -144,7 +144,7 @@ const PrivacyPage = () => {
 
                     <footer className="text-sm text-muted-foreground max-w-2xl">
                         <p>
-                            By using Your Recruitment Site, you acknowledge that you have read and understood this Privacy Policy and agree to its terms.
+                            By using {companyName}, you acknowledge that you have read and understood this Privacy Policy and agree to its terms.
                         </p>
                     </footer>
                 </div>
