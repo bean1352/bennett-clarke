@@ -2,8 +2,8 @@
 
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, NavigationMenuContent, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu"
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
-import { 
-  Menu, 
+import {
+  Menu,
   Home
 } from "lucide-react"
 import Link from "next/link"
@@ -37,19 +37,24 @@ const LogoSkeleton = () => (
   </div>
 )
 
-const Logo = () => (
+interface LogoProps {
+  companyName: string | undefined;
+}
+
+const Logo = ({ companyName }: LogoProps) => (
   <div className="flex items-center align-middle gap-4">
     <Suspense fallback={<LogoSkeleton />}>
       <LogoImage />
-      <Link href="/" className="text-2xl font-light">
-        Arthur Edwards
+      <Link href="/" className="text-lg lg:text-2xl font-light">
+        {companyName}
       </Link>
     </Suspense>
   </div>
 )
 
 export function MainNav() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const companyName = process.env.NEXT_PUBLIC_COMPANY_NAME;
 
   const MobileLink = ({ href, children, className = "", icon: Icon }: MobileLinkProps) => (
     <Link
@@ -65,10 +70,10 @@ export function MainNav() {
   return (
     <div className="shadow-sm relative z-50 bg-background">
       <div className="container mx-auto">
-        <div className="grid md:grid-cols-3 grid-cols-1 justify-between items-center px-4 py-4">
+        <div className="grid lg:grid-cols-3 grid-cols-1 justify-between items-center px-4 py-4">
           {/* Logo */}
           <div className="flex items-center align-middle gap-2">
-            <Logo />
+            <Logo companyName={companyName} />
           </div>
 
           {/* Mobile Menu */}
@@ -92,9 +97,9 @@ export function MainNav() {
                       </div>
                       <div className="flex flex-col gap-1 pl-2">
                         {section.links.map((link) => (
-                          <MobileLink 
-                            key={link.href} 
-                            href={link.href} 
+                          <MobileLink
+                            key={link.href}
+                            href={link.href}
                             icon={link.icon}
                             className="ml-4 border-l-2 border-muted hover:border-primary"
                           >
