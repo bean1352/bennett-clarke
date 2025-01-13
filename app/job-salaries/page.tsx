@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Button } from "@/components/ui/button";
 import { Select, SelectTrigger, SelectContent, SelectItem } from "@/components/ui/select";
 import HeroSection from '@/components/hero-section';
@@ -10,6 +9,7 @@ import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import { useToast } from "@/hooks/use-toast";
 import LoadingSpinner from '@/components/spinner';
+import { getAdzunaCategoriesAction, getAdzunaJobStatisticsAction } from '../api/adzuna/actions';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -26,17 +26,63 @@ export default function AverageJobSalaries() {
     const [results, setResults] = useState<{ [key: string]: number }>({});
     const [loadingCategories, setLoadingCategories] = useState(true);
     const [loadingResults, setLoadingResults] = useState(false);
-
     const { toast } = useToast()
+
+    // useEffect(() => {
+    //     // Fetch categories from the API route
+    //     const fetchCategories = async () => {
+    //         try {
+    //             const response = await getAdzunaCategoriesAction();
+    //             const data = await response.json();
+
+    //             if(response.status === 200){
+    //                 setCategories(data);
+    //             }
+    //             else{
+    //                 toast({
+    //                     description: "Failed to fetch categories",
+    //                     variant: "destructive"
+    //                 });
+    //             }
+    //         } catch (error) {
+    //             console.error('Error fetching categories:', error);
+    //             toast({
+    //                 description: "Failed to fetch categories",
+    //                 variant: "destructive"
+    //             });
+    //         } finally {
+    //             setLoadingCategories(false);
+    //         }
+    //     };
+
+    //     fetchCategories();
+    // });
+
+
 
     useEffect(() => {
         // Fetch categories from the API route
         const fetchCategories = async () => {
             try {
-                const response = await axios.get('/api/adzuna/categories');
-                setCategories(response.data);
+                const response = await getAdzunaCategoriesAction();
+
+                if(response.success){
+                    const data = await response.data;
+                    console.log(data);
+                    setCategories(data);
+                }
+                else{
+                    toast({
+                        description: response.message,
+                        variant: "destructive"
+                    });
+                }
             } catch (error) {
                 console.error('Error fetching categories:', error);
+                toast({
+                    description: "Failed to fetch categories",
+                    variant: "destructive"
+                })
             } finally {
                 setLoadingCategories(false);
             }
@@ -44,6 +90,7 @@ export default function AverageJobSalaries() {
 
         fetchCategories();
     }, []);
+    
 
     const handleSearch = async () => {
         if (!selectedCategory || !months) {
@@ -56,8 +103,20 @@ export default function AverageJobSalaries() {
 
         setLoadingResults(true);
         try {
-            const response = await axios.post('/api/adzuna/job-statistics', { category: selectedCategory, months });
-            setResults(response.data);
+            const response = await getAdzunaJobStatisticsAction(selectedCategory, months);
+            
+            console.log(response);
+            if(response.success){
+                const data = await response.data;
+                console.log(data);
+                setResults(data);
+            }
+            else{
+                toast({
+                    description: response.message,
+                    variant: "destructive"
+                });
+            }
         } catch (error) {
             console.error('Error fetching job statistics:', error);
         } finally {
@@ -102,7 +161,7 @@ export default function AverageJobSalaries() {
             />
 
             {/* Main Content */}
-            <div className="container mx-auto px-4 py-8">
+            <div className="container mx-auto px-4 pb-8">
                 {loadingCategories ? (
                     <div className="flex justify-center items-center min-h-[200px]">
                         <LoadingSpinner />

@@ -21,6 +21,7 @@ import { useToast } from "@/hooks/use-toast";
 import ReCAPTCHA from "react-google-recaptcha";
 import HeroSection from "@/components/hero-section";
 import { sendGTMEvent } from '@next/third-parties/google';
+import { sendContactEmailAction, verifyCaptchaAction } from "../api/contact/actions";
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const ACCEPTED_FILE_TYPES = [
@@ -65,15 +66,14 @@ export default function Contact() {
   async function handleCaptchaSubmission(token: string | null) {
     try {
       if (token) {
-        await fetch("/api/recaptcha", {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ token }),
-        });
-        setIsVerified(true);
+        const response = await verifyCaptchaAction(token);
+
+        if (response.success) {
+          setIsVerified(true);
+        }
+        else {
+          setIsVerified(false);
+        }
       }
     } catch {
       setIsVerified(false);
@@ -99,7 +99,7 @@ export default function Contact() {
       files: [],
     },
   });
-  
+
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = Array.from(e.target.files || []);
@@ -131,7 +131,7 @@ export default function Contact() {
   async function onSubmit(data: ContactFormValues) {
     setIsSubmitting(true);
 
-    sendGTMEvent({ 
+    sendGTMEvent({
       event: 'contact_form_submit',
       form_type: 'contact',
       has_attachments: files.length > 0
@@ -149,14 +149,11 @@ export default function Contact() {
     });
 
     try {
-      const response = await fetch("/api/contact/send-contact-email", {
-        method: "POST",
-        body: formData,
-      });
+      const response = sendContactEmailAction(formData);
 
-      if (!response.ok) throw new Error("Failed to send message");
+      if (!(await response).success) throw new Error("Failed to send message");
 
-      sendGTMEvent({ 
+      sendGTMEvent({
         event: 'contact_form_success',
         form_type: 'contact'
       });
@@ -170,7 +167,7 @@ export default function Contact() {
     } catch (error) {
       console.error(error);
 
-      sendGTMEvent({ 
+      sendGTMEvent({
         event: 'contact_form_error',
         error_type: 'submission_failed'
       });
@@ -184,7 +181,7 @@ export default function Contact() {
   }
 
   const onFormFieldFocus = () => {
-    sendGTMEvent({ 
+    sendGTMEvent({
       event: 'contact_form_start',
       form_type: 'contact'
     });
