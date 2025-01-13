@@ -1,4 +1,4 @@
-import { BookMarked, BookOpen, Briefcase, Building, Building2, Contact, DollarSign, Star, Search, Shield, UserCircle, Users } from "lucide-react";
+import { Building, Building2, Contact, Star, Search, Shield, UserCircle, Users } from "lucide-react";
 
 // Navigation routes configuration
 const routes = {
