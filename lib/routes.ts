@@ -9,7 +9,7 @@ const routes = {
       { href: "/about-us", label: "About Us", icon: Building },
       { href: "/contact", label: "Contact", icon: Contact },
       { href: "/testimonials", label: "Testimonials", icon: Star },
-      { href: "/privacy", label: "Privacy Policy", icon: Shield },
+      { href: "/privacy-policy", label: "Privacy Policy", icon: Shield },
     ]
   },
   jobSeekers: {

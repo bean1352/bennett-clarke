@@ -45,7 +45,7 @@ const Logo = ({ companyName }: LogoProps) => (
   <div className="flex items-center align-middle gap-4">
     <Suspense fallback={<LogoSkeleton />}>
       <LogoImage />
-      <Link href="/" className="text-lg lg:text-2xl font-light">
+      <Link href="/" className="text-lg lg:text-2xl">
         {companyName}
       </Link>
     </Suspense>
@@ -68,8 +68,8 @@ export function MainNav() {
   )
 
   return (
-    <div className="shadow-sm relative z-50 bg-background">
-      <div className="container mx-auto">
+    <div className="shadow-sm relative z-50 bg-background flex justify-center">
+      <div className="container mx-2">
         <div className="grid lg:grid-cols-3 grid-cols-1 justify-between items-center px-4 py-4">
           {/* Logo */}
           <div className="flex items-center align-middle gap-2">
