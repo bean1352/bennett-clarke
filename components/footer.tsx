@@ -176,7 +176,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="text-center space-y-2 md:space-y-0 md:flex md:justify-between md:items-center text-xs text-muted-foreground">
-          <p>© {new Date().getFullYear()} Arthur Edwards. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Bennett Clarke Solutions. All rights reserved.</p>
           <div className="flex justify-center space-x-4">
             <Link href="/terms" className="hover:text-primary transition-colors">
               Terms

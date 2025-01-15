@@ -69,7 +69,7 @@ export default function FindJobs() {
         <div className="container mx-auto py-4">
             <HeroSection
                 title="Find Your Dream Role"
-                description="Explore exciting career opportunities with Arthur Edwards. Discover the perfect job for you with our expert recruitment services."
+                description="Explore exciting career opportunities with Bennett Clarke Solutions. Discover the perfect job for you with our expert recruitment services."
             />
 
             {isLoading ? (

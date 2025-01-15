@@ -7,17 +7,17 @@ const testimonials = [
   {
     name: "John Doe",
     title: "CEO, Company A",
-    testimonial: "Arthur Edwards Recruitment helped us find the perfect candidates for our executive positions. Their service is exceptional!",
+    testimonial: "Bennett Clarke Solutions helped us find the perfect candidates for our executive positions. Their service is exceptional!",
   },
   {
     name: "Jane Smith",
     title: "HR Manager, Company B",
-    testimonial: "The team at Arthur Edwards Recruitment is professional and efficient. We have been very satisfied with the candidates they provided.",
+    testimonial: "The team at Bennett Clarke Solutions is professional and efficient. We have been very satisfied with the candidates they provided.",
   },
   {
     name: "Michael Johnson",
     title: "CTO, Company C",
-    testimonial: "We highly recommend Arthur Edwards Recruitment for their expertise and dedication in finding top talent.",
+    testimonial: "We highly recommend Bennett Clarke Solutions for their expertise and dedication in finding top talent.",
   },
 ];
 
