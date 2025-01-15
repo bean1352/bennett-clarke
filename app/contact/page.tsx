@@ -199,21 +199,21 @@ export default function Contact() {
       {/* Contact Information */}
       <section>
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-24">
-            <div className="text-center p-8 bg-secondary rounded-lg">
-              <Mail className="h-16 w-16 text-primary mx-auto mb-6" />
-              <h3 className="text-2xl font-semibold mb-4">Email Us</h3>
-              <p className="text-lg text-muted-foreground">{email}</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 md:gap-12 mb-24">
+            <div className="text-center p-6 sm:p-8 bg-secondary rounded-lg overflow-hidden">
+              <Mail className="h-12 w-12 sm:h-16 sm:w-16 text-primary mx-auto mb-4 sm:mb-6" />
+              <h3 className="text-xl sm:text-2xl font-semibold mb-2 sm:mb-4">Email Us</h3>
+              <p className="text-base sm:text-lg text-muted-foreground break-all">{email}</p>
             </div>
-            <div className="text-center p-8 bg-secondary rounded-lg">
-              <Phone className="h-16 w-16 text-primary mx-auto mb-6" />
-              <h3 className="text-2xl font-semibold mb-4">Call Us</h3>
-              <p className="text-lg text-muted-foreground">{phone}</p>
+            <div className="text-center p-6 sm:p-8 bg-secondary rounded-lg overflow-hidden">
+              <Phone className="h-12 w-12 sm:h-16 sm:w-16 text-primary mx-auto mb-4 sm:mb-6" />
+              <h3 className="text-xl sm:text-2xl font-semibold mb-2 sm:mb-4">Call Us</h3>
+              <p className="text-base sm:text-lg text-muted-foreground">{phone}</p>
             </div>
-            <div className="text-center p-8 bg-secondary rounded-lg">
-              <MapPin className="h-16 w-16 text-primary mx-auto mb-6" />
-              <h3 className="text-2xl font-semibold mb-4">Visit Us</h3>
-              <p className="text-lg text-muted-foreground">
+            <div className="text-center p-6 sm:p-8 bg-secondary rounded-lg overflow-hidden">
+              <MapPin className="h-12 w-12 sm:h-16 sm:w-16 text-primary mx-auto mb-4 sm:mb-6" />
+              <h3 className="text-xl sm:text-2xl font-semibold mb-2 sm:mb-4">Visit Us</h3>
+              <p className="text-base sm:text-lg text-muted-foreground">
                 123 Business Street
                 <br />
                 City, State 12345
@@ -222,6 +222,7 @@ export default function Contact() {
           </div>
         </div>
       </section>
+
 
       <Separator className="my-12 opacity-50" />
 
