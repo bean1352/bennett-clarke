@@ -69,7 +69,7 @@ export function MainNav() {
   return (
     <header className="sticky w-full top-0 z-50 bg-background border-b">
       <div className="container mx-auto px-4">
-        <div className="h-20 md:h-24 grid grid-cols-2 items-center">
+        <div className="h-20 md:h-24 grid grid-cols-[1fr_auto] items-center">
           {/* Logo */}
           <div className="flex items-center">
             <Logo companyName={companyName} />
