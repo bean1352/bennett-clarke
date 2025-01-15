@@ -13,14 +13,6 @@ export const metadata: Metadata = {
         url: `https://${domain}/cookie-policy`,
         locale: "en_US",
         type: "website",
-        images: [
-            {
-                url: `https://${domain}/cookie-policy`, 
-                width: 1200,
-                height: 630,
-                alt: `${companyName} Cookie Policy`,
-            },
-        ],
         siteName: `${companyName}`,
     },
     twitter: {

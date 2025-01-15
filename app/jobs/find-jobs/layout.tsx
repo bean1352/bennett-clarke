@@ -12,15 +12,6 @@ export const metadata: Metadata = {
         description: `Browse our job catalog and find your next opportunity. ${companyName} connects top talent with leading organizations.`,
         url: `https://${domain}/jobs/find-jobs`,
         locale: "en_US",
-        type: "website",
-        images: [
-            {
-                url: `https://${domain}/jobs/find-jobs`, 
-                width: 40,
-                height: 40,
-                alt: `Find Jobs at ${companyName}`,
-            },
-        ],
         siteName: `${companyName}`,
     },
     twitter: {

@@ -13,14 +13,6 @@ export const metadata: Metadata = {
         url: `https://${domain}/job-salaries`,
         locale: "en_US",
         type: "website",
-        images: [
-            {
-                url: `https://${domain}/job-salaries`,
-                width: 1200,
-                height: 630,
-                alt: `Job Salaries at ${companyName}`,
-            },
-        ],
         siteName: `${companyName}`,
     },
     twitter: {

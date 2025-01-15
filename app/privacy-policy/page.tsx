@@ -10,16 +10,8 @@ export const metadata: Metadata = {
     openGraph: {
         title: `Privacy Policy | ${companyName}`,
         description: `Privacy policy and data handling practices for ${companyName}`,
-        url: `https://${domain}/privacy`,
+        url: `https://${domain}/privacy-policy`,
         type: "website",
-        images: [
-            {
-                url: `https://${domain}/logo.png`,
-                width: 1200,
-                height: 630,
-                alt: `${companyName} Privacy Policy`,
-            },
-        ],
         siteName: `${companyName} Privacy Policy`,
     },
 };

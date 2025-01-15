@@ -34,10 +34,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: `https://${domain}/contact`,
-    languages: {
-      "en-US": `https://${domain}/en/contact`
-    },
+    canonical: `https://${domain}/contact`
   },
 };
 
