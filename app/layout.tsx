@@ -138,9 +138,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <CookieConsent />
-          <header className="border-b">
-            <MainNav />
-          </header>
+          <MainNav />
           <main>
             {children}
           </main>

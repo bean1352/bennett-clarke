@@ -1,4 +1,4 @@
-import { Building, Building2, Contact, Star, Search, Shield, UserCircle, Users } from "lucide-react";
+import { Building, Contact, Star, Search, Shield, UserCircle, Users } from "lucide-react";
 
 // Navigation routes configuration
 const routes = {
@@ -22,16 +22,16 @@ const routes = {
       //{ href: "/salary", label: "Salary Guide", icon: DollarSign },
     ]
   },
-  employers: {
-    title: "For Employers",
-    icon: Building2,
-    links: [
-      // { href: "/employer/find-talent", label: "Post a Job", icon: Briefcase },
-      // { href: "/employer/talent-search", label: "Browse Talent", icon: Users },
-      // { href: "/employer/pricing", label: "Pricing Plans", icon: DollarSign },
-      // { href: "/employer/resources", label: "Employer Resources", icon: BookMarked },
-    ]
-  }
+  // employers: {
+  //   title: "For Employers",
+  //   icon: Building2,
+  //   links: [
+  //     // { href: "/employer/find-talent", label: "Post a Job", icon: Briefcase },
+  //     // { href: "/employer/talent-search", label: "Browse Talent", icon: Users },
+  //     // { href: "/employer/pricing", label: "Pricing Plans", icon: DollarSign },
+  //     // { href: "/employer/resources", label: "Employer Resources", icon: BookMarked },
+  //   ]
+  // }
 }
 
 export default routes;
