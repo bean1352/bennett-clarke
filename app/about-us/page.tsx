@@ -1,4 +1,3 @@
-import { Metadata } from "next";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -9,11 +8,10 @@ import {
 import { Separator } from "@/components/ui/separator";
 import CTASection from "@/components/cta-section";
 import HeroSection from "@/components/hero-section";
+import Image from "next/image";
 
-export const metadata: Metadata = {
-  title: "About Us | Your Recruitment Site",
-  description: "Learn more about our mission, values, and the team behind Your Recruitment Site",
-};
+const companyName = process.env.NEXT_PUBLIC_COMPANY_NAME;
+const founderName = 'Alex Bruhns';
 
 const stats = [
   {
@@ -75,6 +73,35 @@ const AboutPage = () => {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <Separator className="my-12 opacity-50" />
+
+      <section className="px-4 md:px-6">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div className="text-center md:text-left">
+            <Badge variant="secondary" className="text-lg px-4 py-1">
+              Our Story
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mt-6">
+              From Actuary to Entrepreneur
+            </h2>
+            <p className="text-lg text-muted-foreground mt-6">
+              Our founder, {founderName}, started his career as an actuary, bringing a unique perspective to the world of recruitment.
+              After years of working in the insurance industry, {founderName} identified a gap in the market for a more data-driven and personalized approach to recruitment.
+              This passion for innovation led him to found {companyName}, with the mission of transforming careers and empowering businesses.
+            </p>
+          </div>
+          <div className="md:flex justify-center">
+            <Image
+              className="w-full md:w-auto rounded-lg shadow-md mx-auto"
+              src="/alex-bruhns.jpg"
+              alt={`${founderName}, Founder of ${companyName}`}
+              width={500}
+              height={500}
+            />
           </div>
         </div>
       </section>
