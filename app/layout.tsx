@@ -19,7 +19,7 @@ export const viewport: Viewport = {
 
 const cantataOne = Cantata_One({
   variable: "--font-cantata",
-  weight: "400", // Cantata One only comes in regular weight
+  weight: "400",
   subsets: ["latin"],
 })
 
@@ -127,7 +127,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_ID || 'GTM-M448TSN9'} />
+      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_ID || 'GTM-NDJQJSLH'} />
       <body
         className={`${cantataOne.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
