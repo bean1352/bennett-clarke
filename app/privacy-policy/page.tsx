@@ -11,11 +11,8 @@ export const metadata: Metadata = {
         title: `Privacy Policy | ${companyName}`,
         description: `Privacy policy and data handling practices for ${companyName}`,
         url: `https://${domain}/privacy-policy`,
-        type: "website",
-        siteName: `${companyName} Privacy Policy`,
     },
 };
-
 
 const PrivacyPage = () => {
     const email = process.env.NEXT_PUBLIC_COMPANY_EMAIL;

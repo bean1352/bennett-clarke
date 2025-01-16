@@ -11,24 +11,8 @@ export const metadata: Metadata = {
         title: `About Us | ${companyName}`,
         description: `${companyName} connects highly skilled professionals with top opportunities in actuarial, banking, and engineering sectors.`,
         url: `https://${domain}/about-us`
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: `About Us | ${companyName}`,
-        description: `${companyName} specializes in recruitment for actuarial, banking, and engineering industries, connecting top talent with leading organizations.`,
-        images: [`https://${domain}/logo.png`], 
-    },
-    viewport: "width=device-width, initial-scale=1",
-    robots: {
-        index: true,
-        follow: true,
-    },
-    alternates: {
-        canonical: `https://${domain}/about-us`
-    },
+    }
 };
-
-
 
 export default function Layout() {
 

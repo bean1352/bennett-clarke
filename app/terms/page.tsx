@@ -10,20 +10,9 @@ export const metadata: Metadata = {
     openGraph: {
         title: `Terms of Service | ${companyName}`,
         description: `Terms of service and conditions for using ${companyName}`,
-        url: `https://${domain}/terms`,
-        type: "website",
-        images: [
-            {
-                url: `https://${domain}/logo.png`,
-                width: 1200,
-                height: 630,
-                alt: `${companyName}`,
-            },
-        ],
-        siteName: `${companyName}`,
+        url: `https://${domain}/terms`
     },
 };
-
 
 const TermsPage = () => {
     const email = process.env.NEXT_PUBLIC_COMPANY_EMAIL;

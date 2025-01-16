@@ -13,24 +13,8 @@ export const metadata: Metadata = {
         url: `https://${domain}/jobs/find-jobs`,
         locale: "en_US",
         siteName: `${companyName}`,
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: `Find Jobs | ${companyName}`,
-        description: `Discover career opportunities with ${companyName}. Let us help you find your next role and connect with top organizations.`,
-        images: [`https://${domain}/logo.png`], 
-    },
-    viewport: "width=device-width, initial-scale=1",
-    robots: {
-        index: true,
-        follow: true,
-    },
-    alternates: {
-        canonical: `https://${domain}/jobs/find-jobs`
-    },
+    }
 };
-
-  
 
 export default function Layout(){
     return (

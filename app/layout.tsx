@@ -93,9 +93,6 @@ export const metadata: Metadata = {
   themeColor: "#ffffff",
   alternates: {
     canonical: `https://${domain}`,
-    languages: {
-      "en-US": `https://${domain}/en`
-    },
   },
   icons: {
     icon: [
@@ -111,14 +108,12 @@ export const metadata: Metadata = {
     other: [
       {
         rel: 'apple-touch-icon-precomposed',
-        url: '/apple-touch-icon-precomposed.png',
+        url: '/apple-icon.png',
       },
     ],
   },
   manifest: `${domain}/site.webmanifest`, // Update with your manifest file path if used
 };
-
-
 
 export default function RootLayout({
   children,

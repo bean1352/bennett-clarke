@@ -11,19 +11,8 @@ export const metadata: Metadata = {
         title: `Testimonials | ${companyName}`,
         description: `Read testimonials from our satisfied clients who have successfully found top talent through ${companyName} Recruitment.`,
         url: `https://${domain}/testimonials`,
-        type: "website",
-        images: [
-            {
-                url: `https://${domain}/logo.png`,
-                width: 1200,
-                height: 630,
-                alt: `${companyName} Testimonials`,
-            },
-        ],
-        siteName: `${companyName}`,
     },
 };
-
 
 export default function Layout() {
 

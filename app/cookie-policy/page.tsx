@@ -11,26 +11,8 @@ export const metadata: Metadata = {
         title: `Cookie Policy | ${companyName}`,
         description: `Discover how ${companyName} uses cookies and other technologies to enhance your experience on our website.`,
         url: `https://${domain}/cookie-policy`,
-        locale: "en_US",
-        type: "website",
-        siteName: `${companyName}`,
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: `Cookie Policy | ${companyName}`,
-        description: `Learn how ${companyName} uses cookies and technologies to improve your website experience.`,
-        images: [`https://${domain}/logo.png`], 
-    },
-    viewport: "width=device-width, initial-scale=1",
-    robots: {
-        index: true,
-        follow: true,
-    },
-    alternates: {
-        canonical: `https://${domain}/cookie-policy`
-    },
+    }
 };
-
 
 const CookiesPage = () => {
     const email = process.env.NEXT_PUBLIC_COMPANY_EMAIL;

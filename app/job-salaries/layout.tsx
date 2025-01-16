@@ -10,27 +10,9 @@ export const metadata: Metadata = {
     openGraph: {
         title: `Job Salaries | ${companyName}`,
         description: `Explore salary statistics and trends for different job categories with ${companyName}. Make informed decisions using our interactive charts.`,
-        url: `https://${domain}/job-salaries`,
-        locale: "en_US",
-        type: "website",
-        siteName: `${companyName}`,
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: `Job Salaries | ${companyName}`,
-        description: `Get the latest job salary data and trends with ${companyName}. Analyze salaries and make informed career choices.`,
-        images: [`https://${domain}/logo.png`],
-    },
-    viewport: "width=device-width, initial-scale=1",
-    robots: {
-        index: true,
-        follow: true,
-    },
-    alternates: {
-        canonical: `https://${domain}/job-salaries`
-    },
+        url: `https://${domain}/job-salaries`
+    }
 };
-
 
 export default function Layout() {
     return (
