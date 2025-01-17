@@ -221,7 +221,7 @@ export default function Contact() {
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-8 p-12 rounded-xl bg-card mt-4 text-card-foreground"
+                className="space-y-8 p-12 rounded-xl bg-card my-8 text-card-foreground"
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <FormField
