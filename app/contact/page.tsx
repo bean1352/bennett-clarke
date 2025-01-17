@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin, Upload } from "lucide-react";
+import { Upload } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -22,6 +22,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import HeroSection from "@/components/hero-section";
 import { sendGTMEvent } from '@next/third-parties/google';
 import { sendContactEmailAction, verifyCaptchaAction } from "../api/contact/actions";
+import ContactSection from "@/components/contact";
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const ACCEPTED_FILE_TYPES = [
@@ -196,32 +197,11 @@ export default function Contact() {
 
       <Separator className="my-12 opacity-50" />
 
-      {/* Contact Information */}
-      <section>
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 md:gap-12 mb-24">
-            <div className="text-center p-6 sm:p-8 bg-secondary rounded-lg overflow-hidden">
-              <Mail className="h-12 w-12 sm:h-16 sm:w-16 text-primary mx-auto mb-4 sm:mb-6" />
-              <h3 className="text-xl sm:text-2xl font-semibold mb-2 sm:mb-4">Email Us</h3>
-              <p className="text-base sm:text-lg text-muted-foreground break-all">{email}</p>
-            </div>
-            <div className="text-center p-6 sm:p-8 bg-secondary rounded-lg overflow-hidden">
-              <Phone className="h-12 w-12 sm:h-16 sm:w-16 text-primary mx-auto mb-4 sm:mb-6" />
-              <h3 className="text-xl sm:text-2xl font-semibold mb-2 sm:mb-4">Call Us</h3>
-              <p className="text-base sm:text-lg text-muted-foreground">{phone}</p>
-            </div>
-            <div className="text-center p-6 sm:p-8 bg-secondary rounded-lg overflow-hidden">
-              <MapPin className="h-12 w-12 sm:h-16 sm:w-16 text-primary mx-auto mb-4 sm:mb-6" />
-              <h3 className="text-xl sm:text-2xl font-semibold mb-2 sm:mb-4">Visit Us</h3>
-              <p className="text-base sm:text-lg text-muted-foreground">
-                123 Business Street
-                <br />
-                City, State 12345
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ContactSection
+        email={email || ''}
+        phone={phone || ''}
+        address="123 Business Street, City, State 12345"
+      />
 
 
       <Separator className="my-12 opacity-50" />

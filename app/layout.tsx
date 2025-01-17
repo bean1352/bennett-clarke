@@ -134,7 +134,7 @@ export default function RootLayout({
         >
           <CookieConsent />
           <MainNav />
-          <main>
+          <main className="pt-16"> 
             {children}
           </main>
           <Footer />
