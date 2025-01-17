@@ -322,7 +322,7 @@ export default function Contact() {
 
                 <div className="space-y-4">
                   <FormLabel className="text-lg">Attachments (Optional)</FormLabel>
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-4 justify-center md:justify-normal">
                     <Button
                       type="button"
                       variant="secondary"
