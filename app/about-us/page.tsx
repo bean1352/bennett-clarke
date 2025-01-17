@@ -138,7 +138,7 @@ const AboutPage = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value, index) => (
-              <Card key={index} className="bg-background">
+              <Card key={index}>
                 <CardContent className="pt-6">
                   <h3 className="text-xl font-semibold mb-2">{value.title}</h3>
                   <p className="text-muted-foreground">{value.description}</p>

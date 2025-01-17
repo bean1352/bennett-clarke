@@ -7,9 +7,29 @@ import {
   InstagramIcon,
 } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import routes from "@/lib/routes";
+
+const typedRoutes: Routes = routes;
+
+interface RouteLink {
+  href: string;
+  label: string;
+  icon: React.ComponentType;
+}
+
+interface RouteSection {
+  title: string;
+  icon: React.ComponentType;
+  links: RouteLink[];
+}
+
+interface Routes {
+  [key: string]: RouteSection;
+}
 
 const Footer = () => {
-
+  const itemCount = Object.keys(routes).length + 1;
+  
   const {
     NEXT_PUBLIC_SOCIAL_LINKEDIN,
     NEXT_PUBLIC_SOCIAL_TWITTER,
@@ -18,126 +38,29 @@ const Footer = () => {
   } = process.env;
 
   return (
-    <footer className="border-t bg-background">
+    <footer className="border-t bg-card">
       <div className="container px-4 py-6 md:py-8 mx-auto">
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          {/* For Job Seekers */}
-          <div className="space-y-2.5 text-center sm:text-left">
-            <h3 className="text-base font-semibold tracking-tight">For Job Seekers</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/jobs/search"
-                  className="text-muted-foreground hover:text-primary transition-colors text-xs md:text-sm"
-                >
-                  Search Jobs
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/profile"
-                  className="text-muted-foreground hover:text-primary transition-colors text-xs md:text-sm"
-                >
-                  Create Profile
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/resources"
-                  className="text-muted-foreground hover:text-primary transition-colors text-xs md:text-sm"
-                >
-                  Career Resources
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/salary"
-                  className="text-muted-foreground hover:text-primary transition-colors text-xs md:text-sm"
-                >
-                  Salary Guide
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* For Employers */}
-          <div className="space-y-2.5 text-center sm:text-left">
-            <h3 className="text-base font-semibold tracking-tight">For Employers</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/employer/post-job"
-                  className="text-muted-foreground hover:text-primary transition-colors text-xs md:text-sm"
-                >
-                  Post a Job
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/employer/talent-search"
-                  className="text-muted-foreground hover:text-primary transition-colors text-xs md:text-sm"
-                >
-                  Browse Talent
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/employer/pricing"
-                  className="text-muted-foreground hover:text-primary transition-colors text-xs md:text-sm"
-                >
-                  Pricing Plans
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/employer/resources"
-                  className="text-muted-foreground hover:text-primary transition-colors text-xs md:text-sm"
-                >
-                  Employer Resources
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div className="space-y-2.5 text-center sm:text-left">
-            <h3 className="text-base font-semibold tracking-tight">Company</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/about"
-                  className="text-muted-foreground hover:text-primary transition-colors text-xs md:text-sm"
-                >
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="text-muted-foreground hover:text-primary transition-colors text-xs md:text-sm"
-                >
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/blog"
-                  className="text-muted-foreground hover:text-primary transition-colors text-xs md:text-sm"
-                >
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/privacy"
-                  className="text-muted-foreground hover:text-primary transition-colors text-xs md:text-sm"
-                >
-                  Privacy Policy
-                </Link>
-              </li>
-            </ul>
-          </div>
-
+        <div className={`grid grid-cols-2 md:grid-cols-${itemCount} gap-6 md:gap-8`}>
+          {Object.keys(routes).map((key) => {
+            const section = typedRoutes[key as keyof Routes];
+            return (
+              <div key={key} className="space-y-2.5 text-center sm:text-left">
+                <h3 className="text-base font-semibold tracking-tight">{section.title}</h3>
+                <ul className="space-y-2">
+                  {section.links.map((link: RouteLink) => (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className="text-muted-foreground hover:text-primary transition-colors text-xs md:text-sm"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
           {/* Connect */}
           <div className="space-y-2.5 text-center sm:text-left">
             <h3 className="text-base font-semibold tracking-tight">Connect With Us</h3>

@@ -112,7 +112,7 @@ export const metadata: Metadata = {
       },
     ],
   },
-  manifest: `${domain}/site.webmanifest`, // Update with your manifest file path if used
+  manifest: `${domain}/manifest.webmanifest`,
 };
 
 export default function RootLayout({
