@@ -62,7 +62,7 @@ export async function sendContactEmailAction(formData: FormData) {
   }
 }
 
-export async function verifyCaptchaAction(token: string) {
+export async function verifyCaptchaV2Action(token: string) {
   const secretKey: string | undefined = process.env.RECAPTCHA_SECRET_KEY;
 
   if (!token) {
@@ -78,6 +78,44 @@ export async function verifyCaptchaAction(token: string) {
       return { success: true, message: "Captcha verified successfully" };
     } else {
       return { success: false, message: "Failed to verify captcha" };
+    }
+  } catch (error) {
+    console.error("Error verifying captcha:", error);
+    throw new Error("Internal Server Error");
+  }
+}
+
+export async function verifyCaptchaV3Action(token: string) {
+  const secretKey = process.env.RECAPTCHA_SECRET_KEY_V3;
+
+  console.log(token);
+
+  if (!token) {
+    throw new Error("Token not found");
+  }
+
+  try {
+    const response = await axios.post(
+      'https://www.google.com/recaptcha/api/siteverify',
+      {
+        secret: secretKey,
+        response: token
+      }
+    );
+
+    console.log("reCAPTCHA response:", response.data);
+
+    if (response.data.success) {
+      return {
+        success: true,
+        score: response.data.score,
+        message: "Captcha verified successfully"
+      };
+    } else {
+      return {
+        success: false,
+        message: "Failed to verify captcha"
+      };
     }
   } catch (error) {
     console.error("Error verifying captcha:", error);

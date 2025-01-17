@@ -18,11 +18,11 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { useRef, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
-import ReCAPTCHA from "react-google-recaptcha";
 import HeroSection from "@/components/hero-section";
 import { sendGTMEvent } from '@next/third-parties/google';
-import { sendContactEmailAction, verifyCaptchaAction } from "../api/contact/actions";
+import { sendContactEmailAction, verifyCaptchaV2Action } from "../api/contact/actions";
 import ContactSection from "@/components/contact";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const ACCEPTED_FILE_TYPES = [
@@ -60,14 +60,27 @@ export default function Contact() {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [isVerified, setIsVerified] = useState(false);
   const { toast } = useToast()
+  // const [recaptchaToken, setRecaptchaToken] = useState<string>("");
 
   const email = process.env.NEXT_PUBLIC_COMPANY_EMAIL;
   const phone = process.env.NEXT_PUBLIC_COMPANY_PHONE;
 
+
+  // const handleRecaptchaVerified = async (token: string) => {
+  //   try {
+  //     const response = await verifyCaptchaV3Action(token);
+  //     setIsVerified(response.success);
+  //     setRecaptchaToken(token);
+  //   } catch (error) {
+  //     console.error('Error verifying reCAPTCHA:', error);
+  //     setIsVerified(false);
+  //   }
+  // };
+
   async function handleCaptchaSubmission(token: string | null) {
     try {
       if (token) {
-        const response = await verifyCaptchaAction(token);
+        const response = await verifyCaptchaV2Action(token);
 
         if (response.success) {
           setIsVerified(true);
@@ -372,6 +385,8 @@ export default function Contact() {
                   onExpired={handleExpired}
                   className=""
                 />
+
+                {/* <ReCaptchaV3 onVerified={handleRecaptchaVerified} /> */}
 
                 <Button
                   type="submit"
