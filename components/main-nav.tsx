@@ -66,18 +66,18 @@ export function MainNav() {
   )
 
   return (
-    <header className="fixed w-full top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/40 border-b">
-      <div className="container mx-auto px-4 py-4">
-        <nav className="h-16 flex items-center justify-between">
+    <header className="fixed w-full top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
+      <div className="container mx-auto px-4 py-2">
+        <nav className="h-16 flex items-center">
           {/* Logo */}
-          <div className="flex items-center flex-shrink-0">
+          <div className="flex-1 min-w-0"> {/* min-w-0 allows flex child to shrink below content size */}
             <Logo companyName={companyName} />
           </div>
 
           {/* Desktop Navigation - Right side */}
           <div className="hidden md:flex items-center gap-4">
             <NavigationMenu className="hidden md:block">
-              <NavigationMenuList>
+              <NavigationMenuList className="gap-2">
                 <NavigationMenuItem>
                   <Link href="/" legacyBehavior passHref>
                     <NavigationMenuLink className={navigationMenuTriggerStyle() + " bg-transparent hover:bg-secondary/50 transition-colors"}>
@@ -94,7 +94,7 @@ export function MainNav() {
                       {section.title}
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
-                      <div className="w-[400px] p-4 md:w-[500px] lg:w-[600px]">
+                      <div className="w-[400px] p-4 md:w-[500px] lg:w-[600px] bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
                         <div className="grid gap-3 md:grid-cols-2">
                           <div className="row-span-3">
                             <h4 className="text-sm font-medium leading-none mb-2">
@@ -108,7 +108,7 @@ export function MainNav() {
                             <Link
                               key={link.href}
                               href={link.href}
-                              className="group block space-y-1 rounded-md p-3 hover:bg-secondary"
+                              className="group block space-y-1 rounded-md p-3 hover:bg-secondary/50 transition-colors"
                             >
                               <div className="font-medium flex items-center gap-2">
                                 {link.icon && <link.icon className="h-4 w-4" />}
@@ -131,15 +131,15 @@ export function MainNav() {
           </div>
 
           {/* Mobile Menu */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center ml-4"> {/* Added ml-4 for spacing */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger className="p-2 -mr-2">
+              <SheetTrigger className="p-2 hover:bg-secondary/50 rounded-md transition-colors">
                 <Menu className="h-6 w-6" />
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
                 <SheetTitle className="mb-8 text-base">Menu</SheetTitle>
                 <nav className="flex flex-col gap-6">
-                  <MobileLink href="/" icon={Home} className="bg-secondary/50">
+                  <MobileLink href="/" icon={Home} className="bg-secondary/30">
                     Home
                   </MobileLink>
 
