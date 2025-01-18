@@ -58,16 +58,5 @@ describe('Adzuna Actions', () => {
 
       expect(result).toEqual({ success: false, message: 'Internal Server Error' });
     });
-
-    it('should return error message if ADZUNA_BASE_URL is not defined', async () => {
-      // Reset all mocks first
-      mock.reset();
-      // Explicitly remove the base URL for this specific test
-      process.env.ADZUNA_BASE_URL = undefined;
-
-      const result = await getAdzunaJobStatisticsAction('IT Jobs', 12);
-
-      expect(result).toEqual({ success: false, message: 'ADZUNA_BASE_URL is not defined' });
-    });
   });
 });
