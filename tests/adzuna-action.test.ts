@@ -60,6 +60,8 @@ describe('Adzuna Actions', () => {
     });
 
     it('should return error message if ADZUNA_BASE_URL is not defined', async () => {
+      // Reset all mocks first
+      mock.reset();
       // Explicitly remove the base URL for this specific test
       process.env.ADZUNA_BASE_URL = undefined;
 
