@@ -7,7 +7,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const mock = new MockAdapter(axios);
-const MOCK_BASE_URL = 'https://api.adzuna.com/v1';
+const MOCK_BASE_URL = 'https://api.adzuna.com/v1/api/jobs/za';
 
 describe('Adzuna Actions', () => {
   beforeEach(() => {

@@ -66,7 +66,7 @@ export function MainNav() {
   )
 
   return (
-    <header className="fixed w-full top-0 z-50 bg-card/70 backdrop-blur supports-[backdrop-filter]:bg-card/40 border-b">
+    <header className="fixed w-full top-0 z-50 bg-card/90 md:supports-[backdrop-filter]:bg-card/40 border-b">
       <div className="container mx-auto px-4 py-2">
         <nav className="h-16 flex items-center">
           {/* Logo */}
@@ -136,7 +136,7 @@ export function MainNav() {
               <SheetTrigger className="p-2 hover:bg-secondary/50 rounded-md transition-colors">
                 <Menu className="h-6 w-6" />
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                 <SheetTitle className="mb-8 text-base">Menu</SheetTitle>
                 <nav className="flex flex-col gap-6">
                   <MobileLink href="/" icon={Home} className="bg-secondary/30">
