@@ -17,6 +17,7 @@ interface MobileLinkProps {
   children: React.ReactNode;
   className?: string;
   icon?: React.ComponentType<{ className?: string }>;
+  label: string;
 }
 
 const LogoImage = () => (
@@ -54,11 +55,12 @@ export function MainNav() {
   const [isOpen, setIsOpen] = useState(false);
   const companyName = process.env.NEXT_PUBLIC_COMPANY_NAME;
 
-  const MobileLink = ({ href, children, className = "", icon: Icon }: MobileLinkProps) => (
+  const MobileLink = ({ href, children, className = "", icon: Icon, label}: MobileLinkProps) => (
     <Link
       href={href}
       className={`flex items-center gap-2 p-2 rounded-md hover:bg-secondary active:bg-secondary/80 ${className}`}
       onClick={() => setIsOpen(false)}
+      aria-label={label}
     >
       {Icon && <Icon className="h-4 w-4 text-muted-foreground" />}
       <span className="text-sm">{children}</span>
@@ -79,7 +81,7 @@ export function MainNav() {
             <NavigationMenu className="hidden md:block">
               <NavigationMenuList className="gap-2">
                 <NavigationMenuItem>
-                  <Link href="/" legacyBehavior passHref>
+                  <Link href="/" legacyBehavior passHref aria-label="Home">
                     <NavigationMenuLink className={navigationMenuTriggerStyle() + " bg-transparent hover:bg-secondary/50 transition-colors"}>
                       <Home className="h-4 w-4 mr-2" />
                       Home
@@ -109,6 +111,7 @@ export function MainNav() {
                               key={link.href}
                               href={link.href}
                               className="group block space-y-1 rounded-md p-3 hover:bg-secondary/50 transition-colors"
+                              aria-label={`Explore ${link.label}`}
                             >
                               <div className="font-medium flex items-center gap-2">
                                 {link.icon && <link.icon className="h-4 w-4" />}
@@ -139,7 +142,7 @@ export function MainNav() {
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                 <SheetTitle className="mb-8 text-base">Menu</SheetTitle>
                 <nav className="flex flex-col gap-6">
-                  <MobileLink href="/" icon={Home} className="bg-secondary/30">
+                  <MobileLink href="/" icon={Home} className="bg-secondary/30" label="Home">
                     Home
                   </MobileLink>
 
@@ -156,6 +159,7 @@ export function MainNav() {
                             href={link.href}
                             icon={link.icon}
                             className="ml-4 border-l-2 border-muted hover:border-primary"
+                            label={link.label}
                           >
                             {link.label}
                           </MobileLink>

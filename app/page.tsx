@@ -201,6 +201,7 @@ export default function Home() {
                 <Link
                   href="/job-salaries"
                   className="inline-flex items-center justify-center rounded-md px-8 py-3 text-sm font-medium shadow transition-colors"
+                  aria-label="View Salary Data"
                 >
                   View Salary Data
                 </Link>

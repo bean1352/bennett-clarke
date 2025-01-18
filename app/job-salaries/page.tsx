@@ -218,6 +218,7 @@ export default function AverageJobSalaries() {
                                 <Button
                                     onClick={handleSearch}
                                     className="w-full md:w-auto px-8 py-2"
+                                    aria-label='Search Job Salaries'
                                 >
                                     Search
                                 </Button>

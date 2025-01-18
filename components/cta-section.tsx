@@ -19,7 +19,7 @@ const CTASection: React.FC<CTASectionProps> = ({ title, description, linkText, l
           {description}
         </p>
         <div className="flex justify-center gap-4">
-          <Link href={linkHref} className="inline-flex items-center justify-center rounded-md px-8 py-3 text-sm font-medium shadow transition-colors">
+          <Link href={linkHref} className="inline-flex items-center justify-center rounded-md px-8 py-3 text-sm font-medium shadow transition-colors" aria-label={linkText}>
             {linkText}
           </Link>
         </div>

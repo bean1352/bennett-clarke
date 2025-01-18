@@ -29,7 +29,7 @@ interface Routes {
 
 const Footer = () => {
   const itemCount = Object.keys(routes).length + 1;
-  
+
   const {
     NEXT_PUBLIC_SOCIAL_LINKEDIN,
     NEXT_PUBLIC_SOCIAL_TWITTER,
@@ -50,6 +50,7 @@ const Footer = () => {
                   {section.links.map((link: RouteLink) => (
                     <li key={link.href}>
                       <Link
+                        aria-label={link.label}
                         href={link.href}
                         className="text-muted-foreground hover:text-primary transition-colors text-xs md:text-sm"
                       >
@@ -65,32 +66,74 @@ const Footer = () => {
           <div className="space-y-2.5 text-center sm:text-left">
             <h3 className="text-base font-semibold tracking-tight">Connect With Us</h3>
             <div className="flex justify-center sm:justify-start space-x-3 text-primary">
-              <a href={NEXT_PUBLIC_SOCIAL_LINKEDIN} target="_blank" rel="noopener noreferrer">
-                <Button variant="ghost" size="icon" className="h-10 w-10">
+              <Link
+                href={NEXT_PUBLIC_SOCIAL_LINKEDIN!}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit our LinkedIn page"
+              >
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-10 w-10"
+                  aria-hidden="true"
+                >
                   <LinkedinIcon className="h-6 w-6" />
                 </Button>
-              </a>
-              <a href={NEXT_PUBLIC_SOCIAL_TWITTER} target="_blank" rel="noopener noreferrer">
-                <Button variant="ghost" size="icon" className="h-10 w-10">
+              </Link>
+              <Link
+                href={NEXT_PUBLIC_SOCIAL_TWITTER!}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit our Twitter page"
+              >
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-10 w-10"
+                  aria-hidden="true"
+                >
                   <TwitterIcon className="h-6 w-6" />
                 </Button>
-              </a>
-              <a href={NEXT_PUBLIC_SOCIAL_FACEBOOK} target="_blank" rel="noopener noreferrer">
-                <Button variant="ghost" size="icon" className="h-10 w-10">
+              </Link>
+              <Link
+                href={NEXT_PUBLIC_SOCIAL_FACEBOOK!}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit our Facebook page"
+              >
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-10 w-10"
+                  aria-hidden="true"
+                >
                   <FacebookIcon className="h-6 w-6" />
                 </Button>
-              </a>
-              <a href={NEXT_PUBLIC_SOCIAL_INSTAGRAM} target="_blank" rel="noopener noreferrer">
-                <Button variant="ghost" size="icon" className="h-10 w-10">
+              </Link>
+              <Link
+                href={NEXT_PUBLIC_SOCIAL_INSTAGRAM!}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit our Instagram page"
+              >
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-10 w-10"
+                  aria-hidden="true"
+                >
                   <InstagramIcon className="h-6 w-6" />
                 </Button>
-              </a>
+              </Link>
             </div>
 
             <div className="pt-1">
-              <Button className="w-full text-xs md:text-sm">
-                Subscribe to Newsletter
-              </Button>
+              <Link href="/newsletter">
+                <Button className="w-full text-xs md:text-sm">
+                  Subscribe to Newsletter
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -101,13 +144,13 @@ const Footer = () => {
         <div className="text-center space-y-2 md:space-y-0 md:flex md:justify-between md:items-center text-xs text-muted-foreground">
           <p>© {new Date().getFullYear()} Bennett Clarke Solutions. All rights reserved.</p>
           <div className="flex justify-center space-x-4">
-            <Link href="/terms" className="hover:text-primary transition-colors">
+            <Link href="/terms" className="hover:text-primary transition-colors" aria-label="Terms of Service">
               Terms
             </Link>
-            <Link href="/privacy-policy" className="hover:text-primary transition-colors">
+            <Link href="/privacy-policy" className="hover:text-primary transition-colors" aria-label="Privacy Policy">
               Privacy
             </Link>
-            <Link href="/cookie-policy" className="hover:text-primary transition-colors">
+            <Link href="/cookie-policy" className="hover:text-primary transition-colors" aria-label="Cookie Policy">
               Cookies
             </Link>
           </div>
