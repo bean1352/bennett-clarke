@@ -7,20 +7,25 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const mock = new MockAdapter(axios);
+const MOCK_BASE_URL = 'https://api.adzuna.com/v1';
 
 describe('Adzuna Actions', () => {
   beforeEach(() => {
     mock.reset();
+    // Set a default base URL for all tests
+    process.env.ADZUNA_BASE_URL = MOCK_BASE_URL;
   });
 
   afterEach(() => {
     mock.reset();
+    // Clean up environment after each test
+    process.env.ADZUNA_BASE_URL = undefined;
   });
 
   describe('getAdzunaCategoriesAction', () => {
     it('should return categories data on success', async () => {
       const mockData = { results: [{ category: 'IT Jobs' }] };
-      mock.onGet(`${process.env.ADZUNA_BASE_URL}/categories`).reply(200, mockData);
+      mock.onGet(`${MOCK_BASE_URL}/categories`).reply(200, mockData);
 
       const result = await getAdzunaCategoriesAction();
 
@@ -28,7 +33,7 @@ describe('Adzuna Actions', () => {
     });
 
     it('should return error message on failure', async () => {
-      mock.onGet(`${process.env.ADZUNA_BASE_URL}/categories`).reply(500);
+      mock.onGet(`${MOCK_BASE_URL}/categories`).reply(500);
 
       const result = await getAdzunaCategoriesAction();
 
@@ -39,7 +44,7 @@ describe('Adzuna Actions', () => {
   describe('getAdzunaJobStatisticsAction', () => {
     it('should return job statistics data on success', async () => {
       const mockData = { month: [{ month: 'January', count: 100 }] };
-      mock.onGet(`${process.env.ADZUNA_BASE_URL}/history`).reply(200, mockData);
+      mock.onGet(`${MOCK_BASE_URL}/history`).reply(200, mockData);
 
       const result = await getAdzunaJobStatisticsAction('IT Jobs', 12);
 
@@ -47,7 +52,7 @@ describe('Adzuna Actions', () => {
     });
 
     it('should return error message on failure', async () => {
-      mock.onGet(`${process.env.ADZUNA_BASE_URL}/history`).reply(500);
+      mock.onGet(`${MOCK_BASE_URL}/history`).reply(500);
 
       const result = await getAdzunaJobStatisticsAction('IT Jobs', 12);
 
@@ -55,7 +60,8 @@ describe('Adzuna Actions', () => {
     });
 
     it('should return error message if ADZUNA_BASE_URL is not defined', async () => {
-      delete process.env.ADZUNA_BASE_URL;
+      // Explicitly remove the base URL for this specific test
+      process.env.ADZUNA_BASE_URL = undefined;
 
       const result = await getAdzunaJobStatisticsAction('IT Jobs', 12);
 
