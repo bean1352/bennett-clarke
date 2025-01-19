@@ -2,7 +2,7 @@ import CTASection from "@/components/cta-section";
 import HeroSection from "@/components/hero-section";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Briefcase, Users, Calculator, LineChart, Code2, Building2 } from "lucide-react";
+import { Briefcase, Users, Calculator, Code2, Banknote, BarChart2, Shield } from "lucide-react";
 
 export default function Home() {
   return (
@@ -66,7 +66,7 @@ export default function Home() {
             <Card className="group hover:shadow-lg transition-all duration-300 border-none">
               <CardHeader className="text-center pb-4">
                 <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
-                  <LineChart className="h-8 w-8 text-primary" />
+                  <BarChart2 className="h-8 w-8 text-primary" />
                 </div>
                 <CardTitle className="text-xl">Actuarial</CardTitle>
               </CardHeader>
@@ -75,7 +75,7 @@ export default function Home() {
             <Card className="group hover:shadow-lg transition-all duration-300 border-none">
               <CardHeader className="text-center pb-4">
                 <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
-                  <LineChart className="h-8 w-8 text-primary" />
+                  <Banknote className="h-8 w-8 text-primary" />
                 </div>
                 <CardTitle className="text-xl">Banking & Financial Services</CardTitle>
               </CardHeader>
@@ -93,12 +93,13 @@ export default function Home() {
             <Card className="group hover:shadow-lg transition-all duration-300 border-none">
               <CardHeader className="text-center pb-4">
                 <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
-                  <Building2 className="h-8 w-8 text-primary" />
+                  <Shield className="h-8 w-8 text-primary" />
                 </div>
                 <CardTitle className="text-xl">Risk & Compliance</CardTitle>
               </CardHeader>
             </Card>
           </div>
+
         </div>
       </section>
 
