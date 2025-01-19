@@ -1,28 +1,28 @@
-import { Building, Contact, UserCircle, Users } from "lucide-react";
+// import { Building, Contact, UserCircle, Users } from "lucide-react";
 
 // Navigation routes configuration
 const routes = {
-  company: {
-    title: "Company",
-    icon: Building,
-    links: [
-      { href: "/about-us", label: "About Us", icon: Building },
-      { href: "/contact", label: "Contact", icon: Contact },
-      //{ href: "/testimonials", label: "Testimonials", icon: Star },
-      // { href: "/testimonials", label: "Testimonials", icon: GroupIcon },
-      // { href: "/privacy-policy", label: "Privacy Policy", icon: Shield },
-    ]
-  },
-  jobSeekers: {
-    title: "For Job Seekers",
-    icon: Users,
-    links: [
-      //{ href: "/jobs/find-jobs", label: "Search Jobs", icon: Search },
-      { href: "/job-salaries", label: "Job Salaries", icon: UserCircle },
-      //{ href: "/resources", label: "Career Resources", icon: BookOpen },
-      //{ href: "/salary", label: "Salary Guide", icon: DollarSign },
-    ]
-  },
+  // company: {
+  //   title: "Company",
+  //   icon: Building,
+  //   links: [
+  //     { href: "/about-us", label: "About Us", icon: Building },
+  //     { href: "/contact", label: "Contact", icon: Contact },
+  //     //{ href: "/testimonials", label: "Testimonials", icon: Star },
+  //     // { href: "/testimonials", label: "Testimonials", icon: GroupIcon },
+  //     // { href: "/privacy-policy", label: "Privacy Policy", icon: Shield },
+  //   ]
+  // },
+  // jobSeekers: {
+  //   title: "For Job Seekers",
+  //   icon: Users,
+  //   links: [
+  //     //{ href: "/jobs/find-jobs", label: "Search Jobs", icon: Search },
+  //     { href: "/job-salaries", label: "Job Salaries", icon: UserCircle },
+  //     //{ href: "/resources", label: "Career Resources", icon: BookOpen },
+  //     //{ href: "/salary", label: "Salary Guide", icon: DollarSign },
+  //   ]
+  // },
   // employers: {
   //   title: "For Employers",
   //   icon: Building2,

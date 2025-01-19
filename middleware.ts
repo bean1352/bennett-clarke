@@ -6,5 +6,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/team/:path*']  // Add team to the matcher
+  matcher: ['/team/:path*', '/job-salaries/:path*', '/team/:path*', '/jobs/:path*'] 
 }

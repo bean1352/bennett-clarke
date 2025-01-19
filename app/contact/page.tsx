@@ -212,9 +212,7 @@ export default function Contact() {
 
       <ContactSection
         email={email || ''}
-        phone={phone || ''}
-        address="123 Business Street, City, State 12345"
-      />
+        phone={phone || ''}/>
 
 
       <Separator className="my-12 opacity-50" />
@@ -378,13 +376,15 @@ export default function Contact() {
                   <FormMessage />
                 </div>
 
-                <ReCAPTCHA
-                  sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
-                  ref={recaptchaRef}
-                  onChange={handleChange}
-                  onExpired={handleExpired}
-                  className=""
-                />
+                <div className="overflow-hidden">
+                  <ReCAPTCHA
+                    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+                    ref={recaptchaRef}
+                    onChange={handleChange}
+                    onExpired={handleExpired}
+                    about="reCAPTCHA"
+                  />
+                </div>
 
                 {/* <ReCaptchaV3 onVerified={handleRecaptchaVerified} /> */}
 

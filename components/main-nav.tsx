@@ -1,16 +1,17 @@
 "use client"
 
-import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, NavigationMenuContent, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu"
+import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu"
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import {
   Menu,
-  Home
+  Home,
+  Building,
+  Contact
 } from "lucide-react"
 import Link from "next/link"
 import { Suspense, useState } from "react"
 import { ModeToggle } from "./mode-toggle"
 import { Skeleton } from "./ui/skeleton"
-import routes from "@/lib/routes"
 
 interface MobileLinkProps {
   href: string;
@@ -89,7 +90,25 @@ export function MainNav() {
                   </Link>
                 </NavigationMenuItem>
 
-                {Object.entries(routes).map(([key, section]) => (
+                <NavigationMenuItem>
+                  <Link href="/about-us" legacyBehavior passHref aria-label="About us">
+                    <NavigationMenuLink className={navigationMenuTriggerStyle() + " bg-transparent hover:bg-secondary/50 transition-colors"}>
+                      <Building className="h-4 w-4 mr-2" />
+                      About
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <Link href="/contact" legacyBehavior passHref aria-label="Contact us">
+                    <NavigationMenuLink className={navigationMenuTriggerStyle() + " bg-transparent hover:bg-secondary/50 transition-colors"}>
+                      <Contact className="h-4 w-4 mr-2" />
+                      Contact us
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+
+                {/* {Object.entries(routes).map(([key, section]) => (
                   <NavigationMenuItem key={key}>
                     <NavigationMenuTrigger className="bg-transparent hover:bg-secondary/50 transition-colors">
                       {section.icon && <section.icon className="h-4 w-4 mr-2" />}
@@ -126,7 +145,7 @@ export function MainNav() {
                       </div>
                     </NavigationMenuContent>
                   </NavigationMenuItem>
-                ))}
+                ))} */}
               </NavigationMenuList>
             </NavigationMenu>
 
@@ -134,7 +153,7 @@ export function MainNav() {
           </div>
 
           {/* Mobile Menu */}
-          <div className="md:hidden flex items-center ml-4"> {/* Added ml-4 for spacing */}
+          <div className="md:hidden flex items-center ml-4">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger className="p-2 hover:bg-secondary/50 rounded-md transition-colors">
                 <Menu className="h-6 w-6" />
@@ -146,27 +165,13 @@ export function MainNav() {
                     Home
                   </MobileLink>
 
-                  {Object.entries(routes).map(([key, section]) => (
-                    <div key={key} className="space-y-3">
-                      <div className="flex items-center gap-2 px-2 font-medium text-sm">
-                        {section.icon && <section.icon className="h-4 w-4" />}
-                        <span>{section.title}</span>
-                      </div>
-                      <div className="flex flex-col gap-1 pl-2">
-                        {section.links.map((link) => (
-                          <MobileLink
-                            key={link.href}
-                            href={link.href}
-                            icon={link.icon}
-                            className="ml-4 border-l-2 border-muted hover:border-primary"
-                            label={link.label}
-                          >
-                            {link.label}
-                          </MobileLink>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
+                  <MobileLink href="/about-us" icon={Building} className="bg-secondary/30" label="Home">
+                    About
+                  </MobileLink>
+
+                  <MobileLink href="/contact" icon={Contact} className="bg-secondary/30" label="Home">
+                    Contact us
+                  </MobileLink>
                 </nav>
               </SheetContent>
             </Sheet>
