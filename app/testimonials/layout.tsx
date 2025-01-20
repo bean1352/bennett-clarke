@@ -1,18 +1,13 @@
 import { Metadata } from "next";
 import Testimonials from "./page";
+import { generatePageMetadata } from "@/components/generate-page-metadata";
 
 const companyName = process.env.NEXT_PUBLIC_COMPANY_NAME;
-const domain = process.env.NEXT_PUBLIC_DOMAIN;
 
-export const metadata: Metadata = {
-    title: `${companyName} | Testimonials`,
-    description: `Read testimonials from our satisfied clients who have successfully found top talent through ${companyName} Recruitment.`,
-    openGraph: {
-        title: `Testimonials | ${companyName}`,
-        description: `Read testimonials from our satisfied clients who have successfully found top talent through ${companyName} Recruitment.`,
-        url: `https://${domain}/testimonials`,
-    },
-};
+export const metadata: Metadata = generatePageMetadata(
+    'Testimonials',
+    `Read testimonials from our satisfied clients who have successfully found top talent through ${companyName} Recruitment.`
+);
 
 export default function Layout() {
 

@@ -38,7 +38,10 @@ const domain = process.env.NEXT_PUBLIC_DOMAIN;
 const companyName = process.env.NEXT_PUBLIC_COMPANY_NAME;
 
 export const metadata: Metadata = {
-  title: `${companyName}`,
+  title: {
+    template: `%s | ${companyName}`,
+    default: companyName!,
+  },
   description: `${companyName} specialises in high-skill recruitment, connecting top talent with leading organisations worldwide.`,
   applicationName: companyName,
   keywords: [
@@ -57,7 +60,10 @@ export const metadata: Metadata = {
   },
   abstract: `${companyName}: Your trusted partner for high-skill recruitment. Connecting top talent with leading organisations worldwide.`,
   openGraph: {
-    title: `${companyName} | High-Skill Recruitment`,
+    title: {
+      template: `%s | ${companyName}`,
+      default: `${companyName} | High-Skill Recruitment`,
+    },
     description: `${companyName} connects top-tier talent with global organisations, providing expert recruitment services tailored to your needs.`,
     url: `https://${domain}`,
     type: "website",
@@ -73,7 +79,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${companyName} | High-Skill Recruitment`,
+    title: {
+      template: `%s | ${companyName}`,
+      default: `${companyName} | High-Skill Recruitment`,
+    },
     description: `${companyName} connects top-tier talent with global organisations, providing expert recruitment services tailored to your needs.`,
     images: [`https://${domain}/logo.png`],
   },
@@ -134,7 +143,7 @@ export default function RootLayout({
         >
           <CookieConsent />
           <MainNav />
-          <main className="pt-16"> 
+          <main className="pt-16">
             {children}
           </main>
           <Footer />

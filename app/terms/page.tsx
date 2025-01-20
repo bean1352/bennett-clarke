@@ -1,18 +1,13 @@
 import { Metadata } from "next";
 import { Separator } from "@/components/ui/separator";
+import { generatePageMetadata } from "@/components/generate-page-metadata";
 
 const companyName = process.env.NEXT_PUBLIC_COMPANY_NAME;
-const domain = process.env.NEXT_PUBLIC_DOMAIN;
 
-export const metadata: Metadata = {
-    title: `Terms of Service | ${companyName}`,
-    description: `Terms of service and conditions for using ${companyName}`,
-    openGraph: {
-        title: `Terms of Service | ${companyName}`,
-        description: `Terms of service and conditions for using ${companyName}`,
-        url: `https://${domain}/terms`
-    },
-};
+export const metadata: Metadata = generatePageMetadata(
+    'Terms of Service',
+    `Terms of service and conditions for using ${companyName}`
+);
 
 const TermsPage = () => {
     const email = process.env.NEXT_PUBLIC_COMPANY_EMAIL;

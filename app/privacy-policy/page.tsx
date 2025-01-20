@@ -1,18 +1,13 @@
 import { Metadata } from "next";
 import { Separator } from "@/components/ui/separator";
+import { generatePageMetadata } from "@/components/generate-page-metadata";
 
 const companyName = process.env.NEXT_PUBLIC_COMPANY_NAME;
-const domain = process.env.NEXT_PUBLIC_DOMAIN;
 
-export const metadata: Metadata = {
-    title: `Privacy Policy | ${companyName}`,
-    description: `Privacy policy and data handling practices for ${companyName}`,
-    openGraph: {
-        title: `Privacy Policy | ${companyName}`,
-        description: `Privacy policy and data handling practices for ${companyName}`,
-        url: `https://${domain}/privacy-policy`,
-    },
-};
+export const metadata: Metadata = generatePageMetadata(
+    'Privacy Policy',
+    `Privacy policy and data handling practices for ${companyName}`
+);
 
 const PrivacyPage = () => {
     const email = process.env.NEXT_PUBLIC_COMPANY_EMAIL;

@@ -1,20 +1,13 @@
 import { Metadata } from "next";
 import Careers from "./page";
+import { generatePageMetadata } from "@/components/generate-page-metadata";
 
 const companyName = process.env.NEXT_PUBLIC_COMPANY_NAME;
-const domain = process.env.NEXT_PUBLIC_DOMAIN;
 
-export const metadata: Metadata = {
-    title: `Find Jobs | ${companyName}`,
-    description: `Explore exciting career opportunities with ${companyName}. Discover the perfect job for you with our expert recruitment services.`,
-    openGraph: {
-        title: `Find Jobs | ${companyName}`,
-        description: `Browse our job catalog and find your next opportunity. ${companyName} connects top talent with leading organizations.`,
-        url: `https://${domain}/jobs/find-jobs`,
-        locale: "en_US",
-        siteName: `${companyName}`,
-    }
-};
+export const metadata: Metadata = generatePageMetadata(
+    'Find Jobs',
+    `Explore exciting career opportunities with ${companyName}. Discover the perfect job for you with our expert recruitment services.`
+);
 
 export default function Layout(){
     return (

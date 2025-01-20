@@ -1,18 +1,13 @@
 import { Metadata } from "next";
 import { Separator } from "@/components/ui/separator";
+import { generatePageMetadata } from "@/components/generate-page-metadata";
 
 const companyName = process.env.NEXT_PUBLIC_COMPANY_NAME;
-const domain = process.env.NEXT_PUBLIC_DOMAIN;
 
-export const metadata: Metadata = {
-    title: `Cookie Policy | ${companyName}`,
-    description: `Learn about how we use cookies and similar technologies on ${companyName}`,
-    openGraph: {
-        title: `Cookie Policy | ${companyName}`,
-        description: `Discover how ${companyName} uses cookies and other technologies to enhance your experience on our website.`,
-        url: `https://${domain}/cookie-policy`,
-    }
-};
+export const metadata: Metadata = generatePageMetadata(
+    'Cookie Policy',
+    `Learn about how we use cookies and similar technologies on ${companyName}`
+);
 
 const CookiesPage = () => {
     const email = process.env.NEXT_PUBLIC_COMPANY_EMAIL;
