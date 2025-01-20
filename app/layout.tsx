@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     template: `%s | ${companyName}`,
     default: companyName!,
   },
-  description: `${companyName} specialises in high-skill recruitment, connecting top talent with leading organisations worldwide.`,
+  description: `${companyName} specialises in high-skill recruitment, connecting exceptional talent with leading organisations worldwide. Our expertise spans across actuarial, banking, engineering, and technology sectors, ensuring precise matches between skilled professionals and career-defining opportunities. With a proven track record of successful placements and a deep understanding of industry demands, we deliver tailored recruitment solutions that drive organizational success.`,
   applicationName: companyName,
   keywords: [
     `${companyName}`,
