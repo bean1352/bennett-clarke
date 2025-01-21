@@ -12,7 +12,7 @@ export default function Home() {
         description="We are passionate about what we do and dedicated to connecting top talent with leading companies."
       />
 
-      <Separator className="mb-12 opacity-50" />
+      <Separator className="my-12"/>
 
       {/* Sectors Section */}
       <section>
@@ -71,10 +71,10 @@ export default function Home() {
         </div>
       </section>
 
-      <Separator className="my-12 opacity-50" />
+      <Separator className="my-12" />
 
       {/* Services Section */}
-      <section className="bg-background py-16">
+      <section className="bg-background">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-4 text-foreground">
             Our Services
@@ -111,7 +111,7 @@ export default function Home() {
         </div>
       </section>
 
-      <Separator className="my-12 opacity-50" />
+      <Separator className="my-12" />
 
       <CTASection
         title="Let’s chat"

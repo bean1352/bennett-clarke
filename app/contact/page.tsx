@@ -208,14 +208,14 @@ export default function Contact() {
         description="Whether you are a company looking to hire top talent or a professional seeking a new challenge, we’d love to chat."
       />
 
-      <Separator className="my-12 opacity-50" />
+      <Separator className="my-12" />
 
       <ContactSection
         email={email || ''}
-        phone={phone || ''}/>
+        phone={phone || ''} />
 
 
-      <Separator className="my-12 opacity-50" />
+      <Separator className="my-12" />
 
       {/* Contact Form */}
       <section>

@@ -29,7 +29,7 @@ const ContactSection = ({ email, phone}: ContactSectionProps) => {
     return (
         <section>
             <div className="container mx-auto px-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-12 mb-24">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-12">
                     <Card
                         onClick={handleEmailClick}
                         className="text-center cursor-pointer hover:bg-secondary/80 transition-colors"

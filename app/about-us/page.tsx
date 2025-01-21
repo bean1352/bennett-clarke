@@ -42,7 +42,7 @@ const AboutPage = () => {
         description="We are on a mission to revolutionise the recruitment industry through innovation and human-centered solutions."
       />
 
-      <Separator className="mb-12 opacity-50" />
+      <Separator className="my-12" />
 
       <section className="px-4 md:px-6">
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -71,7 +71,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-      <Separator className="my-12 opacity-50" />
+      <Separator className="my-12" />
 
       {/* Mission Section */}
       <section className="px-4 md:px-6">
@@ -94,7 +94,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-      <Separator className="my-12 opacity-50" />
+      <Separator className="my-12" />
 
       {/* Values Section */}
       <section className="px-4 md:px-6">
@@ -123,7 +123,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-      <Separator className="my-12 opacity-50" />
+      <Separator className="my-12" />
 
       <CTASection
         title="Let’s chat"
