@@ -1,52 +1,36 @@
-import { Card, CardContent } from "@/components/ui/card";
+"use client";
+
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {
-  Award,
-  Briefcase,
-  Building2,
-} from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import CTASection from "@/components/cta-section";
 import HeroSection from "@/components/hero-section";
 import Image from "next/image";
+import { Award, ShieldCheck, Lightbulb, Users } from 'lucide-react';
 
 const companyName = process.env.NEXT_PUBLIC_COMPANY_NAME;
 const founderName = 'Alex Bruhns';
-
-const stats = [
-  {
-    value: "10K+",
-    label: "Successful Placements",
-    icon: Briefcase,
-  },
-  {
-    value: "5K+",
-    label: "Partner Companies",
-    icon: Building2,
-  },
-  {
-    value: "98%",
-    label: "Client Satisfaction",
-    icon: Award,
-  },
-];
 
 const values = [
   {
     title: "Excellence",
     description: "We strive for excellence in every interaction and placement we make.",
+    icon: <Award className="h-8 w-8 text-primary" />,
   },
   {
     title: "Integrity",
     description: "We operate with complete transparency and honesty in all our dealings.",
+    icon: <ShieldCheck className="h-8 w-8 text-primary" />,
   },
   {
     title: "Innovation",
-    description: "We embrace new technologies and methods to improve our service.",
+    description: "We embrace new technologies and methods to deliver innovative talent solutions.",
+    icon: <Lightbulb className="h-8 w-8 text-primary" />,
   },
   {
     title: "Collaboration",
     description: "We believe in the power of working together to achieve great results.",
+    icon: <Users className="h-8 w-8 text-primary" />,
   },
 ];
 
@@ -54,50 +38,31 @@ const AboutPage = () => {
   return (
     <>
       <HeroSection
-        title="Connecting Talent with Opportunity"
-        description="We are on a mission to revolutionize the recruitment industry through innovation and human-centered solutions."
+        title="Connecting talent with opportunity"
+        description="We are on a mission to revolutionise the recruitment industry through innovation and human-centered solutions."
       />
 
-      <Separator className="my-12 opacity-50" />
-
-      {/* Stats Section */}
-      <section className="px-4 md:px-6 bg-background">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {stats.map((stat, index) => (
-              <Card key={index} className="text-center">
-                <CardContent className="pt-6">
-                  <stat.icon className="w-12 h-12 mx-auto mb-4 text-primary" />
-                  <h3 className="text-3xl font-bold">{stat.value}</h3>
-                  <p className="text-muted-foreground">{stat.label}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <Separator className="my-12 opacity-50" />
+      <Separator className="mb-12 opacity-50" />
 
       <section className="px-4 md:px-6">
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div className="text-center md:text-left">
-            <Badge variant="secondary" className="text-lg px-4 py-1">
-              Our Story
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mt-6">
-              From Actuary to Entrepreneur
+          <div className="text-center md:text-left relative border-l-4 border-primary pl-6 before:content-[''] before:absolute before:left-[-4px] before:top-0 before:w-4 before:h-[4px] before:bg-primary after:content-[''] after:absolute after:left-[-4px] after:bottom-0 after:w-4 after:h-[4px] after:bg-primary">
+            <div className="flex justify-center">
+              <Badge variant="default" className="text-lg px-4 py-1">
+                Our Story
+              </Badge>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mt-6 text-center">
+              {founderName}
             </h2>
             <p className="text-lg text-muted-foreground mt-6">
-              Our founder, {founderName}, started his career as an actuary, bringing a unique perspective to the world of recruitment.
-              After years of working in the insurance industry, {founderName} identified a gap in the market for a more data-driven and personalized approach to recruitment.
-              This passion for innovation led him to found {companyName}, with the mission of transforming careers and empowering businesses.
+              Our founder, Alex, combined his actuarial expertise with a passion for connecting people to bring a unique perspective to the world of recruitment. He recognised the need for a more tailored approach, one that would truly understand the needs of both candidates and clients. This passion for innovation led Alex to found Bennett Clarke Solutions, with the mission of transforming careers and empowering businesses.
             </p>
           </div>
           <div className="md:flex justify-center">
             <Image
               className="w-full md:w-auto rounded-lg shadow-md mx-auto"
-              src="/alex-bruhns.jpg"
+              src="/alex-bruhns-ai.png"
               alt={`${founderName}, Founder of ${companyName}`}
               width={500}
               height={500}
@@ -110,18 +75,22 @@ const AboutPage = () => {
 
       {/* Mission Section */}
       <section className="px-4 md:px-6">
-        <div className="container mx-auto max-w-4xl text-center space-y-6">
-          <div className="inline-block">
-            <Badge variant="secondary" className="text-lg px-4 py-1">
-              Our Mission
-            </Badge>
+        <div className="container mx-auto max-w-4xl text-center">
+          <div className="relative border-l-4 border-primary pl-6 before:content-[''] before:absolute before:left-[-4px] before:top-0 before:w-4 before:h-[4px] before:bg-primary after:content-[''] after:absolute after:left-[-4px] after:bottom-0 after:w-4 after:h-[4px] after:bg-primary">
+            <div className="space-y-6">
+              <div className="inline-block">
+                <Badge variant="default" className="text-lg px-4 py-1">
+                  Our Mission
+                </Badge>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+                Transforming Careers, Empowering Businesses
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                We believe in creating meaningful connections between talented professionals and forward-thinking companies. Our approach combines expert knowledge with a personal touch to deliver exceptional talent solutions that drives business success and career growth.
+              </p>
+            </div>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-            Transforming Careers, Empowering Businesses
-          </h2>
-          <p className="text-lg text-muted-foreground">
-            We believe in creating meaningful connections between talented individuals and forward-thinking companies. Our approach combines cutting-edge technology with personal touch to deliver exceptional recruitment solutions.
-          </p>
         </div>
       </section>
 
@@ -131,17 +100,22 @@ const AboutPage = () => {
       <section className="px-4 md:px-6">
         <div className="container mx-auto">
           <div className="text-center mb-12">
-            <Badge variant="secondary" className="text-lg px-4 py-1">
+            <Badge variant="default" className="text-lg px-4 py-1">
               Our Values
             </Badge>
-            <h2 className="text-3xl font-bold mt-4">What Drives Us</h2>
+            <h2 className="text-3xl font-bold mt-4">What drives us?</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value, index) => (
               <Card key={index}>
-                <CardContent className="pt-6">
-                  <h3 className="text-xl font-semibold mb-2">{value.title}</h3>
-                  <p className="text-muted-foreground">{value.description}</p>
+                <CardHeader className="text-center pb-4">
+                  <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300 ">
+                    {value.icon}
+                  </div>
+                  <CardTitle className="text-xl">{value.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground text-center">{value.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -152,8 +126,8 @@ const AboutPage = () => {
       <Separator className="my-12 opacity-50" />
 
       <CTASection
-        title="Ready to Transform Your Hiring Process?"
-        description="Join thousands of companies who trust us with their recruitment needs."
+        title="Let’s chat"
+        description="Whether you are a company looking to hire top talent or a professional seeking a new challenge, we’d love to chat."
         linkText="Contact Us"
         linkHref="/contact"
       />

@@ -161,15 +161,15 @@ export function MainNav() {
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                 <SheetTitle className="mb-8 text-base">Menu</SheetTitle>
                 <nav className="flex flex-col gap-6">
-                  <MobileLink href="/" icon={Home} className="bg-secondary/30" label="Home">
+                  <MobileLink href="/" icon={Home} label="Home">
                     Home
                   </MobileLink>
 
-                  <MobileLink href="/about-us" icon={Building} className="bg-secondary/30" label="Home">
+                  <MobileLink href="/about-us" icon={Building} label="Home">
                     About
                   </MobileLink>
 
-                  <MobileLink href="/contact" icon={Contact} className="bg-secondary/30" label="Home">
+                  <MobileLink href="/contact" icon={Contact} label="Home">
                     Contact us
                   </MobileLink>
                 </nav>

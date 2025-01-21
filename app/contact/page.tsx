@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Upload } from "lucide-react";
+// import { Upload } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -24,16 +24,16 @@ import { sendContactEmailAction, verifyCaptchaV2Action } from "../api/contact/ac
 import ContactSection from "@/components/contact";
 import ReCAPTCHA from "react-google-recaptcha";
 
-const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
-const ACCEPTED_FILE_TYPES = [
-  "application/pdf", // PDF
-  "application/msword", // DOC
-  "application/vnd.openxmlformats-officedocument.wordprocessingml.document", // DOCX
-  "image/png", // PNG
-  "image/jpeg", // JPG, JPEG
-  "application/vnd.ms-excel", // XLS
-  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", // XLSX
-];
+// const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+// const ACCEPTED_FILE_TYPES = [
+//   "application/pdf", // PDF
+//   "application/msword", // DOC
+//   "application/vnd.openxmlformats-officedocument.wordprocessingml.document", // DOCX
+//   "image/png", // PNG
+//   "image/jpeg", // JPG, JPEG
+//   "application/vnd.ms-excel", // XLS
+//   "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", // XLSX
+// ];
 
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -115,32 +115,32 @@ export default function Contact() {
   });
 
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFiles = Array.from(e.target.files || []);
+  // const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const selectedFiles = Array.from(e.target.files || []);
 
-    if (files.length + selectedFiles.length > 3) {
-      form.setError("files", { message: "Maximum 3 files allowed" });
-      return;
-    }
+  //   if (files.length + selectedFiles.length > 3) {
+  //     form.setError("files", { message: "Maximum 3 files allowed" });
+  //     return;
+  //   }
 
-    const validFiles = selectedFiles.filter(file => {
-      if (file.size > MAX_FILE_SIZE) {
-        form.setError("files", { message: "File size must be less than 5MB" });
-        return false;
-      }
-      if (!ACCEPTED_FILE_TYPES.includes(file.type)) {
-        form.setError("files", { message: "Only PDF and Word documents allowed" });
-        return false;
-      }
-      return true;
-    });
+  //   const validFiles = selectedFiles.filter(file => {
+  //     if (file.size > MAX_FILE_SIZE) {
+  //       form.setError("files", { message: "File size must be less than 5MB" });
+  //       return false;
+  //     }
+  //     if (!ACCEPTED_FILE_TYPES.includes(file.type)) {
+  //       form.setError("files", { message: "Only PDF and Word documents allowed" });
+  //       return false;
+  //     }
+  //     return true;
+  //   });
 
-    setFiles([...files, ...validFiles]);
-  };
+  //   setFiles([...files, ...validFiles]);
+  // };
 
-  const removeFile = (index: number) => {
-    setFiles(files.filter((_, i) => i !== index));
-  };
+  // const removeFile = (index: number) => {
+  //   setFiles(files.filter((_, i) => i !== index));
+  // };
 
   async function onSubmit(data: ContactFormValues) {
     setIsSubmitting(true);
@@ -204,8 +204,8 @@ export default function Contact() {
   return (
     <>
       <HeroSection
-        title="Get in Touch"
-        description="We&apos;re here to help with your recruitment needs. Reach out to our team and let&apos;s start a conversation about your future."
+        title="Let’s chat"
+        description="Whether you are a company looking to hire top talent or a professional seeking a new challenge, we’d love to chat."
       />
 
       <Separator className="my-12 opacity-50" />
@@ -222,7 +222,7 @@ export default function Contact() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center">
-              <h2 className="text-4xl font-bold mb-6">Send Us a Message</h2>
+              <h2 className="text-4xl font-bold mb-6">Send us a message</h2>
               <p className="text-xl text-muted-foreground">
                 Fill out the form below and we&apos;ll get back to you as soon as
                 possible.
@@ -232,7 +232,7 @@ export default function Contact() {
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-8 p-12 rounded-xl bg-card my-8 text-card-foreground"
+                className="space-y-8 p-12 rounded-xl bg-card my-8 text-card-foreground hover:shadow-lg transition-all duration-300 border-t-4 border-primary"
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <FormField
@@ -331,7 +331,7 @@ export default function Contact() {
                   )}
                 />
 
-                <div className="space-y-4">
+                {/* <div className="space-y-4">
                   <FormLabel className="text-lg">Attachments (Optional)</FormLabel>
                   <div className="flex items-center gap-4 justify-center md:justify-normal">
                     <Button
@@ -374,7 +374,7 @@ export default function Contact() {
                     </div>
                   )}
                   <FormMessage />
-                </div>
+                </div> */}
 
                 <div className="overflow-hidden">
                   <ReCAPTCHA
@@ -391,7 +391,7 @@ export default function Contact() {
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full text-lg h-16"
+                  className="w-full bg-primary"
                   disabled={isSubmitting || !isVerified}
                 >
                   {isSubmitting ? "Sending..." : "Send Message"}
