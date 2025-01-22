@@ -23,7 +23,7 @@ export function generatePageMetadata(title: string, description: string): Metada
         },
         twitter: {
             description,
-            images: [`https://${domain}/logo.png`]
+            images: [`https://${domain}/twitter-image.png`]
         }
     };
 }
