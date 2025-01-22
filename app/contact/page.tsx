@@ -232,7 +232,7 @@ export default function Contact() {
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-8 p-12 rounded-xl bg-card my-8 text-card-foreground hover:shadow-lg transition-all duration-300 border-t-4 border-primary"
+                className="space-y-8 p-12 rounded-xl bg-card my-8 text-card-foreground hover:shadow-lg transition-all duration-300 border-2 border-t-4 border-primary"
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <FormField

@@ -69,7 +69,7 @@ export function MainNav() {
   )
 
   return (
-    <header className="fixed w-full top-0 z-50 bg-card/90 md:supports-[backdrop-filter]:bg-card/40 border-b">
+    <header className="fixed w-full top-0 z-50 bg-card/90 md:supports-[backdrop-filter]:bg-card/90 border-b">
       <div className="container mx-auto px-4 py-2">
         <nav className="h-16 flex items-center">
           {/* Logo */}
