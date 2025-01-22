@@ -7,7 +7,7 @@ import axios from "axios";
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: process.env.NEXT_PUBLIC_COMPANY_EMAIL,
+    user: process.env.NEXT_PUBLIC_COMPANY_EMAIL_CONTACT,
     pass: process.env.GMAIL_APP_PASSWORD,
   },
 });
@@ -35,8 +35,8 @@ export async function sendContactEmailAction(formData: FormData) {
 
     // Define the email options
     const mailOptions = {
-      from: process.env.NEXT_PUBLIC_COMPANY_EMAIL,
-      to: process.env.NEXT_PUBLIC_COMPANY_EMAIL,
+      from: process.env.NEXT_PUBLIC_COMPANY_EMAIL_CONTACT,
+      to: process.env.NEXT_PUBLIC_COMPANY_EMAIL_CONTACT,
       subject: `Contact Form: ${subject}`,
       html: `
         <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
