@@ -39,7 +39,7 @@ const ContactSection = ({ email, phone}: ContactSectionProps) => {
                             <CardTitle className="text-xl sm:text-2xl">Email Us</CardTitle>
                         </CardHeader>
                         <CardContent>
-                            <p className="text-base sm:text-lg text-muted-foreground break-all">{email}</p>
+                            <p className="text-muted-foreground break-all">{email}</p>
                         </CardContent>
                     </Card>
 
@@ -52,7 +52,7 @@ const ContactSection = ({ email, phone}: ContactSectionProps) => {
                             <CardTitle className="text-xl sm:text-2xl">Call Us</CardTitle>
                         </CardHeader>
                         <CardContent>
-                            <p className="text-base sm:text-lg text-muted-foreground">{phone}</p>
+                            <p className="text-muted-foreground break-all">{phone}</p>
                         </CardContent>
                     </Card>
 
@@ -65,7 +65,7 @@ const ContactSection = ({ email, phone}: ContactSectionProps) => {
                             <CardTitle className="text-xl sm:text-2xl">WhatsApp</CardTitle>
                         </CardHeader>
                         <CardContent>
-                            <p className="text-base sm:text-lg text-muted-foreground">{phone}</p>
+                            <p className="text-muted-foreground break-all">{phone}</p>
                         </CardContent>
                     </Card>
                 </div>
