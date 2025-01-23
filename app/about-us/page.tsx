@@ -5,8 +5,8 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import CTASection from "@/components/cta-section";
 import HeroSection from "@/components/hero-section";
-import Image from "next/image";
 import { Award, ShieldCheck, Lightbulb, Users } from 'lucide-react';
+import ImageWithSkeleton from "@/components/image-with-skeleton";
 
 const companyName = process.env.NEXT_PUBLIC_COMPANY_NAME;
 const founderName = 'Alex Bruhns';
@@ -60,12 +60,19 @@ const AboutPage = () => {
             </p>
           </div>
           <div className="md:flex justify-center">
-            <Image
+            {/* <Image
               className="w-full md:w-auto rounded-lg shadow-md mx-auto"
               src="/alex-bruhns-ai.png"
               alt={`${founderName}, Founder of ${companyName}`}
               width={500}
               height={500}
+            /> */}
+            <ImageWithSkeleton
+              src="/alex-bruhns-ai.png"
+              alt={`${founderName}, Founder of ${companyName}`}
+              width={500}
+              height={500}
+              className="w-full md:w-auto rounded-lg shadow-md mx-auto"
             />
           </div>
         </div>
