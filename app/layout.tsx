@@ -64,7 +64,7 @@ export const metadata: Metadata = {
       template: `%s | ${companyName}`,
       default: `${companyName} | High-Skill Recruitment`,
     },
-    description: `${companyName} connects top-tier talent with global organisations, providing expert recruitment services tailored to your needs.`,
+    description: `${companyName} specialises in high-skill recruitment, connecting exceptional talent with leading organisations worldwide. Our expertise spans across actuarial, banking, engineering, and technology sectors, ensuring precise matches between skilled professionals and career-defining opportunities. With a proven track record of successful placements and a deep understanding of industry demands, we deliver tailored recruitment solutions that drive organizational success.`,
     url: `https://${domain}`,
     type: "website",
     images: [
@@ -83,7 +83,7 @@ export const metadata: Metadata = {
       template: `%s | ${companyName}`,
       default: `${companyName} | High-Skill Recruitment`,
     },
-    description: `${companyName} connects top-tier talent with global organisations, providing expert recruitment services tailored to your needs.`,
+    description: `${companyName} specialises in high-skill recruitment, connecting exceptional talent with leading organisations worldwide. Our expertise spans across actuarial, banking, engineering, and technology sectors, ensuring precise matches between skilled professionals and career-defining opportunities. With a proven track record of successful placements and a deep understanding of industry demands, we deliver tailored recruitment solutions that drive organizational success.`,
     images: [`https://${domain}/logo.png`],
   },
   viewport: "width=device-width, initial-scale=1",
