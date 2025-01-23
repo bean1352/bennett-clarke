@@ -59,22 +59,12 @@ const AboutPage = () => {
               Our founder, Alex, combined his actuarial expertise with a passion for connecting people to bring a unique perspective to the world of recruitment. He recognised the need for a more tailored approach, one that would truly understand the needs of both candidates and clients. This passion for innovation led Alex to found Bennett Clarke Solutions, with the mission of transforming careers and empowering businesses.
             </p>
           </div>
-          <div className="md:flex justify-center">
-            {/* <Image
-              className="w-full md:w-auto rounded-lg shadow-md mx-auto"
+          <ImageWithSkeleton
               src="/alex-bruhns-ai.png"
               alt={`${founderName}, Founder of ${companyName}`}
               width={500}
               height={500}
-            /> */}
-            <ImageWithSkeleton
-              src="/alex-bruhns-ai.png"
-              alt={`${founderName}, Founder of ${companyName}`}
-              width={500}
-              height={500}
-              className="w-full md:w-auto rounded-lg shadow-md mx-auto"
             />
-          </div>
         </div>
       </section>
 
