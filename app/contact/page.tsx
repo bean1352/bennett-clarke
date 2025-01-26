@@ -16,14 +16,13 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Separator } from "@/components/ui/separator";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import HeroSection from "@/components/hero-section";
 import { sendGTMEvent } from '@next/third-parties/google';
-import { sendContactEmailAction, verifyCaptchaV2Action } from "../api/contact/actions";
+import { sendContactEmailAction, verifyCaptchaV3Action } from "../api/contact/actions";
 import ContactSection from "@/components/contact";
-import ReCAPTCHA from "react-google-recaptcha";
-
+import { useReCaptcha } from "next-recaptcha-v3";
 // const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 // const ACCEPTED_FILE_TYPES = [
 //   "application/pdf", // PDF
@@ -55,52 +54,14 @@ const contactFormSchema = z.object({
 type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 export default function Contact() {
+  const { executeRecaptcha } = useReCaptcha();
+
   const [files, setFiles] = useState<File[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const recaptchaRef = useRef<ReCAPTCHA>(null);
-  const [isVerified, setIsVerified] = useState(false);
   const { toast } = useToast()
-  // const [recaptchaToken, setRecaptchaToken] = useState<string>("");
 
   const email = process.env.NEXT_PUBLIC_COMPANY_EMAIL;
   const phone = process.env.NEXT_PUBLIC_COMPANY_PHONE;
-
-
-  // const handleRecaptchaVerified = async (token: string) => {
-  //   try {
-  //     const response = await verifyCaptchaV3Action(token);
-  //     setIsVerified(response.success);
-  //     setRecaptchaToken(token);
-  //   } catch (error) {
-  //     console.error('Error verifying reCAPTCHA:', error);
-  //     setIsVerified(false);
-  //   }
-  // };
-
-  async function handleCaptchaSubmission(token: string | null) {
-    try {
-      if (token) {
-        const response = await verifyCaptchaV2Action(token);
-
-        if (response.success) {
-          setIsVerified(true);
-        }
-        else {
-          setIsVerified(false);
-        }
-      }
-    } catch {
-      setIsVerified(false);
-    }
-  }
-
-  const handleChange = (token: string | null) => {
-    handleCaptchaSubmission(token);
-  };
-
-  function handleExpired() {
-    setIsVerified(false);
-  }
 
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
@@ -113,7 +74,6 @@ export default function Contact() {
       files: [],
     },
   });
-
 
   // const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
   //   const selectedFiles = Array.from(e.target.files || []);
@@ -144,6 +104,24 @@ export default function Contact() {
 
   async function onSubmit(data: ContactFormValues) {
     setIsSubmitting(true);
+
+    const token = await executeRecaptcha("contact_form_submit");
+
+    const captchaResult = await verifyCaptchaV3Action(token);
+
+    if (!captchaResult.success) {
+      sendGTMEvent({
+        event: 'contact_form_error',
+        error_type: 'captcha_failed'
+      });
+
+      toast({
+        description: "Failed to verify the captcha. Please try again.",
+      })
+
+      setIsSubmitting(false);
+      return;
+    }
 
     sendGTMEvent({
       event: 'contact_form_submit',
@@ -376,7 +354,7 @@ export default function Contact() {
                   <FormMessage />
                 </div> */}
 
-                <div className="overflow-hidden">
+                {/* <div className="overflow-hidden">
                   <ReCAPTCHA
                     sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
                     ref={recaptchaRef}
@@ -384,15 +362,13 @@ export default function Contact() {
                     onExpired={handleExpired}
                     about="reCAPTCHA"
                   />
-                </div>
-
-                {/* <ReCaptchaV3 onVerified={handleRecaptchaVerified} /> */}
+                </div> */}
 
                 <Button
                   type="submit"
                   size="lg"
                   className="w-full bg-primary"
-                  disabled={isSubmitting || !isVerified}
+                  disabled={isSubmitting}
                 >
                   {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>
@@ -404,3 +380,4 @@ export default function Contact() {
     </>
   );
 }
+

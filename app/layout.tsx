@@ -10,6 +10,7 @@ import { Analytics } from "@vercel/analytics/react"
 import type { Viewport } from 'next'
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { GoogleTagManager } from '@next/third-parties/google'
+import { ReCaptchaProvider } from "next-recaptcha-v3";
 
 export const viewport: Viewport = {
   themeColor: 'black',
@@ -131,27 +132,29 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_ID || 'GTM-NDJQJSLH'} />
-      <body
-        className={`${cantataOne.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
+      <ReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY_V3 || '6LcY0boqAAAAAM22aqqqxbR7mxhtsUOxsYRKpg2Z'}>
+        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_ID || 'GTM-NDJQJSLH'} />
+        <body
+          className={`${cantataOne.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          <CookieConsent />
-          <MainNav />
-          <main className="pt-16">
-            {children}
-          </main>
-          <Footer />
-        </ThemeProvider>
-        <Toaster />
-        <Analytics />
-        <SpeedInsights />
-      </body>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <CookieConsent />
+            <MainNav />
+            <main className="pt-16">
+              {children}
+            </main>
+            <Footer />
+          </ThemeProvider>
+          <Toaster />
+          <Analytics />
+          <SpeedInsights />
+        </body>
+      </ReCaptchaProvider>
     </html>
   );
 }
