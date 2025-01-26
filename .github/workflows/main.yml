@@ -1,0 +1,45 @@
+name: CI
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    env:
+      ADZUNA_BASE_URL: ${{ secrets.ADZUNA_BASE_URL }}
+      
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm install
+        
+      - name: Run tests
+        run: npm test
+        env:
+          ADZUNA_BASE_URL: ${{ secrets.ADZUNA_BASE_URL }}
+
+      # - name: Create Deployment Status
+      #   if: always()
+      #   uses: actions/github-script@v6
+      #   with:
+      #     script: |
+      #       const status = '${{ job.status }}' === 'success' ? 'success' : 'failure';
+      #       await github.rest.repos.createCommitStatus({
+      #         owner: context.repo.owner,
+      #         repo: context.repo.repo,
+      #         sha: context.sha,
+      #         state: status,
+      #         context: 'Test Suite',
+      #         description: status === 'success' ? 'Tests passed' : 'Tests failed'
+      #       });
