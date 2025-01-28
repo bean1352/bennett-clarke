@@ -15,18 +15,33 @@ export default function ImageWithSkeleton({ src, alt, width, height }: ImageWith
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    setIsLoading(true)
+    setIsLoading(true) 
   }, [src])
 
   return (
-    <div>
-      {isLoading && <Skeleton className="absolute inset-0 w-full h-full rounded-lg" />}
+    <div
+      className="relative"
+      style={{
+        width: width ? `${width}px` : "100%",
+        height: height ? `${height}px` : "100%",
+      }}
+    >
+      {isLoading && (
+        <Skeleton
+          className="absolute inset-0 rounded-lg animate-pulse"
+          style={{
+            width: "100%",
+            height: "100%",
+          }}
+        />
+      )}
       <Image
         src={src || "/placeholder.png"}
         alt={alt}
         {...(width && height ? { width, height } : { fill: true })}
-        className={`rounded-lg shadow-md ${isLoading ? "invisible" : "visible"}`}
+        className={`rounded-lg shadow-md ${isLoading ? "opacity-0" : "opacity-100"}`}
         onLoad={() => setIsLoading(false)}
+        onError={() => setIsLoading(false)} // Handle image loading errors
       />
     </div>
   )
