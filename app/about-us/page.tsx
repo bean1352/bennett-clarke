@@ -62,8 +62,6 @@ const AboutPage = () => {
           <ImageWithSkeleton
               src="/alex-bruhns-ai.png"
               alt={`${founderName}, Founder of ${companyName}`}
-              width={500}
-              height={500}
             />
         </div>
       </section>

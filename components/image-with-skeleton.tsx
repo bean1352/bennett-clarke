@@ -7,11 +7,14 @@ import { Skeleton } from "@/components/ui/skeleton"
 interface ImageWithSkeletonProps {
   src: string
   alt: string
-  width?: number
-  height?: number
+  aspectRatio?: number
 }
 
-export default function ImageWithSkeleton({ src, alt, width, height }: ImageWithSkeletonProps) {
+export default function ImageWithSkeleton({ 
+  src, 
+  alt, 
+  aspectRatio = 1 
+}: ImageWithSkeletonProps) {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -19,29 +22,22 @@ export default function ImageWithSkeleton({ src, alt, width, height }: ImageWith
   }, [src])
 
   return (
-    <div
-      className="relative"
-      style={{
-        width: width ? `${width}px` : "100%",
-        height: height ? `${height}px` : "100%",
-      }}
+    <div 
+      className="relative w-full"
+      style={{ paddingBottom: `${aspectRatio * 100}%` }}
     >
       {isLoading && (
-        <Skeleton
-          className="absolute inset-0 rounded-lg animate-pulse"
-          style={{
-            width: "100%",
-            height: "100%",
-          }}
+        <Skeleton 
+          className="absolute inset-0 rounded-lg animate-pulse" 
         />
       )}
       <Image
         src={src || "/placeholder.png"}
         alt={alt}
-        {...(width && height ? { width, height } : { fill: true })}
-        className={`rounded-lg shadow-md ${isLoading ? "opacity-0" : "opacity-100"}`}
+        fill
+        className={`absolute inset-0 rounded-lg shadow-md object-cover ${isLoading ? "opacity-0" : "opacity-100"}`}
         onLoad={() => setIsLoading(false)}
-        onError={() => setIsLoading(false)} // Handle image loading errors
+        onError={() => setIsLoading(false)}
       />
     </div>
   )

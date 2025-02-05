@@ -3,17 +3,6 @@ import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const domain = process.env.NEXT_PUBLIC_DOMAIN;
-
-    // Collect all the links from the routes
-    // const links = Object.values(routes).flatMap((section) =>
-    //     section.links.map((link) => ({
-    //         url: `https://${domain}${link.href}`,
-    //         lastModified: new Date(),
-    //         changeFrequency: 'monthly' as const, // Ensure the value matches the required type
-    //         priority: 0.8,
-    //     }))
-    // );
-
     // Include the base URL
     const baseUrl = [
         {
@@ -53,7 +42,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.7,
         },
     ];
-
     // return [...baseUrl, ...links];
-    return [...baseUrl];
+    return baseUrl;
 }

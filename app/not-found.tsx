@@ -9,7 +9,7 @@ export default function NotFound() {
         <p className="mt-4 text-lg text-muted-foreground">Oops! This page either does not exist or was removed.</p>
         <div className="mt-6">
           <Link href="/" passHref>
-            <Button size="lg">
+            <Button size="lg" className="bg-primary text-white hover:bg-primary/90">
               Go Back to Home
             </Button>
           </Link>
