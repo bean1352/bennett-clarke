@@ -43,12 +43,19 @@ interface LogoProps {
 
 const Logo = ({ companyName }: LogoProps) => (
   <div className="flex items-center align-middle gap-4">
-    <Suspense fallback={<LogoSkeleton />}>
+    {/* <Suspense fallback={<LogoSkeleton />}>
       <LogoImage />
       <Link href="/" className="text-lg lg:text-2xl">
         {companyName}
       </Link>
-    </Suspense>
+    </Suspense> */}
+
+    <Link href="/" className="text-lg lg:text-2xl flex items-center gap-3">
+      <Suspense fallback={<LogoSkeleton />}>
+        <LogoImage />
+        {companyName}
+      </Suspense>
+    </Link>
   </div>
 )
 
@@ -56,7 +63,7 @@ export function MainNav() {
   const [isOpen, setIsOpen] = useState(false);
   const companyName = process.env.NEXT_PUBLIC_COMPANY_NAME;
 
-  const MobileLink = ({ href, children, className = "", icon: Icon, label}: MobileLinkProps) => (
+  const MobileLink = ({ href, children, className = "", icon: Icon, label }: MobileLinkProps) => (
     <Link
       href={href}
       className={`flex items-center gap-2 p-2 rounded-md hover:bg-secondary active:bg-secondary/80 ${className}`}
@@ -107,45 +114,6 @@ export function MainNav() {
                     </NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
-
-                {/* {Object.entries(routes).map(([key, section]) => (
-                  <NavigationMenuItem key={key}>
-                    <NavigationMenuTrigger className="bg-transparent hover:bg-secondary/50 transition-colors">
-                      {section.icon && <section.icon className="h-4 w-4 mr-2" />}
-                      {section.title}
-                    </NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      <div className="w-[400px] p-4 md:w-[500px] lg:w-[600px] bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-                        <div className="grid gap-3 md:grid-cols-2">
-                          <div className="row-span-3">
-                            <h4 className="text-sm font-medium leading-none mb-2">
-                              {section.title}
-                            </h4>
-                            <p className="text-sm leading-snug text-muted-foreground">
-                              Explore our {section.title.toLowerCase()} resources and services.
-                            </p>
-                          </div>
-                          {section.links.map((link) => (
-                            <Link
-                              key={link.href}
-                              href={link.href}
-                              className="group block space-y-1 rounded-md p-3 hover:bg-secondary/50 transition-colors"
-                              aria-label={`Explore ${link.label}`}
-                            >
-                              <div className="font-medium flex items-center gap-2">
-                                {link.icon && <link.icon className="h-4 w-4" />}
-                                {link.label}
-                              </div>
-                              <div className="text-sm text-muted-foreground">
-                                Explore {link.label.toLowerCase()}
-                              </div>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    </NavigationMenuContent>
-                  </NavigationMenuItem>
-                ))} */}
               </NavigationMenuList>
             </NavigationMenu>
 
@@ -153,24 +121,47 @@ export function MainNav() {
           </div>
 
           {/* Mobile Menu */}
-          <div className="md:hidden flex items-center ml-4">
+          <div className="md:hidden">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger className="p-2 hover:bg-secondary/50 rounded-md transition-colors">
-                <Menu className="h-6 w-6" />
+              <SheetTrigger
+                className="p-3 hover:bg-secondary/30 rounded-full transition-colors shadow-md"
+              >
+                <Menu className="h-6 w-6 text-primary" />
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-                <SheetTitle className="mb-8 text-base">Menu</SheetTitle>
-                <nav className="flex flex-col gap-6">
-                  <MobileLink href="/" icon={Home} label="Home">
+              <SheetContent
+                side="right"
+                className="w-[300px] sm:w-[400px] rounded-l-2xl shadow-2xl"
+              >
+                <SheetTitle
+                  className="mb-8 border-b pb-4 flex items-center justify-start gap-4"
+                >
+                  <LogoImage />
+                  {companyName}
+                </SheetTitle>
+                <nav className="flex flex-col gap-4">
+                  <MobileLink
+                    href="/"
+                    icon={Home}
+                    label="Home"
+                    className="group relative overflow-hidden rounded-xl border shadow-mdhover:bg-primary/5 hover:border-primary transition-all duration-300 ease-in-out"
+                  >
                     Home
                   </MobileLink>
 
-                  <MobileLink href="/about-us" icon={Building} label="Home">
+                  <MobileLink
+                    href="/about-us"
+                    icon={Building}
+                    label="About"
+                    className="group relative overflow-hidden rounded-xl border shadow-mdhover:bg-primary/5 hover:border-primary transition-all duration-300 ease-in-out">
                     About
                   </MobileLink>
 
-                  <MobileLink href="/contact" icon={Contact} label="Home">
-                    Contact us
+                  <MobileLink
+                    href="/contact"
+                    icon={Contact}
+                    label="Contact"
+                    className="group relative overflow-hidden rounded-xl border shadow-mdhover:bg-primary/5 hover:border-primary transition-all duration-300 ease-in-out">
+                    Contact Us
                   </MobileLink>
                 </nav>
               </SheetContent>
