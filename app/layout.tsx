@@ -101,9 +101,6 @@ export const metadata: Metadata = {
     }
   },
   themeColor: "#ffffff",
-  alternates: {
-    canonical: `https://${domain}`,
-  },
   icons: {
     icon: [
       { url: '/icon.png' },
