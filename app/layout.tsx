@@ -100,7 +100,6 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     }
   },
-  themeColor: "#ffffff",
   icons: {
     icon: [
       { url: '/icon.png' },

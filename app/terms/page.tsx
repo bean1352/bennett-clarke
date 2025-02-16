@@ -100,7 +100,7 @@ const TermsPage = () => {
 
                     <footer className="text-sm text-muted-foreground max-w-2xl">
                         <p>
-                            By using Your Recruitment Site, you acknowledge that you have read these Terms of Service and agree to be bound by them.
+                            By using {companyName}, you acknowledge that you have read these Terms of Service and agree to be bound by them.
                         </p>
                     </footer>
                 </div>
