@@ -76,7 +76,7 @@ export default function Home() {
       {/* Partnership Image Section */}
       <section>
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center md:items-start text-center md:text-left gap-12">
+          <div className="flex flex-col md:flex-row text-center md:text-left gap-12 items-center">
             {/* Text Content */}
             <div className="w-full md:w-7/12 max-w-xl">
               <h2 className="text-3xl font-bold mb-6">Building Successful Partnerships</h2>
