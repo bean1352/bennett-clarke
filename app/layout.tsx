@@ -4,7 +4,6 @@ import "./globals.css";
 import { MainNav } from "@/components/main-nav";
 import { ThemeProvider } from "@/components/theme-provider";
 import Footer from "@/components/footer";
-import CookieConsent from "@/components/cookie-consent";
 import { Toaster } from "@/components/ui/toaster"
 import { Analytics } from "@vercel/analytics/react"
 import type { Viewport } from 'next'
@@ -139,7 +138,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <CookieConsent />
+            {/* <CookieConsent /> */}
             <MainNav />
             <main className="pt-16">
               {children}
