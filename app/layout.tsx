@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     statusBarStyle: "default",
     capable: true
   },
-  abstract: `${companyName}: Your trusted partner for high-skill recruitment. Connecting top talent with leading organisations worldwide.`,
+  abstract: `${companyName}: Your trusted partner for high-skill recruitment. Connecting top talent with leading organisations worldwide. Our expertise spans across actuarial, banking, engineering, and technology sectors, ensuring precise matches between skilled professionals and career-defining opportunities. With a proven track record of successful placements and a deep understanding of industry demands, we deliver tailored recruitment solutions that drive organizational success.`,
   openGraph: {
     title: {
       template: `%s | ${companyName}`,

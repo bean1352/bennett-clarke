@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { LinkedinIcon, InstagramIcon } from "lucide-react";
+import { LinkedinIcon } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { useEffect, useState } from "react";
 
@@ -26,7 +26,7 @@ const Footer = () => {
                 <Link
                   href={process.env.NEXT_PUBLIC_SOCIAL_LINKEDIN || ''}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer nofollow"
                   aria-label="Visit our LinkedIn page"
                 >
                   <Button
@@ -38,10 +38,10 @@ const Footer = () => {
                     <LinkedinIcon className="h-4 w-4" />
                   </Button>
                 </Link>
-                <Link
+                {/* <Link
                   href={process.env.NEXT_PUBLIC_SOCIAL_INSTAGRAM || ''}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer nofollow"
                   aria-label="Visit our Instagram page"
                 >
                   <Button
@@ -52,7 +52,7 @@ const Footer = () => {
                   >
                     <InstagramIcon className="h-4 w-4" />
                   </Button>
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>
