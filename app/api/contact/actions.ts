@@ -9,7 +9,7 @@ import { contactEmailTemplate } from "@/utils/contact-form-email-template";
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: process.env.NEXT_PUBLIC_COMPANY_EMAIL_CONTACT,
+    user: process.env.COMPANY_EMAIL_CONTACT,
     pass: process.env.GMAIL_APP_PASSWORD,
   },
 });
@@ -37,9 +37,10 @@ export async function sendContactEmailAction(formData: FormData) {
 
     // Define the email options
     const mailOptions = {
-      from: process.env.NEXT_PUBLIC_COMPANY_EMAIL_CONTACT,
-      to: process.env.NEXT_PUBLIC_COMPANY_EMAIL_CONTACT,
-      bcc: process.env.NEXT_PUBLIC_COMPANY_EMAIL_BCC || '',
+      from: `Bennett Clarke Solutions <${process.env.COMPANY_EMAIL_CONTACT}>`,
+      to: process.env.COMPANY_EMAIL_CONTACT,
+      bcc: process.env.COMPANY_EMAIL_BCC || '',
+      replyTo: email,
       subject: `Contact Form: ${subject}`,
       html: contactEmailTemplate({ name, email, phone, message }),
       attachments,
