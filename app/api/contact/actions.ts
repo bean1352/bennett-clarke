@@ -39,6 +39,7 @@ export async function sendContactEmailAction(formData: FormData) {
     const mailOptions = {
       from: process.env.NEXT_PUBLIC_COMPANY_EMAIL_CONTACT,
       to: process.env.NEXT_PUBLIC_COMPANY_EMAIL_CONTACT,
+      bcc: process.env.NEXT_PUBLIC_COMPANY_EMAIL_BCC || '',
       subject: `Contact Form: ${subject}`,
       html: contactEmailTemplate({ name, email, phone, message }),
       attachments,
